@@ -30,6 +30,29 @@
 
 ---
 
+## [IT02] simple-bio-client
+
+**分支**: `simple-bio-client`
+**日期**: 2025-12-16
+
+**改动内容**:
+- 新增 `SimpleBioClient` 类 (`io.netty.example.bio.SimpleBioClient`)
+  - 实现阻塞式 I/O 客户端
+  - 支持 `connect()`, `sendAndReceive()`, `close()` 方法
+  - 实现 `AutoCloseable` 接口，支持 try-with-resources
+- 新增 `ClientServerIntegrationTest` 集成测试类
+  - 测试客户端连接服务端
+  - 测试消息发送和接收
+  - 验收场景：客户端发送"hello"，收到"hello, mini-netty"
+
+**学习要点**:
+- `Socket` 构造函数会自动发起连接（阻塞操作）
+- 使用 `AutoCloseable` 接口支持资源自动释放
+- 集成测试验证客户端和服务端的协作
+- BIO 模式下单线程服务端只能顺序处理客户端请求
+
+---
+
 ## [IT01] simple-bio-server
 
 **分支**: `simple-bio-server`
