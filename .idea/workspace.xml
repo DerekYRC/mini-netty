@@ -40,7 +40,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ClientServerIntegrationTest">
+  <component name="RunManager" selected="JUnit.NioChannelBufferTest">
+    <configuration name="NioChannelBufferDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.netty.example.nio.NioChannelBufferDemo" />
+      <module name="mini-netty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.netty.example.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClientServerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mini-netty" />
       <extension name="coverage">
@@ -71,6 +84,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NioChannelBufferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mini-netty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.netty.example.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.netty.example.nio" />
+      <option name="MAIN_CLASS_NAME" value="io.netty.example.nio.NioChannelBufferTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SimpleBioServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mini-netty" />
       <extension name="coverage">
@@ -88,6 +116,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NioChannelBufferTest" />
+        <item itemvalue="Application.NioChannelBufferDemo" />
         <item itemvalue="JUnit.ClientServerIntegrationTest" />
         <item itemvalue="JUnit.SimpleBioServerTest" />
         <item itemvalue="JUnit.MiniNettyTest" />

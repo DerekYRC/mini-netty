@@ -30,6 +30,31 @@
 
 ---
 
+## [IT04] nio-channel-buffer
+
+**分支**: `nio-channel-buffer`
+**日期**: 2025-12-16
+
+**改动内容**:
+- 新增 `NioChannelBufferDemo` 类 (`io.netty.example.nio.NioChannelBufferDemo`)
+  - 演示 ByteBuffer 的基本操作
+  - 演示 FileChannel 的读写
+  - 演示 compact() 和直接缓冲区
+- 新增 `NioChannelBufferTest` 测试类
+  - 测试 ByteBuffer 的 allocate, flip, clear, compact 等操作
+  - 测试 FileChannel 的读写
+  - 测试 wrap() 和 slice() 方法
+
+**学习要点**:
+- Buffer 的三个关键属性：capacity、position、limit
+- `flip()` 切换读模式：position→0, limit→原position
+- `clear()` 切换写模式：position→0, limit→capacity
+- `compact()` 保留未读数据并切换写模式
+- 直接缓冲区 (`allocateDirect`) vs 堆缓冲区 (`allocate`)
+- Channel 总是从 Buffer 读/写数据
+
+---
+
 ## [IT03] multi-thread-bio-server
 
 **分支**: `multi-thread-bio-server`
