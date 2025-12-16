@@ -30,6 +30,30 @@
 
 ---
 
+## [IT03] multi-thread-bio-server
+
+**分支**: `multi-thread-bio-server`
+**日期**: 2025-12-16
+
+**改动内容**:
+- 新增 `MultiThreadBioServer` 类 (`io.netty.example.bio.MultiThreadBioServer`)
+  - 使用 `ExecutorService` 线程池处理并发连接
+  - 支持配置线程池大小
+  - 使用 `AtomicInteger` 追踪活跃连接数
+- 新增 `ConcurrentClientTest` 并发测试类
+  - 测试多客户端同时连接
+  - 测试并发消息收发
+  - 验收场景：多个客户端同时连接，每个都能正常收发消息
+
+**学习要点**:
+- `ExecutorService` 线程池的使用
+- `CountDownLatch` 用于同步多线程测试
+- BIO + 线程池模型：解决单线程无法并发的问题
+- 线程池大小决定最大并发连接数
+- 每个连接占用一个线程，资源消耗较大
+
+---
+
 ## [IT02] simple-bio-client
 
 **分支**: `simple-bio-client`

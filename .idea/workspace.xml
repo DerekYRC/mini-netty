@@ -40,7 +40,22 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.SimpleBioServerTest">
+  <component name="RunManager" selected="JUnit.ClientServerIntegrationTest">
+    <configuration name="ClientServerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mini-netty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.netty.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.netty.integration" />
+      <option name="MAIN_CLASS_NAME" value="io.netty.integration.ClientServerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MiniNettyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mini-netty" />
       <extension name="coverage">
@@ -73,6 +88,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClientServerIntegrationTest" />
         <item itemvalue="JUnit.SimpleBioServerTest" />
         <item itemvalue="JUnit.MiniNettyTest" />
       </list>
