@@ -30,6 +30,40 @@
 
 ---
 
+## [IT08] event-loop-interface
+
+**分支**: `event-loop-interface`
+**日期**: 2025-12-16
+
+**改动内容**:
+- 新增 `EventLoopGroup` 接口 (`io.netty.channel.EventLoopGroup`)
+  - 定义 `next()`, `register()`, `shutdownGracefully()` 方法
+  - 管理一组 EventLoop 实例
+- 新增 `EventLoop` 接口 (`io.netty.channel.EventLoop`)
+  - 继承 EventLoopGroup（一个 EventLoop 也是只有自己的 Group）
+  - 定义 `inEventLoop()`, `execute()`, `schedule()` 方法
+- 新增基础接口定义
+  - `Channel` - 网络通道抽象
+  - `ChannelId` - Channel 唯一标识
+  - `ChannelFuture` - 异步操作结果
+  - `ChannelFutureListener` - 操作完成监听器
+  - `ChannelPromise` - 可写入的 Future
+  - `ChannelHandler` - 事件处理器基接口
+  - `ChannelInboundHandler` - 入站事件处理器
+  - `ChannelOutboundHandler` - 出站事件处理器
+  - `ChannelPipeline` - Handler 容器
+  - `ChannelHandlerContext` - Handler 上下文
+- 新增 `EventLoopInterfaceTest` 测试 26 个测试用例
+
+**学习要点**:
+- EventLoop 是 Netty 的核心调度器，单线程处理 I/O 事件
+- EventLoop 继承 EventLoopGroup 是设计特点（自身也是 Group）
+- `inEventLoop()` 用于判断是否在 EventLoop 线程中执行
+- `execute()` 用于提交任务，`schedule()` 用于定时任务
+- ChannelFuture 是异步编程的核心，推荐使用 addListener()
+
+---
+
 ## [IT07] nio-server-read-write
 
 **分支**: `nio-server-read-write`
