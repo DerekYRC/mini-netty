@@ -30,6 +30,31 @@
 
 ---
 
+## [IT05] nio-selector
+
+**分支**: `nio-selector`
+**日期**: 2025-12-16
+
+**改动内容**:
+- 新增 `NioSelectorDemo` 类 (`io.netty.example.nio.NioSelectorDemo`)
+  - 演示 Selector 的基本用法
+  - 演示多 Channel 注册
+  - 演示完整的事件循环
+- 新增 `NioSelectorTest` 测试类
+  - 测试 Selector 创建和关闭
+  - 测试 Channel 注册和事件监听
+  - 测试 select(), selectNow(), wakeup() 方法
+
+**学习要点**:
+- Selector 是 NIO 多路复用的核心
+- Channel 必须是非阻塞模式才能注册到 Selector
+- 四种事件类型：OP_ACCEPT(16), OP_CONNECT(8), OP_READ(1), OP_WRITE(4)
+- `select()` 阻塞等待事件，`selectNow()` 不阻塞
+- `wakeup()` 可以唤醒阻塞的 select()
+- 处理完 SelectionKey 后必须从 selectedKeys 中移除
+
+---
+
 ## [IT04] nio-channel-buffer
 
 **分支**: `nio-channel-buffer`

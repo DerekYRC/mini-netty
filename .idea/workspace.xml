@@ -25,12 +25,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.NioChannelBufferDemo.executor": "Run",
+    "Application.NioSelectorDemo.executor": "Run",
+    "JUnit.ClientServerIntegrationTest.executor": "Run",
+    "JUnit.MiniNettyTest.executor": "Run",
+    "JUnit.NioChannelBufferTest.executor": "Run",
     "JUnit.SimpleBioServerTest.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "simple-bio-server",
+    "git-widget-placeholder": "nio-selector",
     "last_opened_file_path": "/Users/deyi/idea/mini-netty",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -40,9 +45,22 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.NioChannelBufferTest">
+  <component name="RunManager" selected="Application.NioSelectorDemo">
     <configuration name="NioChannelBufferDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.netty.example.nio.NioChannelBufferDemo" />
+      <module name="mini-netty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.netty.example.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NioSelectorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.netty.example.nio.NioSelectorDemo" />
       <module name="mini-netty" />
       <extension name="coverage">
         <pattern>
@@ -64,21 +82,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="io.netty.integration" />
       <option name="MAIN_CLASS_NAME" value="io.netty.integration.ClientServerIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MiniNettyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mini-netty" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.netty.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="io.netty" />
-      <option name="MAIN_CLASS_NAME" value="io.netty.MiniNettyTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -116,11 +119,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NioSelectorDemo" />
         <item itemvalue="JUnit.NioChannelBufferTest" />
         <item itemvalue="Application.NioChannelBufferDemo" />
         <item itemvalue="JUnit.ClientServerIntegrationTest" />
         <item itemvalue="JUnit.SimpleBioServerTest" />
-        <item itemvalue="JUnit.MiniNettyTest" />
       </list>
     </recent_temporary>
   </component>
@@ -139,7 +142,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765875505527</updated>
-      <workItem from="1765875507651" duration="1176000" />
+      <workItem from="1765875507651" duration="1525000" />
     </task>
     <servers />
   </component>
