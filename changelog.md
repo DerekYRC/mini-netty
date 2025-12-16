@@ -30,6 +30,31 @@
 
 ---
 
+## [IT06] nio-server-accept
+
+**分支**: `nio-server-accept`
+**日期**: 2025-12-16
+
+**改动内容**:
+- 新增 `NioServer` 类 (`io.netty.example.nio.NioServer`)
+  - 实现基于 NIO 的服务端
+  - 处理 OP_ACCEPT 事件
+  - 使用 Selector 事件循环
+  - 支持后台启动和优雅停止
+- 新增 `NioServerAcceptTest` 测试类
+  - 测试服务端启动/停止
+  - 测试接受单个和多个客户端连接
+  - 测试客户端 Channel 注册 READ 事件
+
+**学习要点**:
+- ServerSocketChannel 必须配置为非阻塞模式
+- 注册 OP_ACCEPT 事件监听新连接
+- accept() 返回的 SocketChannel 也要配置为非阻塞
+- 新连接的 Channel 注册 OP_READ 准备接收数据
+- wakeup() 用于优雅停止服务端
+
+---
+
 ## [IT05] nio-selector
 
 **分支**: `nio-selector`
