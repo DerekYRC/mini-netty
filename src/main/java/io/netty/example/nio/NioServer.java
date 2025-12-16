@@ -81,6 +81,11 @@ public class NioServer {
             // select() 阻塞直到有事件发生
             int readyChannels = selector.select(1000);
 
+            // 检查服务端是否已关闭
+            if (!running || !selector.isOpen()) {
+                break;
+            }
+
             if (readyChannels == 0) {
                 continue;
             }
@@ -89,8 +94,14 @@ public class NioServer {
             Set<SelectionKey> selectedKeys = selector.selectedKeys();
             Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
 
-            while (keyIterator.hasNext()) {
+            while (keyIterator.hasNext() && running) {
                 SelectionKey key = keyIterator.next();
+                // 先移除再处理，避免并发修改异常
+                keyIterator.remove();
+
+                if (!key.isValid()) {
+                    continue;
+                }
 
                 try {
                     if (key.isAcceptable()) {
@@ -109,9 +120,6 @@ public class NioServer {
                         // ignore
                     }
                 }
-
-                // 必须手动移除已处理的 key
-                keyIterator.remove();
             }
         }
     }

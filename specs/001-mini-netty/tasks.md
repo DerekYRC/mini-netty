@@ -25,11 +25,11 @@
 
 **目的**: 创建项目基础结构和配置
 
-- [ ] T001 创建 pom.xml，配置 Java 17 和 JUnit 5 依赖
-- [ ] T002 [P] 创建 README.md，说明项目目的和学习路径
-- [ ] T003 [P] 创建 changelog.md，准备记录迭代改动
-- [ ] T004 [P] 创建 src/main/java 和 src/test/java 目录结构
-- [ ] T005 提交初始代码到 main 分支
+- [X] T001 创建 pom.xml，配置 Java 17 和 JUnit 5 依赖
+- [X] T002 [P] 创建 README.md，说明项目目的和学习路径
+- [X] T003 [P] 创建 changelog.md，准备记录迭代改动
+- [X] T004 [P] 创建 src/main/java 和 src/test/java 目录结构
+- [X] T005 提交初始代码到 main 分支
 
 **检查点**: 项目可编译，`mvn compile` 和 `mvn test` 通过
 
@@ -43,56 +43,56 @@
 
 ### 迭代 1: simple-bio-server (IT01)
 
-- [ ] T006 [IT01] 创建分支 `simple-bio-server`
-- [ ] T007 [P] [IT01] 实现 SimpleBioServer 在 src/main/java/io/netty/example/bio/SimpleBioServer.java
-- [ ] T008 [P] [IT01] 编写单元测试 SimpleBioServerTest 在 src/test/java/io/netty/example/bio/SimpleBioServerTest.java
-- [ ] T009 [IT01] 更新 changelog.md 记录本次迭代
-- [ ] T010 [IT01] 运行测试验证并提交代码
+- [X] T006 [IT01] 创建分支 `simple-bio-server`
+- [X] T007 [P] [IT01] 实现 SimpleBioServer 在 src/main/java/io/netty/example/bio/SimpleBioServer.java
+- [X] T008 [P] [IT01] 编写单元测试 SimpleBioServerTest 在 src/test/java/io/netty/example/bio/SimpleBioServerTest.java
+- [X] T009 [IT01] 更新 changelog.md 记录本次迭代
+- [X] T010 [IT01] 运行测试验证并提交代码
 
 ### 迭代 2: simple-bio-client (IT02)
 
-- [ ] T011 [IT02] 基于 IT01 创建分支 `simple-bio-client`
-- [ ] T012 [P] [IT02] 实现 SimpleBioClient 在 src/main/java/io/netty/example/bio/SimpleBioClient.java
-- [ ] T013 [P] [IT02] 编写集成测试 ClientServerIntegrationTest 在 src/test/java/io/netty/integration/ClientServerIntegrationTest.java
-- [ ] T014 [IT02] 更新 changelog.md
-- [ ] T015 [IT02] 启动服务端和客户端进行实际验证
+- [X] T011 [IT02] 基于 IT01 创建分支 `simple-bio-client`
+- [X] T012 [P] [IT02] 实现 SimpleBioClient 在 src/main/java/io/netty/example/bio/SimpleBioClient.java
+- [X] T013 [P] [IT02] 编写集成测试 ClientServerIntegrationTest 在 src/test/java/io/netty/integration/ClientServerIntegrationTest.java
+- [X] T014 [IT02] 更新 changelog.md
+- [X] T015 [IT02] 启动服务端和客户端进行实际验证
 
 ### 迭代 3: multi-thread-bio-server (IT03)
 
-- [ ] T016 [IT03] 基于 IT02 创建分支 `multi-thread-bio-server`
-- [ ] T017 [P] [IT03] 实现 MultiThreadBioServer 在 src/main/java/io/netty/example/bio/MultiThreadBioServer.java
-- [ ] T018 [P] [IT03] 编写并发测试 ConcurrentClientTest 在 src/test/java/io/netty/integration/ConcurrentClientTest.java
-- [ ] T019 [IT03] 更新 changelog.md
-- [ ] T020 [IT03] 验证多客户端同时连接
+- [X] T016 [IT03] 基于 IT02 创建分支 `multi-thread-bio-server`
+- [X] T017 [P] [IT03] 实现 MultiThreadBioServer 在 src/main/java/io/netty/example/bio/MultiThreadBioServer.java
+- [X] T018 [P] [IT03] 编写并发测试 ConcurrentClientTest 在 src/test/java/io/netty/integration/ConcurrentClientTest.java
+- [X] T019 [IT03] 更新 changelog.md
+- [X] T020 [IT03] 验证多客户端同时连接
 
 ### 迭代 4: nio-channel-buffer (IT04)
 
-- [ ] T021 [IT04] 基于 IT03 创建分支 `nio-channel-buffer`
-- [ ] T022 [P] [IT04] 实现 NioChannelBufferDemo 在 src/main/java/io/netty/example/nio/NioChannelBufferDemo.java
-- [ ] T023 [P] [IT04] 编写测试 NioChannelBufferTest 在 src/test/java/io/netty/example/nio/NioChannelBufferTest.java
-- [ ] T024 [IT04] 更新 changelog.md
+- [X] T021 [IT04] 基于 IT03 创建分支 `nio-channel-buffer`
+- [X] T022 [P] [IT04] 实现 NioChannelBufferDemo 在 src/main/java/io/netty/example/nio/NioChannelBufferDemo.java
+- [X] T023 [P] [IT04] 编写测试 NioChannelBufferTest 在 src/test/java/io/netty/example/nio/NioChannelBufferTest.java
+- [X] T024 [IT04] 更新 changelog.md
 
 ### 迭代 5: nio-selector (IT05)
 
-- [ ] T025 [IT05] 基于 IT04 创建分支 `nio-selector`
-- [ ] T026 [P] [IT05] 实现 NioSelectorDemo 在 src/main/java/io/netty/example/nio/NioSelectorDemo.java
-- [ ] T027 [P] [IT05] 编写测试 NioSelectorTest 在 src/test/java/io/netty/example/nio/NioSelectorTest.java
-- [ ] T028 [IT05] 更新 changelog.md
+- [X] T025 [IT05] 基于 IT04 创建分支 `nio-selector`
+- [X] T026 [P] [IT05] 实现 NioSelectorDemo 在 src/main/java/io/netty/example/nio/NioSelectorDemo.java
+- [X] T027 [P] [IT05] 编写测试 NioSelectorTest 在 src/test/java/io/netty/example/nio/NioSelectorTest.java
+- [X] T028 [IT05] 更新 changelog.md
 
 ### 迭代 6: nio-server-accept (IT06)
 
-- [ ] T029 [IT06] 基于 IT05 创建分支 `nio-server-accept`
-- [ ] T030 [P] [IT06] 实现 NioServer (ACCEPT事件) 在 src/main/java/io/netty/example/nio/NioServer.java
-- [ ] T031 [P] [IT06] 编写测试 NioServerAcceptTest 在 src/test/java/io/netty/example/nio/NioServerAcceptTest.java
-- [ ] T032 [IT06] 更新 changelog.md
+- [X] T029 [IT06] 基于 IT05 创建分支 `nio-server-accept`
+- [X] T030 [P] [IT06] 实现 NioServer (ACCEPT事件) 在 src/main/java/io/netty/example/nio/NioServer.java
+- [X] T031 [P] [IT06] 编写测试 NioServerAcceptTest 在 src/test/java/io/netty/example/nio/NioServerAcceptTest.java
+- [X] T032 [IT06] 更新 changelog.md
 
 ### 迭代 7: nio-server-read-write (IT07)
 
-- [ ] T033 [IT07] 基于 IT06 创建分支 `nio-server-read-write`
-- [ ] T034 [IT07] 完善 NioServer 支持 READ/WRITE 事件
-- [ ] T035 [P] [IT07] 实现 NioClient 在 src/main/java/io/netty/example/nio/NioClient.java
-- [ ] T036 [P] [IT07] 编写集成测试 NioClientServerTest 在 src/test/java/io/netty/integration/NioClientServerTest.java
-- [ ] T037 [IT07] 更新 changelog.md 并验证
+- [X] T033 [IT07] 基于 IT06 创建分支 `nio-server-read-write`
+- [X] T034 [IT07] 完善 NioServer 支持 READ/WRITE 事件
+- [X] T035 [P] [IT07] 实现 NioClient 在 src/main/java/io/netty/example/nio/NioClient.java
+- [X] T036 [P] [IT07] 编写集成测试 NioClientServerTest 在 src/test/java/io/netty/integration/NioClientServerTest.java
+- [X] T037 [IT07] 更新 changelog.md 并验证
 
 **检查点 (US1)**: BIO 和 NIO 服务端/客户端均可正常通信
 
