@@ -30,6 +30,37 @@
 
 ---
 
+## [IT07] nio-server-read-write
+
+**分支**: `nio-server-read-write`
+**日期**: 2025-12-16
+
+**改动内容**:
+- 更新 `NioServer` 类 (`io.netty.example.nio.NioServer`)
+  - 实现 OP_READ 事件处理（`handleRead`）
+  - 实现 OP_WRITE 事件处理（`handleWrite`）
+  - 通过 `SelectionKey.attach()` 传递响应数据
+  - 完整的客户端通信流程
+- 新增 `NioClient` 类 (`io.netty.example.nio.NioClient`)
+  - 基于 SocketChannel 的 NIO 客户端
+  - 支持连接、发送、接收消息
+  - 实现 AutoCloseable 接口
+- 新增 `NioClientServerTest` 集成测试
+  - 测试单客户端连接和通信
+  - 测试多消息发送
+  - 测试多客户端并发访问
+  - 验收场景测试
+
+**学习要点**:
+- READ 事件：客户端发送数据触发，读取 ByteBuffer 并解析消息
+- WRITE 事件：通过修改 interestOps 切换为 OP_WRITE
+- SelectionKey.attach()/attachment() 用于在事件间传递数据
+- ByteBuffer 读写需要正确调用 flip() 方法
+- 客户端使用 SocketChannel.open() 和 connect()
+- 消息协议使用换行符分隔
+
+---
+
 ## [IT06] nio-server-accept
 
 **分支**: `nio-server-accept`

@@ -2,25 +2,31 @@ package io.netty.example.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Set;
 
 /**
- * NIO 服务端 - ACCEPT 事件处理
+ * NIO 服务端 - 完整实现
  *
- * <p>本类演示了使用 NIO 实现服务端的第一步：处理客户端连接（ACCEPT 事件）。
- * 这是从 BIO 迁移到 NIO 的关键一步。
+ * <p>本类演示了使用 NIO 实现完整的服务端，包括：
+ * <ul>
+ *   <li>ACCEPT：接受客户端连接</li>
+ *   <li>READ：读取客户端数据</li>
+ *   <li>WRITE：发送响应数据</li>
+ * </ul>
  *
  * <h2>学习要点</h2>
  * <ul>
- *   <li>ServerSocketChannel 配置为非阻塞模式</li>
- *   <li>注册 OP_ACCEPT 事件监听客户端连接</li>
- *   <li>使用 Selector 事件循环处理连接</li>
- *   <li>accept() 返回的 SocketChannel 代表一个客户端连接</li>
+ *   <li>事件驱动模型：根据事件类型执行不同操作</li>
+ *   <li>ByteBuffer 用于读写数据</li>
+ *   <li>单线程处理多个连接</li>
+ *   <li>非阻塞 I/O 的优势：高并发、低资源消耗</li>
  * </ul>
  *
  * <h2>与 BIO 的对比</h2>
@@ -89,11 +95,19 @@ public class NioServer {
                 try {
                     if (key.isAcceptable()) {
                         handleAccept(key);
+                    } else if (key.isReadable()) {
+                        handleRead(key);
+                    } else if (key.isWritable()) {
+                        handleWrite(key);
                     }
-                    // READ 和 WRITE 事件将在下一个迭代中实现
                 } catch (IOException e) {
                     System.err.println("[NioServer] 处理事件失败: " + e.getMessage());
                     key.cancel();
+                    try {
+                        key.channel().close();
+                    } catch (IOException ex) {
+                        // ignore
+                    }
                 }
 
                 // 必须手动移除已处理的 key
@@ -118,10 +132,68 @@ public class NioServer {
             // 配置客户端 Channel 为非阻塞
             clientChannel.configureBlocking(false);
             
-            // 注册 READ 事件（下一个迭代实现）
+            // 注册 READ 事件
             clientChannel.register(selector, SelectionKey.OP_READ);
             
             System.out.println("[NioServer] 接受连接: " + clientChannel.getRemoteAddress());
+        }
+    }
+
+    /**
+     * 处理 READ 事件 - 读取客户端数据
+     *
+     * @param key SelectionKey
+     * @throws IOException 如果读取失败
+     */
+    private void handleRead(SelectionKey key) throws IOException {
+        SocketChannel clientChannel = (SocketChannel) key.channel();
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        
+        int bytesRead = clientChannel.read(buffer);
+        
+        if (bytesRead == -1) {
+            // 客户端关闭连接
+            System.out.println("[NioServer] 客户端关闭连接: " + clientChannel.getRemoteAddress());
+            key.cancel();
+            clientChannel.close();
+            return;
+        }
+        
+        if (bytesRead > 0) {
+            buffer.flip();
+            byte[] data = new byte[buffer.remaining()];
+            buffer.get(data);
+            String message = new String(data, StandardCharsets.UTF_8).trim();
+            System.out.println("[NioServer] 收到消息: " + message);
+            
+            // 准备响应数据，附加到 key
+            String response = "hello, mini-netty\n";
+            key.attach(ByteBuffer.wrap(response.getBytes(StandardCharsets.UTF_8)));
+            
+            // 注册 WRITE 事件
+            key.interestOps(SelectionKey.OP_WRITE);
+        }
+    }
+
+    /**
+     * 处理 WRITE 事件 - 发送响应数据
+     *
+     * @param key SelectionKey
+     * @throws IOException 如果写入失败
+     */
+    private void handleWrite(SelectionKey key) throws IOException {
+        SocketChannel clientChannel = (SocketChannel) key.channel();
+        ByteBuffer buffer = (ByteBuffer) key.attachment();
+        
+        if (buffer != null) {
+            clientChannel.write(buffer);
+            System.out.println("[NioServer] 发送响应: hello, mini-netty");
+            
+            if (!buffer.hasRemaining()) {
+                // 写入完成，切换回 READ 事件
+                key.attach(null);
+                key.interestOps(SelectionKey.OP_READ);
+            }
         }
     }
 
