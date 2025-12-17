@@ -30,6 +30,104 @@
 
 ---
 
+## [IT37] logging-handler
+
+**分支**: `logging-handler`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `LoggingHandler`
+  - 继承自 ChannelDuplexHandler
+  - 记录 Channel 生命周期事件
+  - 记录读写数据内容
+- 支持多种日志级别 (TRACE, DEBUG, INFO, WARN, ERROR)
+- 集成到 ChannelPipeline 中用于调试
+
+**学习要点**:
+- ChannelDuplexHandler 的使用
+- Netty 日志记录机制
+- 调试 Channel 事件流
+
+---
+
+## [IT36] idle-state-handler
+
+**分支**: `idle-state-handler`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `IdleStateHandler`
+  - 检测连接空闲状态
+  - 支持 ReaderIdle, WriterIdle, AllIdle
+- 触发 `IdleStateEvent` 用户事件
+- 配合 `userEventTriggered` 处理空闲超时
+
+**学习要点**:
+- Netty 空闲检测机制
+- UserEventTriggered 事件传播
+- 心跳机制实现基础
+
+---
+
+## [IT35] channel-chooser
+
+**分支**: `channel-chooser`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 优化 EventLoop 选择策略
+- 新增 `EventLoopChooserFactory`
+- 实现 `PowerOfTwoEventLoopChooser` (位运算优化)
+- 实现 `GenericEventLoopChooser` (取模运算)
+- 自动根据 EventLoop 数量选择最佳策略
+
+**学习要点**:
+- 性能优化：位运算 vs 取模
+- 策略模式在 Netty 中的应用
+- 负载均衡算法基础
+
+---
+
+## [IT34] boss-worker-model
+
+**分支**: `boss-worker-model`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 实现 Boss-Worker 线程模型
+- ServerBootstrap 支持配置两个 EventLoopGroup
+  - BossGroup: 负责接收连接 (Accept)
+  - WorkerGroup: 负责 I/O 读写 (Read/Write)
+- 优化连接处理流程
+
+**学习要点**:
+- Reactor 模式：主从多线程模型
+- Boss 与 Worker 的职责分离
+- 高并发网络编程架构
+
+---
+
+## [IT33] event-loop-group
+
+**分支**: `event-loop-group`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 引入 `EventLoopGroup` 接口
+  - 继承自 EventExecutorGroup
+  - 管理多个 EventLoop
+- 实现 `NioEventLoopGroup`
+  - 默认创建 CPU 核数 * 2 个 EventLoop
+  - 提供 next() 方法轮询获取 EventLoop
+- 重构 Bootstrap 使用 Group 替代单个 Loop
+
+**学习要点**:
+- 线程组管理
+- EventLoop 的生命周期管理
+- 资源池化设计
+
+---
+
 ## [IT32] client-bootstrap
 
 **分支**: `client-bootstrap`
@@ -55,32 +153,6 @@
 - Bootstrap 用于客户端连接，只需一个 EventLoopGroup
 - connect() 是非阻塞操作，返回 ChannelFuture
 - 可与 ServerBootstrap 配合实现完整的 C/S 通信
-
----
-
-## [IT32] client-bootstrap
-
-**分支**: `client-bootstrap`
-**日期**: 2025-12-17
-
-**改动内容**:
-- 新增 `Bootstrap` 客户端启动器
-  - 继承自 AbstractBootstrap
-  - connect(host, port) 连接到远程服务器
-  - connect(remoteAddress) 使用 SocketAddress 连接
-  - doResolveAndConnect() 解析地址并发起连接
-- 完善客户端连接流程
-  - 创建 NioSocketChannel 实例
-  - 注册到 EventLoop
-  - 执行实际连接操作
-  - 触发 channelActive 事件
-- 新增集成测试验证客户端服务端通信
-
-**学习要点**:
-- Bootstrap 与 ServerBootstrap 的职责差异
-- 客户端连接的异步处理模式
-- 地址解析与连接的分离设计
-- 统一的启动器 API 设计思想
 
 ---
 
