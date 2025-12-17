@@ -284,10 +284,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 26: byte-to-message-decoder (IT26)
 
-- [ ] T130 [IT26] 基于 IT25 创建分支 `byte-to-message-decoder`
-- [ ] T131 [IT26] 实现 ByteToMessageDecoder 在 src/main/java/io/netty/handler/codec/ByteToMessageDecoder.java
-- [ ] T132 [P] [IT26] 编写测试 ByteToMessageDecoderTest 在 src/test/java/io/netty/handler/codec/ByteToMessageDecoderTest.java
-- [ ] T133 [IT26] 更新 changelog.md
+- [X] T130 [IT26] 基于 IT25 创建分支 `byte-to-message-decoder`
+- [X] T131 [IT26] 实现 ByteToMessageDecoder 在 src/main/java/io/netty/handler/codec/ByteToMessageDecoder.java
+- [X] T132 [P] [IT26] 编写测试 ByteToMessageDecoderTest 在 src/test/java/io/netty/handler/codec/ByteToMessageDecoderTest.java
+- [X] T133 [IT26] 更新 changelog.md
 
 ### 迭代 27: fixed-length-decoder (IT27)
 

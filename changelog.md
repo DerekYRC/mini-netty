@@ -30,6 +30,31 @@
 
 ---
 
+## [IT26] byte-to-message-decoder
+
+**分支**: `byte-to-message-decoder`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ByteToMessageDecoder` 抽象类
+  - 字节累积缓冲区管理
+  - 循环调用 decode() 直到数据不足
+  - 解决 TCP 粘包/拆包问题的核心组件
+- 新增 `DecoderException` 解码异常类
+- 新增 `ByteToMessageDecoderTest` 共 10 个测试用例
+  - BasicDecodingTests: 整数解码基本功能
+  - PacketSplitMergeTests: 粘包拆包处理
+  - LineDecoderTests: 行解码器示例
+  - AcceptanceScenarioTests: 长度前缀解码和混合场景
+
+**学习要点**:
+- TCP 是流式协议，不保证消息边界
+- 粘包：多条消息合并到一个 TCP 包
+- 拆包：一条消息分散到多个 TCP 包
+- 解码器需要累积字节并检查完整性
+
+---
+
 ## [IT25] byte-buf-allocator
 
 **分支**: `byte-buf-allocator`
