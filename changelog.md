@@ -30,115 +30,31 @@
 
 ---
 
-## [IT36] idle-state-handler
+## [IT32] client-bootstrap
 
-**分支**: `idle-state-handler`
+**分支**: `client-bootstrap`
 **日期**: 2025-12-17
 
 **改动内容**:
-- 新增 `IdleState` 枚举定义空闲状态类型
-  - READER_IDLE: 读空闲
-  - WRITER_IDLE: 写空闲
-  - ALL_IDLE: 读写都空闲
-- 新增 `IdleStateEvent` 空闲状态事件类
-  - 预定义静态实例 (FIRST_READER_IDLE_STATE_EVENT, READER_IDLE_STATE_EVENT 等)
-  - state() 获取空闲类型, isFirst() 判断是否首次空闲
-- 新增 `IdleStateHandler` 空闲状态处理器
-  - 配置读空闲超时、写空闲超时、全部空闲超时
-  - 使用 EventLoop.schedule() 实现定时检测
-  - 内部类 ReaderIdleTimeoutTask, WriterIdleTimeoutTask, AllIdleTimeoutTask
-  - 在 channelActive 时初始化定时器
-  - 在 channelInactive/handlerRemoved 时销毁定时器
-- 扩展 `ChannelInboundHandler` 接口
-  - 新增 userEventTriggered(ctx, evt) 方法
-- 扩展 `ChannelHandlerContext` 接口
-  - 新增 fireUserEventTriggered(evt) 方法
-- 更新所有 ChannelInboundHandler 实现添加 userEventTriggered
-- 新增 `IdleStateHandlerTest` 共 24 个测试用例
+- 新增 `Bootstrap` 客户端启动器
+  - 继承自 AbstractBootstrap，专用于客户端配置
+  - connect(host, port) 连接到远程服务器
+  - connect(SocketAddress) 连接到指定地址
+  - remoteAddress() 预设远程地址
+- 支持本地地址绑定后连接
+- 新增 `BootstrapIntegrationTest` 共 19 个测试用例
+  - BootstrapConfigurationTests: 链式配置、克隆测试
+  - BootstrapValidationTests: 参数验证
+  - NullValidationTests: 空值检查
+  - ConnectTests: 连接测试
+  - AcceptanceScenarioTests: 客户端服务端交互场景
+
+**检查点 (US6)**: Bootstrap 可配置和启动服务端/客户端 ✓
 
 **学习要点**:
-- 定时任务与超时检测机制
-- 用户事件 (User Event) 扩展机制
-- 心跳检测在网络编程中的应用
-- 策略模式在超时处理中的应用
-
----
-
-## [IT35] channel-chooser
-
-**分支**: `channel-chooser`
-**日期**: 2025-12-17
-
-**改动内容**:
-- 新增 `EventLoopChooser` 接口定义 EventLoop 选择策略
-- 新增 `EventLoopChooserFactory` 工厂接口
-- 新增 `RoundRobinEventLoopChooser` 轮询选择器
-  - 使用 AtomicInteger 保证线程安全
-  - 使用取模运算实现循环
-- 新增 `PowerOfTwoEventLoopChooser` 优化的 2 的幂选择器
-  - 当 EventLoop 数量是 2 的幂时使用位运算代替取模
-  - `isPowerOfTwo()` 静态方法判断是否是 2 的幂
-- 新增 `DefaultEventLoopChooserFactory` 默认工厂
-  - 根据 EventLoop 数量自动选择最优策略
-  - 使用单例模式 (INSTANCE)
-- 新增 `ChannelChooserTest` 共 14 个测试用例
-- 修复 `ServerBootstrapTest` 中 TestEventLoopGroup 的 shutdownGracefully 实现
-
-**学习要点**:
-- 策略模式：将选择算法封装为独立的类
-- 工厂模式：封装对象创建逻辑
-- 位运算优化：`n & (n-1) == 0` 判断 2 的幂
-- 位运算代替取模：`index & (length-1)` 等价于 `index % length`（当 length 是 2 的幂时）
-
----
-
-## [IT34] boss-worker-model
-
-**分支**: `boss-worker-model`
-**日期**: 2025-12-17
-
-**改动内容**:
-- 新增 `BossWorkerModelTest` 集成测试 10 个测试用例
-  - ConfigurationTests: Boss/Worker 配置、绑定、默认值
-  - ThreadModelTests: 线程组隔离、多线程支持、轮询分配
-  - LifecycleTests: 优雅关闭、关闭后状态
-  - AcceptanceScenarioTests: 完整配置场景
-
-**学习要点**:
-- 主从 Reactor 模型：Boss 处理连接，Worker 处理 I/O
-- Boss 通常使用 1 个线程接受连接
-- Worker 使用多个线程（CPU 核心数 × 2）处理 I/O
-- EventLoopGroup 隔离确保 Boss 和 Worker 独立运行
-
----
-
-## [IT33] event-loop-group
-
-**分支**: `event-loop-group`
-**日期**: 2025-12-17
-
-**改动内容**:
-- 新增 `NioEventLoopGroup` 事件循环组实现
-  - 管理多个 NioEventLoop 实例
-  - 默认线程数为 CPU 核心数 × 2
-  - 支持轮询(Round-Robin)策略分配 EventLoop
-  - `next()` 返回下一个 EventLoop
-  - `eventLoop(index)` 按索引获取 EventLoop
-  - `register(Channel)` 注册 Channel 到组
-  - `shutdownGracefully()` 优雅关闭所有 EventLoop
-  - `start()` 启动所有 EventLoop
-- 新增 `NioEventLoopGroupTest` 共 10 个测试用例
-  - 创建测试: 默认线程数、指定线程数、边界条件
-  - 轮询测试: 循环分配、均匀分布
-  - 索引访问测试: 按索引获取、越界异常
-  - 生命周期测试: isShutdown 状态
-  - 验收场景测试: 主从 Reactor 线程组
-
-**学习要点**:
-- EventLoopGroup 是 EventLoop 的容器和管理者
-- 轮询策略(Round-Robin)保证负载均衡
-- Channel 一旦分配到 EventLoop，整个生命周期内不会改变
-- 主从 Reactor 模型：Boss 处理连接，Worker 处理 I/O
+- Bootstrap 用于客户端连接，只需一个 EventLoopGroup
+- connect() 是非阻塞操作，返回 ChannelFuture
+- 可与 ServerBootstrap 配合实现完整的 C/S 通信
 
 ---
 
