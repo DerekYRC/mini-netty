@@ -30,6 +30,26 @@
 
 ---
 
+## [IT34] boss-worker-model
+
+**分支**: `boss-worker-model`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `BossWorkerModelTest` 集成测试 10 个测试用例
+  - ConfigurationTests: Boss/Worker 配置、绑定、默认值
+  - ThreadModelTests: 线程组隔离、多线程支持、轮询分配
+  - LifecycleTests: 优雅关闭、关闭后状态
+  - AcceptanceScenarioTests: 完整配置场景
+
+**学习要点**:
+- 主从 Reactor 模型：Boss 处理连接，Worker 处理 I/O
+- Boss 通常使用 1 个线程接受连接
+- Worker 使用多个线程（CPU 核心数 × 2）处理 I/O
+- EventLoopGroup 隔离确保 Boss 和 Worker 独立运行
+
+---
+
 ## [IT33] event-loop-group
 
 **分支**: `event-loop-group`

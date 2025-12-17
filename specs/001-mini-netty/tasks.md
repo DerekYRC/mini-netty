@@ -360,10 +360,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 34: boss-worker-model (IT34)
 
-- [ ] T164 [IT34] 基于 IT33 创建分支 `boss-worker-model`
-- [ ] T165 [IT34] 修改 ServerBootstrap 支持 Boss/Worker 线程模型
-- [ ] T166 [P] [IT34] 编写测试 BossWorkerModelTest 在 src/test/java/io/netty/integration/BossWorkerModelTest.java
-- [ ] T167 [IT34] 更新 changelog.md
+- [X] T164 [IT34] 基于 IT33 创建分支 `boss-worker-model`
+- [X] T165 [IT34] 修改 ServerBootstrap 支持 Boss/Worker 线程模型
+- [X] T166 [P] [IT34] 编写测试 BossWorkerModelTest 在 src/test/java/io/netty/integration/BossWorkerModelTest.java
+- [X] T167 [IT34] 更新 changelog.md
 
 ### 迭代 35: channel-chooser (IT35)
 
