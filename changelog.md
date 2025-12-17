@@ -30,6 +30,36 @@
 
 ---
 
+## [IT31] server-bootstrap
+
+**分支**: `server-bootstrap`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ServerBootstrap` 服务端启动器
+  - 继承自 AbstractBootstrap，专用于服务端配置
+  - group(parentGroup, childGroup) 支持主从 Reactor 模型
+  - childHandler() 设置子 Channel 处理器
+  - childOption() 设置子 Channel 选项
+  - childAttr() 设置子 Channel 属性
+- 内置 `ServerBootstrapAcceptor` 连接接受器
+  - 自动将新连接注册到 childGroup
+  - 自动为子 Channel 配置 childHandler
+  - 自动应用 childOption 配置
+- 新增 `ServerBootstrapTest` 共 24 个测试用例
+  - ConfigurationTests: 链式配置、克隆测试
+  - ValidationTests: 参数验证、默认值处理
+  - NullValidationTests: 空值检查
+  - DuplicateSettingsTests: 重复设置检查
+  - BindTests: 端口绑定测试
+
+**学习要点**:
+- ServerBootstrap 实现主从 Reactor 模型
+- Boss 线程负责 accept，Worker 线程负责 read/write
+- ServerBootstrapAcceptor 是连接分发的核心
+
+---
+
 ## [IT30] abstract-bootstrap
 
 **分支**: `abstract-bootstrap`

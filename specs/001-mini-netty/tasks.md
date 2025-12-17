@@ -291,7 +291,7 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 27: fixed-length-decoder (IT27)
 
-- [ ] T134 [IT27] 基于 IT26 创建分支 `fixed-length-decoder`
+- [X] T134 [IT27] 基于 IT26 创建分支 `fixed-length-decoder`
 - [X] T135 [IT27] 实现 FixedLengthFrameDecoder 在 src/main/java/io/netty/handler/codec/FixedLengthFrameDecoder.java
 - [X] T136 [P] [IT27] 编写测试 FixedLengthFrameDecoderTest 在 src/test/java/io/netty/handler/codec/FixedLengthFrameDecoderTest.java
 - [X] T137 [IT27] 更新 changelog.md
@@ -331,10 +331,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 31: server-bootstrap (IT31)
 
-- [ ] T152 [IT31] 基于 IT30 创建分支 `server-bootstrap`
-- [ ] T153 [IT31] 实现 ServerBootstrap 在 src/main/java/io/netty/bootstrap/ServerBootstrap.java
-- [ ] T154 [P] [IT31] 编写测试 ServerBootstrapTest 在 src/test/java/io/netty/bootstrap/ServerBootstrapTest.java
-- [ ] T155 [IT31] 更新 changelog.md
+- [X] T152 [IT31] 基于 IT30 创建分支 `server-bootstrap`
+- [X] T153 [IT31] 实现 ServerBootstrap 在 src/main/java/io/netty/bootstrap/ServerBootstrap.java
+- [X] T154 [P] [IT31] 编写测试 ServerBootstrapTest 在 src/test/java/io/netty/bootstrap/ServerBootstrapTest.java
+- [X] T155 [IT31] 更新 changelog.md
 
 ### 迭代 32: client-bootstrap (IT32)
 
