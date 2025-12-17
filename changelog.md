@@ -30,6 +30,33 @@
 
 ---
 
+## [IT20] outbound-handler
+
+**分支**: `outbound-handler`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ChannelOutboundHandlerAdapter` 适配器类
+  - 提供所有出站方法的默认实现
+  - 默认行为是将操作传递给下一个 Handler
+  - bind/connect/disconnect 暂时直接完成 Promise（ChannelHandlerContext 尚未支持这些方法）
+  - write/flush/close/read 通过 Context 传递
+- 验证出站操作机制
+  - write, flush, close, read 操作通过 Context 触发
+  - 出站事件从尾部向头部传递
+- 新增 `OutboundHandlerTest` 共 10 个测试用例
+  - AdapterTests: 验证 Adapter 默认实现和生命周期
+  - OutboundOperationsTests: write/flush/close/read 操作测试
+  - HandlerChainTests: Handler 链反向传递测试
+  - AcceptanceScenarioTests: 典型编码器场景测试
+
+**学习要点**:
+- 出站事件传播方向：从尾部向头部（与入站相反）
+- ChannelOutboundHandlerAdapter 简化出站处理器开发
+- 编码器通常是出站 Handler 的典型应用
+
+---
+
 ## [IT19] inbound-handler
 
 **分支**: `inbound-handler`

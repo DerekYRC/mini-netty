@@ -217,11 +217,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 20: outbound-handler (IT20)
 
-- [ ] T101 [IT20] 基于 IT19 创建分支 `outbound-handler`
-- [ ] T102 [IT20] 实现出站事件传递 (write, flush, close 等)
-- [ ] T103 [P] [IT20] 实现 ChannelOutboundHandlerAdapter 在 src/main/java/io/netty/channel/ChannelOutboundHandlerAdapter.java
-- [ ] T104 [P] [IT20] 编写测试 OutboundHandlerTest 在 src/test/java/io/netty/channel/OutboundHandlerTest.java
-- [ ] T105 [IT20] 更新 changelog.md
+- [X] T101 [IT20] 基于 IT19 创建分支 `outbound-handler`
+- [X] T102 [IT20] 实现出站事件传递 (write, flush, close 等)
+- [X] T103 [P] [IT20] 实现 ChannelOutboundHandlerAdapter 在 src/main/java/io/netty/channel/ChannelOutboundHandlerAdapter.java
+- [X] T104 [P] [IT20] 编写测试 OutboundHandlerTest 在 src/test/java/io/netty/channel/OutboundHandlerTest.java
+- [X] T105 [IT20] 更新 changelog.md
 
 ### 迭代 21: handler-adapter (IT21)
 
