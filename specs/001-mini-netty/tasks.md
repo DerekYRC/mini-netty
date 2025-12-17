@@ -324,10 +324,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 30: abstract-bootstrap (IT30)
 
-- [ ] T148 [IT30] 基于 IT29 创建分支 `abstract-bootstrap`
-- [ ] T149 [IT30] 实现 AbstractBootstrap 在 src/main/java/io/netty/bootstrap/AbstractBootstrap.java
-- [ ] T150 [P] [IT30] 定义 ChannelInitializer 在 src/main/java/io/netty/channel/ChannelInitializer.java
-- [ ] T151 [IT30] 更新 changelog.md
+- [X] T148 [IT30] 基于 IT29 创建分支 `abstract-bootstrap`
+- [X] T149 [IT30] 实现 AbstractBootstrap 在 src/main/java/io/netty/bootstrap/AbstractBootstrap.java
+- [X] T150 [P] [IT30] 定义 ChannelInitializer 在 src/main/java/io/netty/channel/ChannelInitializer.java
+- [X] T151 [IT30] 更新 changelog.md
 
 ### 迭代 31: server-bootstrap (IT31)
 

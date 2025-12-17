@@ -30,6 +30,32 @@
 
 ---
 
+## [IT30] abstract-bootstrap
+
+**分支**: `abstract-bootstrap`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `AbstractBootstrap<B, C>` 启动器抽象基类
+  - 流式 API (Builder 模式) 配置
+  - group() 设置 EventLoopGroup
+  - channel() 设置 Channel 类型
+  - option() 设置 Channel 选项
+  - handler() 设置 ChannelHandler
+  - bind() 绑定到本地地址
+- 新增 `ChannelInitializer<C>` Channel 初始化器
+  - 在 Channel 注册后初始化 Pipeline
+  - 初始化完成后自动从 Pipeline 移除
+  - 抽象 initChannel() 方法供子类实现
+- 内置 ReflectiveChannelFactory 反射工厂
+
+**学习要点**:
+- AbstractBootstrap 是 ServerBootstrap 和 Bootstrap 的基类
+- 流式 API 使配置代码简洁易读
+- ChannelInitializer 用于配置新连接的处理器链
+
+---
+
 ## [IT29] string-codec
 
 **分支**: `string-codec`
