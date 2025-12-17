@@ -192,11 +192,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 17: channel-pipeline-basic (IT17)
 
-- [ ] T085 [IT17] 基于 IT16 创建分支 `channel-pipeline-basic`
-- [ ] T086 [P] [IT17] 定义 ChannelPipeline 接口在 src/main/java/io/netty/channel/ChannelPipeline.java
-- [ ] T087 [IT17] 实现 DefaultChannelPipeline (双向链表) 在 src/main/java/io/netty/channel/DefaultChannelPipeline.java
-- [ ] T088 [P] [IT17] 编写测试 ChannelPipelineTest 在 src/test/java/io/netty/channel/ChannelPipelineTest.java
-- [ ] T089 [IT17] 更新 changelog.md
+- [X] T085 [IT17] 基于 IT16 创建分支 `channel-pipeline-basic`
+- [X] T086 [P] [IT17] 定义 ChannelPipeline 接口在 src/main/java/io/netty/channel/ChannelPipeline.java
+- [X] T087 [IT17] 实现 DefaultChannelPipeline (双向链表) 在 src/main/java/io/netty/channel/DefaultChannelPipeline.java
+- [X] T088 [P] [IT17] 编写测试 ChannelPipelineTest 在 src/test/java/io/netty/channel/ChannelPipelineTest.java
+- [X] T089 [IT17] 更新 changelog.md
 
 ### 迭代 18: channel-handler-context (IT18)
 

@@ -30,6 +30,38 @@
 
 ---
 
+## [IT17] channel-pipeline-basic
+
+**分支**: `channel-pipeline-basic`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 验证 `ChannelPipeline` 接口
+  - Handler 管理：addFirst, addLast, remove, get, context
+  - 入站事件触发：fireChannelRegistered, fireChannelActive, fireChannelRead 等
+  - 出站操作：read
+- 验证 `DefaultChannelPipeline` 实现
+  - 双向链表结构存储 Handler 链
+  - HeadContext 处理出站操作的最终执行
+  - TailContext 作为入站事件的终点
+  - Handler 生命周期管理（handlerAdded, handlerRemoved）
+- 新增 `ChannelPipelineTest` 共 20 个测试用例
+  - PipelineStructureTests: Pipeline 结构测试
+  - HandlerManagementTests: Handler 管理测试
+  - HandlerLifecycleTests: Handler 生命周期测试
+  - InboundEventPropagationTests: 入站事件传递测试
+  - AcceptanceScenarioTests: 完整场景测试
+
+**说明**: ChannelPipeline 和 DefaultChannelPipeline 已在 IT08 中预先创建，本迭代添加测试并确认其完整性。
+
+**学习要点**:
+- 责任链模式：事件按顺序通过 Handler 链传递
+- 双向链表：高效的添加/删除操作
+- Head/Tail 节点：封装 I/O 操作的起点和终点
+- 入站/出站事件分离：入站从 Head 到 Tail，出站从 Tail 到 Head
+
+---
+
 ## [IT16] channel-handler-interface
 
 **分支**: `channel-handler-interface`
