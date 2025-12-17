@@ -298,10 +298,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 28: length-field-decoder (IT28)
 
-- [ ] T138 [IT28] 基于 IT27 创建分支 `length-field-decoder`
-- [ ] T139 [IT28] 实现 LengthFieldBasedFrameDecoder 在 src/main/java/io/netty/handler/codec/LengthFieldBasedFrameDecoder.java
-- [ ] T140 [P] [IT28] 编写测试 LengthFieldBasedFrameDecoderTest 在 src/test/java/io/netty/handler/codec/LengthFieldBasedFrameDecoderTest.java
-- [ ] T141 [IT28] 更新 changelog.md
+- [X] T138 [IT28] 基于 IT27 创建分支 `length-field-decoder`
+- [X] T139 [IT28] 实现 LengthFieldBasedFrameDecoder 在 src/main/java/io/netty/handler/codec/LengthFieldBasedFrameDecoder.java
+- [X] T140 [P] [IT28] 编写测试 LengthFieldBasedFrameDecoderTest 在 src/test/java/io/netty/handler/codec/LengthFieldBasedFrameDecoderTest.java
+- [X] T141 [IT28] 更新 changelog.md
 
 ### 迭代 29: string-codec (IT29)
 

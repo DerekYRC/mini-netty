@@ -30,6 +30,34 @@
 
 ---
 
+## [IT28] length-field-decoder
+
+**分支**: `length-field-decoder`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `LengthFieldBasedFrameDecoder` 基于长度字段的帧解码器
+  - 支持 1, 2, 3, 4, 8 字节长度字段
+  - lengthFieldOffset: 长度字段偏移量（跳过消息头）
+  - lengthFieldLength: 长度字段字节数
+  - lengthAdjustment: 长度值调整量
+  - initialBytesToStrip: 解码后跳过的字节数
+  - maxFrameLength: 最大帧长度防止 OOM
+- 新增 `LengthFieldBasedFrameDecoderTest` 共 14 个测试用例
+  - ConstructorTests: 参数验证
+  - BasicDecodingTests: 2/4字节长度字段、不完整数据等待
+  - LengthAdjustmentTests: 长度包含头部、头部偏移处理
+  - MultipleFramesTests: 粘包和拆包处理
+  - ErrorHandlingTests: 超长帧异常
+  - AcceptanceScenarioTests: 协议消息和RPC场景
+
+**学习要点**:
+- LengthFieldBasedFrameDecoder 是最通用的拆包解决方案
+- 4个参数组合可适配各种协议格式
+- lengthAdjustment 用于处理长度含/不含头部的情况
+
+---
+
 ## [IT27] fixed-length-decoder
 
 **分支**: `fixed-length-decoder`
