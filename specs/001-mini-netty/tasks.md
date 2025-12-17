@@ -399,11 +399,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 **目的**: 完善文档和最终验证
 
-- [ ] T181 [P] 更新 README.md，添加完整的学习指南
-- [ ] T182 [P] 整理 changelog.md，确保所有迭代都有记录
-- [ ] T183 运行所有分支的测试验证
-- [ ] T184 创建 Echo 示例应用在 src/main/java/io/netty/example/echo/
-- [ ] T185 运行 quickstart.md 中的验证步骤
+- [X] T181 [P] 更新 README.md，添加完整的学习指南
+- [X] T182 [P] 整理 changelog.md，确保所有迭代都有记录
+- [X] T183 运行所有分支的测试验证
+- [X] T184 创建 Echo 示例应用在 src/main/java/io/netty/example/echo/
+- [X] T185 运行 quickstart.md 中的验证步骤
 
 ---
 
