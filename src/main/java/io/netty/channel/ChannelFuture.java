@@ -1,7 +1,5 @@
 package io.netty.channel;
 
-import java.util.concurrent.Future;
-
 /**
  * Channel 异步操作的结果
  *
@@ -35,7 +33,7 @@ import java.util.concurrent.Future;
  *
  * @see Channel
  */
-public interface ChannelFuture extends Future<Void> {
+public interface ChannelFuture {
 
     /**
      * 返回关联的 Channel
@@ -83,8 +81,17 @@ public interface ChannelFuture extends Future<Void> {
     /**
      * 等待操作完成
      *
-     * @return this，便于链式调用
+     * @param timeout 超时时间
+     * @param unit    时间单位
+     * @return 如果在超时前完成返回 true
      * @throws InterruptedException 如果等待被中断
      */
-    ChannelFuture await() throws InterruptedException;
+    boolean await(long timeout, java.util.concurrent.TimeUnit unit) throws InterruptedException;
+
+    /**
+     * 判断操作是否已完成
+     *
+     * @return 如果操作已完成返回 true
+     */
+    boolean isDone();
 }

@@ -43,7 +43,7 @@ public interface ChannelHandlerContext {
      *
      * @return 关联的 EventLoop
      */
-    EventLoop executor();
+    EventLoop eventLoop();
 
     /**
      * 返回 Handler 名称
@@ -66,13 +66,21 @@ public interface ChannelHandlerContext {
      */
     ChannelPipeline pipeline();
 
+    // ========== 入站事件传播方法 ==========
+
     /**
-     * 触发下一个 Handler 的 channelRead 事件
+     * 触发下一个 Handler 的 channelRegistered 事件
      *
-     * @param msg 消息
      * @return this，便于链式调用
      */
-    ChannelHandlerContext fireChannelRead(Object msg);
+    ChannelHandlerContext fireChannelRegistered();
+
+    /**
+     * 触发下一个 Handler 的 channelUnregistered 事件
+     *
+     * @return this，便于链式调用
+     */
+    ChannelHandlerContext fireChannelUnregistered();
 
     /**
      * 触发下一个 Handler 的 channelActive 事件
@@ -89,12 +97,29 @@ public interface ChannelHandlerContext {
     ChannelHandlerContext fireChannelInactive();
 
     /**
+     * 触发下一个 Handler 的 channelRead 事件
+     *
+     * @param msg 消息
+     * @return this，便于链式调用
+     */
+    ChannelHandlerContext fireChannelRead(Object msg);
+
+    /**
+     * 触发下一个 Handler 的 channelReadComplete 事件
+     *
+     * @return this，便于链式调用
+     */
+    ChannelHandlerContext fireChannelReadComplete();
+
+    /**
      * 触发下一个 Handler 的异常处理
      *
      * @param cause 异常原因
      * @return this，便于链式调用
      */
     ChannelHandlerContext fireExceptionCaught(Throwable cause);
+
+    // ========== 出站操作方法 ==========
 
     /**
      * 写入消息到 Channel
@@ -103,6 +128,15 @@ public interface ChannelHandlerContext {
      * @return 写入操作的 Future
      */
     ChannelFuture write(Object msg);
+
+    /**
+     * 写入消息到 Channel
+     *
+     * @param msg     要写入的消息
+     * @param promise 操作结果通知
+     * @return 写入操作的 Future
+     */
+    ChannelFuture write(Object msg, ChannelPromise promise);
 
     /**
      * 刷新所有待写入的消息
@@ -120,9 +154,33 @@ public interface ChannelHandlerContext {
     ChannelFuture writeAndFlush(Object msg);
 
     /**
+     * 写入并刷新消息
+     *
+     * @param msg     要写入的消息
+     * @param promise 操作结果通知
+     * @return 写入操作的 Future
+     */
+    ChannelFuture writeAndFlush(Object msg, ChannelPromise promise);
+
+    /**
      * 关闭 Channel
      *
      * @return 关闭操作的 Future
      */
     ChannelFuture close();
+
+    /**
+     * 关闭 Channel
+     *
+     * @param promise 操作结果通知
+     * @return 关闭操作的 Future
+     */
+    ChannelFuture close(ChannelPromise promise);
+
+    /**
+     * 创建新的 Promise
+     *
+     * @return 新的 ChannelPromise
+     */
+    ChannelPromise newPromise();
 }

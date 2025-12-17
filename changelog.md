@@ -30,6 +30,40 @@
 
 ---
 
+## [IT13] nio-channel-impl
+
+**分支**: `nio-channel-impl`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `AbstractChannel` 抽象类
+  - 提供 Channel 生命周期管理
+  - 管理 Pipeline、EventLoop 注册
+  - 实现 DefaultChannelId 内部类
+- 新增 `AbstractNioChannel` 抽象类
+  - 封装 NIO SelectableChannel 管理
+  - 处理 Selector 注册和 SelectionKey 操作
+- 新增 `NioServerSocketChannel` 服务端实现
+  - 封装 ServerSocketChannel
+  - 实现 bind() 和 accept() 操作
+- 新增 `NioSocketChannel` 客户端/连接实现
+  - 封装 SocketChannel
+  - 实现 connect()、read()、write() 操作
+- 新增 `DefaultChannelFuture` 和 `DefaultChannelPromise` 实现
+- 新增 `DefaultChannelPipeline` 双向链表实现
+  - HeadContext 和 TailContext 作为边界节点
+- 新增 `AbstractChannelHandlerContext` 链表节点基类
+- 更新接口：ChannelPipeline、ChannelHandlerContext、ChannelFuture、ChannelId
+- 新增 `NioChannelTest` 测试 14 个测试用例
+
+**学习要点**:
+- Channel 抽象层次：Channel → AbstractChannel → AbstractNioChannel → NioXxxChannel
+- Pipeline 是双向链表，入站从头到尾，出站从尾到头
+- SelectableChannel 必须设置为非阻塞模式
+- 每个 Channel 有唯一的 ChannelId 和专属的 Pipeline
+
+---
+
 ## [IT11] event-loop-scheduled-task
 
 **分支**: `event-loop-scheduled-task`

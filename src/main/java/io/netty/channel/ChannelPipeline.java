@@ -1,5 +1,7 @@
 package io.netty.channel;
 
+import java.util.List;
+
 /**
  * ChannelHandler 容器，负责事件的分发
  *
@@ -58,11 +60,64 @@ public interface ChannelPipeline {
     ChannelPipeline remove(ChannelHandler handler);
 
     /**
+     * 移除指定名称的 Handler
+     *
+     * @param name Handler 名称
+     * @return 被移除的 Handler
+     */
+    ChannelHandler remove(String name);
+
+    /**
+     * 获取指定名称的 Handler
+     *
+     * @param name Handler 名称
+     * @return Handler 实例，如果不存在返回 null
+     */
+    ChannelHandler get(String name);
+
+    /**
+     * 获取指定名称的 Context
+     *
+     * @param name Handler 名称
+     * @return ChannelHandlerContext，如果不存在返回 null
+     */
+    ChannelHandlerContext context(String name);
+
+    /**
+     * 获取指定 Handler 的 Context
+     *
+     * @param handler Handler 实例
+     * @return ChannelHandlerContext，如果不存在返回 null
+     */
+    ChannelHandlerContext context(ChannelHandler handler);
+
+    /**
+     * 获取所有 Handler 的名称
+     *
+     * @return Handler 名称列表
+     */
+    List<String> names();
+
+    /**
      * 获取关联的 Channel
      *
      * @return 关联的 Channel
      */
     Channel channel();
+
+    /**
+     * 触发 channelRegistered 事件
+     *
+     * @return this，便于链式调用
+     */
+    ChannelPipeline fireChannelRegistered();
+
+    /**
+     * 触发 channelUnregistered 事件
+     *
+     * @return this，便于链式调用
+     */
+    ChannelPipeline fireChannelUnregistered();
 
     /**
      * 触发 channelRead 事件
@@ -71,6 +126,13 @@ public interface ChannelPipeline {
      * @return this，便于链式调用
      */
     ChannelPipeline fireChannelRead(Object msg);
+
+    /**
+     * 触发 channelReadComplete 事件
+     *
+     * @return this，便于链式调用
+     */
+    ChannelPipeline fireChannelReadComplete();
 
     /**
      * 触发 channelActive 事件

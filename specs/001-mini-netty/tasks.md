@@ -148,21 +148,23 @@
 
 ### 迭代 12: channel-interface (IT12)
 
-- [ ] T058 [IT12] 基于 IT11 创建分支 `channel-interface`
-- [ ] T059 [P] [IT12] 定义 Channel 接口在 src/main/java/io/netty/channel/Channel.java
-- [ ] T060 [P] [IT12] 定义 ChannelId 在 src/main/java/io/netty/channel/ChannelId.java
-- [ ] T061 [P] [IT12] 定义 ChannelFuture 在 src/main/java/io/netty/channel/ChannelFuture.java
-- [ ] T062 [IT12] 更新 changelog.md
+- [X] T058 [IT12] 基于 IT11 创建分支 `channel-interface`
+- [X] T059 [P] [IT12] 定义 Channel 接口在 src/main/java/io/netty/channel/Channel.java
+- [X] T060 [P] [IT12] 定义 ChannelId 在 src/main/java/io/netty/channel/ChannelId.java
+- [X] T061 [P] [IT12] 定义 ChannelFuture 在 src/main/java/io/netty/channel/ChannelFuture.java
+- [X] T062 [IT12] 更新 changelog.md
+
+Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖一起创建）
 
 ### 迭代 13: nio-channel-impl (IT13)
 
-- [ ] T063 [IT13] 基于 IT12 创建分支 `nio-channel-impl`
-- [ ] T064 [P] [IT13] 实现 AbstractChannel 在 src/main/java/io/netty/channel/AbstractChannel.java
-- [ ] T065 [P] [IT13] 实现 AbstractNioChannel 在 src/main/java/io/netty/channel/nio/AbstractNioChannel.java
-- [ ] T066 [P] [IT13] 实现 NioServerSocketChannel 在 src/main/java/io/netty/channel/nio/NioServerSocketChannel.java
-- [ ] T067 [P] [IT13] 实现 NioSocketChannel 在 src/main/java/io/netty/channel/nio/NioSocketChannel.java
-- [ ] T068 [P] [IT13] 编写测试 NioChannelTest 在 src/test/java/io/netty/channel/nio/NioChannelTest.java
-- [ ] T069 [IT13] 更新 changelog.md
+- [X] T063 [IT13] 基于 IT12 创建分支 `nio-channel-impl`
+- [X] T064 [P] [IT13] 实现 AbstractChannel 在 src/main/java/io/netty/channel/AbstractChannel.java
+- [X] T065 [P] [IT13] 实现 AbstractNioChannel 在 src/main/java/io/netty/channel/nio/AbstractNioChannel.java
+- [X] T066 [P] [IT13] 实现 NioServerSocketChannel 在 src/main/java/io/netty/channel/nio/NioServerSocketChannel.java
+- [X] T067 [P] [IT13] 实现 NioSocketChannel 在 src/main/java/io/netty/channel/nio/NioSocketChannel.java
+- [X] T068 [P] [IT13] 编写测试 NioChannelTest 在 src/test/java/io/netty/channel/nio/NioChannelTest.java
+- [X] T069 [IT13] 更新 changelog.md
 
 ### 迭代 14: channel-config (IT14)
 

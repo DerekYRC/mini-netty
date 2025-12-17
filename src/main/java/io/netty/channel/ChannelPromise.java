@@ -58,7 +58,4 @@ public interface ChannelPromise extends ChannelFuture {
 
     @Override
     ChannelPromise sync() throws InterruptedException;
-
-    @Override
-    ChannelPromise await() throws InterruptedException;
 }

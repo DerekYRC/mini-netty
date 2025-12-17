@@ -11,7 +11,7 @@ package io.netty.channel;
  *   <li>短格式字符串表示（asShortText）</li>
  * </ul>
  */
-public interface ChannelId {
+public interface ChannelId extends Comparable<ChannelId> {
 
     /**
      * 返回 Channel ID 的短格式字符串
