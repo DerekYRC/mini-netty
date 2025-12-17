@@ -30,6 +30,34 @@
 
 ---
 
+## [IT32] client-bootstrap
+
+**分支**: `client-bootstrap`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `Bootstrap` 客户端启动器
+  - 继承自 AbstractBootstrap，专用于客户端配置
+  - connect(host, port) 连接到远程服务器
+  - connect(SocketAddress) 连接到指定地址
+  - remoteAddress() 预设远程地址
+- 支持本地地址绑定后连接
+- 新增 `BootstrapIntegrationTest` 共 19 个测试用例
+  - BootstrapConfigurationTests: 链式配置、克隆测试
+  - BootstrapValidationTests: 参数验证
+  - NullValidationTests: 空值检查
+  - ConnectTests: 连接测试
+  - AcceptanceScenarioTests: 客户端服务端交互场景
+
+**检查点 (US6)**: Bootstrap 可配置和启动服务端/客户端 ✓
+
+**学习要点**:
+- Bootstrap 用于客户端连接，只需一个 EventLoopGroup
+- connect() 是非阻塞操作，返回 ChannelFuture
+- 可与 ServerBootstrap 配合实现完整的 C/S 通信
+
+---
+
 ## [IT31] server-bootstrap
 
 **分支**: `server-bootstrap`
