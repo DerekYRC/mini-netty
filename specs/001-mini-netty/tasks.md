@@ -292,9 +292,9 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 ### 迭代 27: fixed-length-decoder (IT27)
 
 - [ ] T134 [IT27] 基于 IT26 创建分支 `fixed-length-decoder`
-- [ ] T135 [IT27] 实现 FixedLengthFrameDecoder 在 src/main/java/io/netty/handler/codec/FixedLengthFrameDecoder.java
-- [ ] T136 [P] [IT27] 编写测试 FixedLengthFrameDecoderTest 在 src/test/java/io/netty/handler/codec/FixedLengthFrameDecoderTest.java
-- [ ] T137 [IT27] 更新 changelog.md
+- [X] T135 [IT27] 实现 FixedLengthFrameDecoder 在 src/main/java/io/netty/handler/codec/FixedLengthFrameDecoder.java
+- [X] T136 [P] [IT27] 编写测试 FixedLengthFrameDecoderTest 在 src/test/java/io/netty/handler/codec/FixedLengthFrameDecoderTest.java
+- [X] T137 [IT27] 更新 changelog.md
 
 ### 迭代 28: length-field-decoder (IT28)
 

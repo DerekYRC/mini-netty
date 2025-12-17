@@ -30,6 +30,29 @@
 
 ---
 
+## [IT27] fixed-length-decoder
+
+**分支**: `fixed-length-decoder`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `FixedLengthFrameDecoder` 定长帧解码器
+  - 继承 ByteToMessageDecoder
+  - 将字节流按固定长度切分成帧
+  - 构造函数验证帧长度必须 > 0
+- 新增 `FixedLengthFrameDecoderTest` 共 9 个测试用例
+  - ConstructorTests: 构造参数验证
+  - BasicDecodingTests: 单帧/多帧/不完整帧解码
+  - PacketSplitMergeTests: 跨包帧和混合数据处理
+  - AcceptanceScenarioTests: 传感器数据和命令协议场景
+
+**学习要点**:
+- 定长帧解码是最简单的拆包策略
+- 继承 ByteToMessageDecoder 只需实现 decode() 方法
+- 利用 while 循环一次读取尽可能多的完整帧
+
+---
+
 ## [IT26] byte-to-message-decoder
 
 **分支**: `byte-to-message-decoder`
