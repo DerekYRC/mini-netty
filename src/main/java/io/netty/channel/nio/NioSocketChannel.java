@@ -100,6 +100,16 @@ public class NioSocketChannel extends AbstractNioChannel {
         return javaChannel().getRemoteAddress();
     }
 
+    @Override
+    protected void doBind(SocketAddress localAddress) throws Exception {
+        javaChannel().bind(localAddress);
+    }
+
+    @Override
+    protected Unsafe newUnsafe() {
+        return new NioSocketChannelUnsafe();
+    }
+
     /**
      * 连接到远程地址
      *
@@ -233,5 +243,27 @@ public class NioSocketChannel extends AbstractNioChannel {
     protected void doClose() throws Exception {
         System.out.println("[NioSocketChannel] 关闭连接");
         super.doClose();
+    }
+
+    /**
+     * SocketChannel 的 Unsafe 实现
+     */
+    private class NioSocketChannelUnsafe extends AbstractNioUnsafe {
+
+        @Override
+        protected void doConnect(SocketAddress remoteAddress, SocketAddress localAddress) throws Exception {
+            if (localAddress != null) {
+                javaChannel().bind(localAddress);
+            }
+
+            boolean connected = javaChannel().connect(remoteAddress);
+            if (!connected) {
+                // 连接进行中，需要等待 OP_CONNECT 事件
+                SelectionKey key = selectionKey();
+                if (key != null) {
+                    key.interestOps(key.interestOps() | SelectionKey.OP_CONNECT);
+                }
+            }
+        }
     }
 }

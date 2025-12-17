@@ -48,6 +48,11 @@ public abstract class AbstractChannel implements Channel {
     private final ChannelConfig config;
 
     /**
+     * Unsafe 实例，封装底层 I/O 操作
+     */
+    private final Unsafe unsafe;
+
+    /**
      * 关联的 EventLoop
      */
     private volatile EventLoop eventLoop;
@@ -82,6 +87,7 @@ public abstract class AbstractChannel implements Channel {
         this.id = newId();
         this.pipeline = newChannelPipeline();
         this.config = newChannelConfig();
+        this.unsafe = newUnsafe();
     }
 
     /**
@@ -111,6 +117,20 @@ public abstract class AbstractChannel implements Channel {
      */
     protected ChannelConfig newChannelConfig() {
         return new DefaultChannelConfig(this);
+    }
+
+    /**
+     * 创建新的 Unsafe 实例
+     *
+     * <p>子类必须覆盖此方法提供具体的 Unsafe 实现。
+     *
+     * @return 新的 Unsafe 实例
+     */
+    protected abstract Unsafe newUnsafe();
+
+    @Override
+    public Unsafe unsafe() {
+        return unsafe;
     }
 
     @Override
@@ -318,6 +338,281 @@ public abstract class AbstractChannel implements Channel {
      * @throws Exception 如果关闭失败
      */
     protected abstract void doClose() throws Exception;
+
+    /**
+     * 开始读取数据的实际实现
+     *
+     * @throws Exception 如果读取失败
+     */
+    protected abstract void doBeginRead() throws Exception;
+
+    /**
+     * 绑定地址的实际实现
+     *
+     * @param localAddress 本地地址
+     * @throws Exception 如果绑定失败
+     */
+    protected abstract void doBind(SocketAddress localAddress) throws Exception;
+
+    /**
+     * 写入数据的实际实现
+     *
+     * @param msg 要写入的消息
+     * @throws Exception 如果写入失败
+     */
+    protected abstract void doWrite(Object msg) throws Exception;
+
+    // ========== AbstractUnsafe 内部类 ==========
+
+    /**
+     * Unsafe 的抽象基类实现
+     *
+     * <p>AbstractUnsafe 封装了 Channel 的底层 I/O 操作，这些操作
+     * 不应该被用户代码直接调用。它们会被 Pipeline 中的 HeadContext 调用。
+     *
+     * <p>学习要点：
+     * <ul>
+     *   <li>所有操作都会检查是否在 EventLoop 线程中执行</li>
+     *   <li>使用 Promise 异步通知操作结果</li>
+     *   <li>模板方法模式：调用 doXxx 方法完成实际操作</li>
+     * </ul>
+     */
+    protected abstract class AbstractUnsafe implements Unsafe {
+
+        @Override
+        public void register(EventLoop eventLoop, ChannelPromise promise) {
+            if (eventLoop == null) {
+                promise.setFailure(new NullPointerException("eventLoop"));
+                return;
+            }
+            if (isRegistered()) {
+                promise.setFailure(new IllegalStateException("已经注册到 EventLoop"));
+                return;
+            }
+
+            AbstractChannel.this.eventLoop = eventLoop;
+
+            if (eventLoop.inEventLoop()) {
+                register0(promise);
+            } else {
+                eventLoop.execute(() -> register0(promise));
+            }
+        }
+
+        private void register0(ChannelPromise promise) {
+            try {
+                doRegister();
+                registered = true;
+                promise.setSuccess();
+                
+                // 触发 channelRegistered 事件
+                pipeline.fireChannelRegistered();
+                
+                // 如果 Channel 已经是活动状态，触发 channelActive 事件
+                if (isActive()) {
+                    pipeline.fireChannelActive();
+                }
+            } catch (Exception e) {
+                promise.setFailure(e);
+            }
+        }
+
+        @Override
+        public void bind(SocketAddress localAddress, ChannelPromise promise) {
+            if (!isOpen()) {
+                promise.setFailure(new IllegalStateException("Channel 已关闭"));
+                return;
+            }
+
+            if (eventLoop.inEventLoop()) {
+                bind0(localAddress, promise);
+            } else {
+                eventLoop.execute(() -> bind0(localAddress, promise));
+            }
+        }
+
+        private void bind0(SocketAddress localAddress, ChannelPromise promise) {
+            try {
+                doBind(localAddress);
+                promise.setSuccess();
+                
+                // 绑定成功后触发 channelActive
+                if (isActive()) {
+                    pipeline.fireChannelActive();
+                }
+            } catch (Exception e) {
+                promise.setFailure(e);
+            }
+        }
+
+        @Override
+        public void connect(SocketAddress remoteAddress, SocketAddress localAddress, ChannelPromise promise) {
+            if (!isOpen()) {
+                promise.setFailure(new IllegalStateException("Channel 已关闭"));
+                return;
+            }
+
+            if (eventLoop.inEventLoop()) {
+                connect0(remoteAddress, localAddress, promise);
+            } else {
+                eventLoop.execute(() -> connect0(remoteAddress, localAddress, promise));
+            }
+        }
+
+        private void connect0(SocketAddress remoteAddress, SocketAddress localAddress, ChannelPromise promise) {
+            try {
+                doConnect(remoteAddress, localAddress);
+                promise.setSuccess();
+                
+                // 连接成功后触发 channelActive
+                if (isActive()) {
+                    pipeline.fireChannelActive();
+                }
+            } catch (Exception e) {
+                promise.setFailure(e);
+            }
+        }
+
+        /**
+         * 连接的实际实现，子类需要覆盖
+         */
+        protected void doConnect(SocketAddress remoteAddress, SocketAddress localAddress) throws Exception {
+            throw new UnsupportedOperationException("连接操作不支持");
+        }
+
+        @Override
+        public void disconnect(ChannelPromise promise) {
+            if (!isOpen()) {
+                promise.setFailure(new IllegalStateException("Channel 已关闭"));
+                return;
+            }
+
+            if (eventLoop.inEventLoop()) {
+                disconnect0(promise);
+            } else {
+                eventLoop.execute(() -> disconnect0(promise));
+            }
+        }
+
+        private void disconnect0(ChannelPromise promise) {
+            try {
+                doDisconnect();
+                promise.setSuccess();
+            } catch (Exception e) {
+                promise.setFailure(e);
+            }
+        }
+
+        /**
+         * 断开连接的实际实现
+         */
+        protected void doDisconnect() throws Exception {
+            doClose();
+        }
+
+        @Override
+        public void close(ChannelPromise promise) {
+            if (closed.getAndSet(true)) {
+                promise.setSuccess();
+                return;
+            }
+
+            if (eventLoop != null && eventLoop.inEventLoop()) {
+                close0(promise);
+            } else if (eventLoop != null) {
+                eventLoop.execute(() -> close0(promise));
+            } else {
+                close0(promise);
+            }
+        }
+
+        private void close0(ChannelPromise promise) {
+            try {
+                doClose();
+                promise.setSuccess();
+                
+                // 触发 channelInactive 事件
+                if (registered) {
+                    pipeline.fireChannelInactive();
+                    pipeline.fireChannelUnregistered();
+                }
+            } catch (Exception e) {
+                promise.setFailure(e);
+            }
+        }
+
+        @Override
+        public void beginRead() {
+            if (!isRegistered()) {
+                return;
+            }
+
+            if (eventLoop.inEventLoop()) {
+                beginRead0();
+            } else {
+                eventLoop.execute(this::beginRead0);
+            }
+        }
+
+        private void beginRead0() {
+            try {
+                doBeginRead();
+            } catch (Exception e) {
+                pipeline.fireExceptionCaught(e);
+            }
+        }
+
+        @Override
+        public void write(Object msg, ChannelPromise promise) {
+            if (!isOpen()) {
+                promise.setFailure(new IllegalStateException("Channel 已关闭"));
+                return;
+            }
+
+            if (eventLoop.inEventLoop()) {
+                write0(msg, promise);
+            } else {
+                eventLoop.execute(() -> write0(msg, promise));
+            }
+        }
+
+        private void write0(Object msg, ChannelPromise promise) {
+            try {
+                doWrite(msg);
+                promise.setSuccess();
+            } catch (Exception e) {
+                promise.setFailure(e);
+            }
+        }
+
+        @Override
+        public void flush() {
+            if (!isOpen()) {
+                return;
+            }
+
+            if (eventLoop.inEventLoop()) {
+                flush0();
+            } else {
+                eventLoop.execute(this::flush0);
+            }
+        }
+
+        private void flush0() {
+            try {
+                doFlush();
+            } catch (Exception e) {
+                pipeline.fireExceptionCaught(e);
+            }
+        }
+
+        /**
+         * 刷新的实际实现
+         */
+        protected void doFlush() throws Exception {
+            // 默认实现为空，子类可覆盖
+        }
+    }
 
     /**
      * 默认的 ChannelId 实现

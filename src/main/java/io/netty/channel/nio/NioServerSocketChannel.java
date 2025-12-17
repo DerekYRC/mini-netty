@@ -86,6 +86,17 @@ public class NioServerSocketChannel extends AbstractNioChannel {
         return null;
     }
 
+    @Override
+    protected void doBind(SocketAddress localAddress) throws Exception {
+        javaChannel().bind(localAddress);
+        System.out.println("[NioServerSocketChannel] 绑定到 " + localAddress);
+    }
+
+    @Override
+    protected Unsafe newUnsafe() {
+        return new NioServerSocketChannelUnsafe();
+    }
+
     /**
      * 绑定到指定地址
      *
@@ -150,5 +161,12 @@ public class NioServerSocketChannel extends AbstractNioChannel {
     protected void doClose() throws Exception {
         System.out.println("[NioServerSocketChannel] 关闭服务端通道");
         super.doClose();
+    }
+
+    /**
+     * ServerSocketChannel 的 Unsafe 实现
+     */
+    private class NioServerSocketChannelUnsafe extends AbstractNioUnsafe {
+        // ServerSocketChannel 使用默认实现
     }
 }

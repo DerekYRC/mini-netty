@@ -30,6 +30,46 @@
 
 ---
 
+## [IT15] channel-unsafe
+
+**分支**: `channel-unsafe`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `Channel.Unsafe` 内部接口
+  - 定义底层 I/O 操作：register, bind, connect, disconnect, close, beginRead, write, flush
+  - 这些操作不应该直接暴露给用户代码
+- 新增 `AbstractUnsafe` 在 AbstractChannel 中
+  - 实现所有 Unsafe 方法的模板逻辑
+  - 确保所有操作在 EventLoop 线程中执行（线程安全）
+  - 使用 Promise 模式进行异步通知
+  - 调用抽象的 doXxx 方法让子类实现具体逻辑
+- 新增 `AbstractNioUnsafe` 在 AbstractNioChannel 中
+  - NIO 特定的 Unsafe 实现基类
+- 更新 `NioServerSocketChannel` 和 `NioSocketChannel`
+  - 实现 `newUnsafe()` 方法
+  - 添加 `doBind()` 实现端口绑定
+  - NioSocketChannel 添加 `doConnect()` 实现连接逻辑
+- 修复 `SingleThreadEventLoop.execute()` 自动启动问题
+  - 添加 `startIfNeeded()` 方法
+  - 确保提交任务时 EventLoop 自动启动
+
+**测试**:
+- 新增 `ChannelUnsafeTest` 共 13 个测试用例
+  - UnsafeInterfaceTests: 验证接口定义
+  - ServerChannelUnsafeTests: 服务端 Unsafe 操作
+  - SocketChannelUnsafeTests: 客户端 Unsafe 操作
+  - PromiseCallbackTests: Promise 回调机制
+  - AcceptanceScenarioTests: 完整场景测试
+
+**学习要点**:
+- Unsafe 接口设计：封装底层操作，保护用户代码
+- 模板方法模式：doXxx 方法由子类实现具体逻辑
+- EventLoop 线程安全：所有操作通过 inEventLoop() 检查
+- Promise 异步模式：操作完成时通知调用者
+
+---
+
 ## [IT14] channel-config
 
 **分支**: `channel-config`

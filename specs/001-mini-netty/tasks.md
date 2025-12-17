@@ -176,11 +176,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 15: channel-unsafe (IT15)
 
-- [ ] T075 [IT15] 基于 IT14 创建分支 `channel-unsafe`
-- [ ] T076 [IT15] 定义 Channel.Unsafe 内部接口
-- [ ] T077 [IT15] 实现 AbstractUnsafe 在 AbstractChannel 中
-- [ ] T078 [P] [IT15] 编写测试 ChannelUnsafeTest 在 src/test/java/io/netty/channel/ChannelUnsafeTest.java
-- [ ] T079 [IT15] 更新 changelog.md
+- [X] T075 [IT15] 基于 IT14 创建分支 `channel-unsafe`
+- [X] T076 [IT15] 定义 Channel.Unsafe 内部接口
+- [X] T077 [IT15] 实现 AbstractUnsafe 在 AbstractChannel 中
+- [X] T078 [P] [IT15] 编写测试 ChannelUnsafeTest 在 src/test/java/io/netty/channel/ChannelUnsafeTest.java
+- [X] T079 [IT15] 更新 changelog.md
 
 ### 迭代 16: channel-handler-interface (IT16)
 

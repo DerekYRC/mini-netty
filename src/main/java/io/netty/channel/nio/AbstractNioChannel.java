@@ -150,11 +150,25 @@ public abstract class AbstractNioChannel extends AbstractChannel {
      */
     protected abstract void doRead();
 
+    @Override
+    protected void doBind(java.net.SocketAddress localAddress) throws Exception {
+        // 子类实现具体的绑定逻辑
+        throw new UnsupportedOperationException("绑定操作需要子类实现");
+    }
+
+    @Override
+    protected abstract Unsafe newUnsafe();
+
     /**
-     * 执行实际的写操作
-     *
-     * @param msg 要写入的消息
-     * @throws Exception 如果写入失败
+     * NIO Channel 的 Unsafe 实现
      */
-    protected abstract void doWrite(Object msg) throws Exception;
+    protected abstract class AbstractNioUnsafe extends AbstractUnsafe {
+
+        @Override
+        protected void doConnect(java.net.SocketAddress remoteAddress, 
+                                 java.net.SocketAddress localAddress) throws Exception {
+            // 子类实现具体的连接逻辑
+            throw new UnsupportedOperationException("连接操作需要子类实现");
+        }
+    }
 }

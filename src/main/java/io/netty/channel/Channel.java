@@ -107,4 +107,89 @@ public interface Channel {
      * @return this
      */
     Channel read();
+
+    /**
+     * 返回底层 I/O 操作接口
+     *
+     * <p><b>警告</b>: 这是内部 API，不应该被用户代码直接调用。
+     * Unsafe 接口封装了底层的 I/O 操作，如 register、bind、connect 等。
+     *
+     * @return Unsafe 实例
+     */
+    Unsafe unsafe();
+
+    /**
+     * 底层 I/O 操作接口（内部使用）
+     *
+     * <p>Unsafe 封装了不应该直接暴露给用户的底层操作。
+     * 这些操作会被 Pipeline 中的 HeadContext 调用。
+     *
+     * <p>学习要点：
+     * <ul>
+     *   <li>封装底层 I/O 操作，隐藏实现细节</li>
+     *   <li>确保操作在正确的线程中执行</li>
+     *   <li>管理 Channel 的生命周期</li>
+     * </ul>
+     */
+    interface Unsafe {
+
+        /**
+         * 注册 Channel 到 EventLoop
+         *
+         * @param eventLoop 要注册的 EventLoop
+         * @param promise 操作结果通知
+         */
+        void register(EventLoop eventLoop, ChannelPromise promise);
+
+        /**
+         * 绑定到本地地址
+         *
+         * @param localAddress 本地地址
+         * @param promise 操作结果通知
+         */
+        void bind(java.net.SocketAddress localAddress, ChannelPromise promise);
+
+        /**
+         * 连接到远程地址
+         *
+         * @param remoteAddress 远程地址
+         * @param localAddress 本地地址，可以为 null
+         * @param promise 操作结果通知
+         */
+        void connect(java.net.SocketAddress remoteAddress, 
+                     java.net.SocketAddress localAddress, 
+                     ChannelPromise promise);
+
+        /**
+         * 断开连接
+         *
+         * @param promise 操作结果通知
+         */
+        void disconnect(ChannelPromise promise);
+
+        /**
+         * 关闭 Channel
+         *
+         * @param promise 操作结果通知
+         */
+        void close(ChannelPromise promise);
+
+        /**
+         * 读取数据
+         */
+        void beginRead();
+
+        /**
+         * 写入消息
+         *
+         * @param msg 要写入的消息
+         * @param promise 操作结果通知
+         */
+        void write(Object msg, ChannelPromise promise);
+
+        /**
+         * 刷新所有待写入的消息
+         */
+        void flush();
+    }
 }

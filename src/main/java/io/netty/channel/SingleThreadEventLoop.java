@@ -112,9 +112,21 @@ public abstract class SingleThreadEventLoop implements EventLoop {
         // 添加任务到队列
         taskQueue.offer(task);
 
+        // 确保事件循环已启动
+        startIfNeeded();
+
         // 如果不在 EventLoop 线程，唤醒选择器
         if (!inEventLoop()) {
             wakeup();
+        }
+    }
+
+    /**
+     * 如果事件循环未启动，则启动它
+     */
+    private void startIfNeeded() {
+        if (!running.get()) {
+            start();
         }
     }
 
