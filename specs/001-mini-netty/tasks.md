@@ -122,19 +122,19 @@
 
 ### 迭代 10: event-loop-task-queue (IT10)
 
-- [ ] T048 [IT10] 基于 IT09 创建分支 `event-loop-task-queue`
-- [ ] T049 [IT10] 为 SingleThreadEventLoop 添加任务队列
-- [ ] T050 [IT10] 实现 execute(Runnable) 方法
-- [ ] T051 [P] [IT10] 编写测试 TaskQueueTest 在 src/test/java/io/netty/channel/TaskQueueTest.java
-- [ ] T052 [IT10] 更新 changelog.md
+- [X] T048 [IT10] 基于 IT09 创建分支 `event-loop-task-queue`
+- [X] T049 [IT10] 为 SingleThreadEventLoop 添加任务队列
+- [X] T050 [IT10] 实现 execute(Runnable) 方法
+- [X] T051 [P] [IT10] 编写测试 TaskQueueTest 在 src/test/java/io/netty/channel/TaskQueueTest.java
+- [X] T052 [IT10] 更新 changelog.md
 
 ### 迭代 11: event-loop-scheduled-task (IT11)
 
-- [ ] T053 [IT11] 基于 IT10 创建分支 `event-loop-scheduled-task`
-- [ ] T054 [IT11] 添加定时任务队列
-- [ ] T055 [IT11] 实现 schedule() 和 scheduleAtFixedRate() 方法
-- [ ] T056 [P] [IT11] 编写测试 ScheduledTaskTest 在 src/test/java/io/netty/channel/ScheduledTaskTest.java
-- [ ] T057 [IT11] 更新 changelog.md 并验证
+- [X] T053 [IT11] 基于 IT10 创建分支 `event-loop-scheduled-task`
+- [X] T054 [IT11] 添加定时任务队列
+- [X] T055 [IT11] 实现 schedule() 和 scheduleAtFixedRate() 方法
+- [X] T056 [P] [IT11] 编写测试 ScheduledTaskTest 在 src/test/java/io/netty/channel/ScheduledTaskTest.java
+- [X] T057 [IT11] 更新 changelog.md 并验证
 
 **检查点 (US2)**: EventLoop 可执行任务和定时任务
 

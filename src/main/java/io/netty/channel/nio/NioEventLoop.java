@@ -122,6 +122,18 @@ public class NioEventLoop extends SingleThreadEventLoop {
             return selector.selectNow();
         }
         
+        // 检查是否有定时任务
+        long nextDelayNanos = nextScheduledTaskDelayNanos();
+        if (nextDelayNanos >= 0) {
+            // 如果任务已到期或即将到期，不阻塞
+            if (nextDelayNanos == 0) {
+                return selector.selectNow();
+            }
+            // 使用定时任务的延迟作为超时时间
+            long timeoutMillis = Math.max(1, nextDelayNanos / 1_000_000);
+            return selector.select(timeoutMillis);
+        }
+        
         // 否则使用超时选择，最多等待 1 秒
         return selector.select(1000);
     }

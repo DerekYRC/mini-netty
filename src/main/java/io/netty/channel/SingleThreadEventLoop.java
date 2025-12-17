@@ -1,5 +1,6 @@
 package io.netty.channel;
 
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Future;
@@ -52,6 +53,11 @@ public abstract class SingleThreadEventLoop implements EventLoop {
     protected final Queue<Runnable> taskQueue;
 
     /**
+     * 定时任务队列（按执行时间排序）
+     */
+    protected final PriorityQueue<ScheduledTask> scheduledTaskQueue;
+
+    /**
      * 运行状态
      */
     protected final AtomicBoolean running = new AtomicBoolean(false);
@@ -74,6 +80,7 @@ public abstract class SingleThreadEventLoop implements EventLoop {
     protected SingleThreadEventLoop(EventLoopGroup parent) {
         this.parent = parent;
         this.taskQueue = new ConcurrentLinkedQueue<>();
+        this.scheduledTaskQueue = new PriorityQueue<>();
     }
 
     @Override
@@ -113,14 +120,54 @@ public abstract class SingleThreadEventLoop implements EventLoop {
 
     @Override
     public ScheduledFuture<?> schedule(Runnable task, long delay, TimeUnit unit) {
-        // 简化实现：在后续迭代中完善
-        throw new UnsupportedOperationException("将在 IT11 实现定时任务");
+        if (task == null) {
+            throw new NullPointerException("task");
+        }
+        if (unit == null) {
+            throw new NullPointerException("unit");
+        }
+
+        ScheduledTask scheduledTask = new ScheduledTask(this, task, delay, unit);
+        
+        if (inEventLoop()) {
+            scheduledTaskQueue.offer(scheduledTask);
+        } else {
+            execute(() -> scheduledTaskQueue.offer(scheduledTask));
+        }
+        
+        return scheduledTask;
     }
 
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable task, long initialDelay, long period, TimeUnit unit) {
-        // 简化实现：在后续迭代中完善
-        throw new UnsupportedOperationException("将在 IT11 实现定时任务");
+        if (task == null) {
+            throw new NullPointerException("task");
+        }
+        if (unit == null) {
+            throw new NullPointerException("unit");
+        }
+        if (period <= 0) {
+            throw new IllegalArgumentException("period 必须大于 0");
+        }
+
+        ScheduledTask scheduledTask = new ScheduledTask(this, task, initialDelay, period, unit);
+        
+        if (inEventLoop()) {
+            scheduledTaskQueue.offer(scheduledTask);
+        } else {
+            execute(() -> scheduledTaskQueue.offer(scheduledTask));
+        }
+        
+        return scheduledTask;
+    }
+
+    /**
+     * 从 EventLoop 线程内重新调度任务（用于周期性任务）
+     *
+     * @param task 要重新调度的任务
+     */
+    void scheduleFromEventLoop(ScheduledTask task) {
+        scheduledTaskQueue.offer(task);
     }
 
     @Override
@@ -198,6 +245,11 @@ public abstract class SingleThreadEventLoop implements EventLoop {
      */
     protected int runAllTasks() {
         int count = 0;
+        
+        // 先运行到期的定时任务
+        count += runScheduledTasks();
+        
+        // 再运行普通任务
         Runnable task;
         while ((task = taskQueue.poll()) != null) {
             try {
@@ -211,11 +263,59 @@ public abstract class SingleThreadEventLoop implements EventLoop {
     }
 
     /**
+     * 运行所有到期的定时任务
+     *
+     * @return 运行的定时任务数量
+     */
+    protected int runScheduledTasks() {
+        int count = 0;
+        while (true) {
+            ScheduledTask task = scheduledTaskQueue.peek();
+            if (task == null || !task.isExpired()) {
+                break;
+            }
+            scheduledTaskQueue.poll();
+            if (!task.isCancelled()) {
+                try {
+                    task.run();
+                    count++;
+                } catch (Throwable t) {
+                    System.err.println("[EventLoop] 定时任务执行失败: " + t.getMessage());
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
      * 检查是否有待处理的任务
      *
      * @return 如果有任务返回 true
      */
     protected boolean hasTasks() {
-        return !taskQueue.isEmpty();
+        return !taskQueue.isEmpty() || hasScheduledTasks();
+    }
+
+    /**
+     * 检查是否有待处理的定时任务
+     *
+     * @return 如果有定时任务返回 true
+     */
+    protected boolean hasScheduledTasks() {
+        ScheduledTask task = scheduledTaskQueue.peek();
+        return task != null && task.isExpired();
+    }
+
+    /**
+     * 获取下一个定时任务的延迟时间（纳秒）
+     *
+     * @return 延迟时间（纳秒），如果没有定时任务返回 -1
+     */
+    protected long nextScheduledTaskDelayNanos() {
+        ScheduledTask task = scheduledTaskQueue.peek();
+        if (task == null) {
+            return -1;
+        }
+        return Math.max(0, task.delayNanos());
     }
 }

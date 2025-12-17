@@ -30,6 +30,41 @@
 
 ---
 
+## [IT11] event-loop-scheduled-task
+
+**分支**: `event-loop-scheduled-task`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ScheduledTask` 类实现 `ScheduledFuture<Void>` 接口
+  - 支持一次性定时任务和周期性任务
+  - 使用 `System.nanoTime()` 计算执行时间
+  - 实现 `Delayed` 接口用于优先级队列排序
+  - 支持任务取消和状态查询
+- 更新 `SingleThreadEventLoop` 添加定时任务队列
+  - 添加 `scheduledTaskQueue` 优先级队列
+  - 实现 `schedule()` 延迟任务调度
+  - 实现 `scheduleAtFixedRate()` 周期性任务调度
+  - 更新 `runAllTasks()` 处理到期的定时任务
+  - 添加 `scheduleFromEventLoop()` 用于周期任务重新调度
+- 优化 `NioEventLoop.select()` 方法
+  - 根据下一个定时任务延迟动态调整 select 超时时间
+  - 避免定时任务因 select 阻塞而延迟执行
+- 新增 `ScheduledTaskTest` 测试 17 个测试用例
+  - 延迟任务执行测试
+  - 周期性任务测试
+  - 任务取消测试
+  - ScheduledFuture 状态测试
+  - 验收场景测试
+
+**学习要点**:
+- `PriorityQueue` 按截止时间排序定时任务
+- `System.nanoTime()` 适合计算时间间隔（不受系统时钟调整影响）
+- 周期性任务通过重新加入队列实现
+- Selector 超时应与最近定时任务对齐，减少延迟
+
+---
+
 ## [IT10] event-loop-task-queue
 
 **分支**: `event-loop-task-queue`
