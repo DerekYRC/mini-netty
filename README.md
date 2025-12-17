@@ -1,6 +1,4 @@
-# Mini-Netty
-
-简化版 Netty 网络编程框架，用于学习 Netty 核心原理。
+# mini-netty
 
 [![Java](https://img.shields.io/badge/Java-17%2B-blue)](https://openjdk.org/)
 [![Maven](https://img.shields.io/badge/Maven-3.6%2B-orange)](https://maven.apache.org/)
@@ -9,7 +7,7 @@
 
 ## 项目介绍
 
-Mini-Netty 参照 [mini-spring](./mini-spring) 的渐进式学习方法，从零开始实现一个简化版的 Netty 网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。
+mini-netty是一个从零开始实现的简化版的**Netty**网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。
 
 ### ✨ 特性
 
@@ -281,11 +279,7 @@ ChannelFuture f = b.bind(8080).sync();
 
 ### 推荐书籍
 - [Netty in Action](https://www.manning.com/books/netty-in-action)
-- [Netty 权威指南](https://book.douban.com/subject/25897245/)
 
-### 相关项目
-- [mini-spring](./mini-spring) - 本项目的参考模板
+## 版权说明
 
-## 许可证
-
-本项目仅用于学习目的。
+未取得本人书面许可，不得将该项目用于商业用途
