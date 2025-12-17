@@ -209,11 +209,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 19: inbound-handler (IT19)
 
-- [ ] T096 [IT19] 基于 IT18 创建分支 `inbound-handler`
-- [ ] T097 [IT19] 实现入站事件传递 (fireChannelRead, fireChannelActive 等)
-- [ ] T098 [P] [IT19] 实现 ChannelInboundHandlerAdapter 在 src/main/java/io/netty/channel/ChannelInboundHandlerAdapter.java
-- [ ] T099 [P] [IT19] 编写测试 InboundHandlerTest 在 src/test/java/io/netty/channel/InboundHandlerTest.java
-- [ ] T100 [IT19] 更新 changelog.md
+- [X] T096 [IT19] 基于 IT18 创建分支 `inbound-handler`
+- [X] T097 [IT19] 实现入站事件传递 (fireChannelRead, fireChannelActive 等)
+- [X] T098 [P] [IT19] 实现 ChannelInboundHandlerAdapter 在 src/main/java/io/netty/channel/ChannelInboundHandlerAdapter.java
+- [X] T099 [P] [IT19] 编写测试 InboundHandlerTest 在 src/test/java/io/netty/channel/InboundHandlerTest.java
+- [X] T100 [IT19] 更新 changelog.md
 
 ### 迭代 20: outbound-handler (IT20)
 

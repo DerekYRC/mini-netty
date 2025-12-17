@@ -30,6 +30,33 @@
 
 ---
 
+## [IT19] inbound-handler
+
+**分支**: `inbound-handler`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ChannelInboundHandlerAdapter` 适配器类
+  - 提供所有入站方法的默认实现
+  - 默认行为是将事件传递给下一个 Handler
+  - 用户只需覆盖关心的方法
+- 验证入站事件传递机制
+  - channelRegistered, channelActive, channelRead 等事件按顺序传递
+  - 支持拦截和修改消息后继续传递
+- 新增 `InboundHandlerTest` 共 12 个测试用例
+  - AdapterTests: 验证 Adapter 默认实现
+  - InboundEventPropagationTests: 入站事件传递测试
+  - EventInterceptionTests: 事件拦截和消息转换测试
+  - AcceptanceScenarioTests: 典型消息处理和生命周期测试
+
+**学习要点**:
+- 适配器模式：提供默认实现，简化用户代码
+- 事件传递控制：调用或不调用 super 方法决定是否传递
+- 消息转换：在传递前可以修改消息内容
+- Channel 生命周期：registered → active → read → inactive → unregistered
+
+---
+
 ## [IT18] channel-handler-context
 
 **分支**: `channel-handler-context`
