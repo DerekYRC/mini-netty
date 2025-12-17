@@ -34,12 +34,12 @@
 
 **⚠️ 关键**: 这是第一个分支，为后续所有分支建立处理模式
 
-- [ ] T005 [US1] [US3] [US4] 使用 `git checkout simple-bio-server` 切换到分支
-- [ ] T006 [P] [US3] 使用 `rm -rf mini-spring` 删除 mini-spring 文件夹
-- [ ] T007 [P] [US4] 使用 `find . -name "package-info.java" -type f -delete` 删除 package-info.java 文件
-- [ ] T008 [US1] 迁移 example 包（如存在）从 `src/main/java/io/netty/example` 到 `src/test/java/io/netty/example`
-- [ ] T009 使用 `mvn compile && mvn test` 验证构建
-- [ ] T010 使用 `git add -A && git commit -m "refactor: 重构项目结构"` 提交变更
+- [X] T005 [US1] [US3] [US4] 使用 `git checkout simple-bio-server` 切换到分支
+- [X] T006 [P] [US3] 使用 `rm -rf mini-spring` 删除 mini-spring 文件夹
+- [X] T007 [P] [US4] 使用 `find . -name "package-info.java" -type f -delete` 删除 package-info.java 文件
+- [X] T008 [US1] 迁移 example 包（如存在）从 `src/main/java/io/netty/example` 到 `src/test/java/io/netty/example`
+- [X] T009 使用 `mvn compile && mvn test` 验证构建
+- [X] T010 使用 `git add -A && git commit -m "refactor: 重构项目结构"` 提交变更
 
 **检查点**: IT01 (simple-bio-server) 已处理 - 基础已建立
 
@@ -53,93 +53,93 @@
 
 ### IT02: simple-bio-client
 
-- [ ] T011 [US5] 切换到分支 simple-bio-client
-- [ ] T012 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T013 [P] [US4] 删除 package-info.java 文件
-- [ ] T014 [US1] 迁移 example 包（如存在）
-- [ ] T015 [US5] 将 simple-bio-server 合并到当前分支
-- [ ] T016 验证构建并提交变更
+- [X] T011 [US5] 切换到分支 simple-bio-client
+- [X] T012 [P] [US3] 删除 mini-spring 文件夹
+- [X] T013 [P] [US4] 删除 package-info.java 文件
+- [X] T014 [US1] 迁移 example 包（如存在）
+- [X] T015 [US5] 将 simple-bio-server 合并到当前分支
+- [X] T016 验证构建并提交变更
 
 ### IT03: multi-thread-bio-server
 
-- [ ] T017 [US5] 切换到分支 multi-thread-bio-server
-- [ ] T018 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T019 [P] [US4] 删除 package-info.java 文件
-- [ ] T020 [US1] 迁移 example 包（如存在）
-- [ ] T021 [US5] 将 simple-bio-client 合并到当前分支
-- [ ] T022 验证构建并提交变更
+- [X] T017 [US5] 切换到分支 multi-thread-bio-server
+- [X] T018 [P] [US3] 删除 mini-spring 文件夹
+- [X] T019 [P] [US4] 删除 package-info.java 文件
+- [X] T020 [US1] 迁移 example 包（如存在）
+- [X] T021 [US5] 将 simple-bio-client 合并到当前分支
+- [X] T022 验证构建并提交变更
 
 ### IT04: nio-channel-buffer
 
-- [ ] T023 [US5] 切换到分支 nio-channel-buffer
-- [ ] T024 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T025 [P] [US4] 删除 package-info.java 文件
-- [ ] T026 [US1] 迁移 example 包（如存在）
-- [ ] T027 [US5] 将 multi-thread-bio-server 合并到当前分支
-- [ ] T028 验证构建并提交变更
+- [X] T023 [US5] 切换到分支 nio-channel-buffer
+- [X] T024 [P] [US3] 删除 mini-spring 文件夹
+- [X] T025 [P] [US4] 删除 package-info.java 文件
+- [X] T026 [US1] 迁移 example 包（如存在）
+- [X] T027 [US5] 将 multi-thread-bio-server 合并到当前分支
+- [X] T028 验证构建并提交变更
 
 ### IT05: nio-selector
 
-- [ ] T029 [US5] 切换到分支 nio-selector
-- [ ] T030 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T031 [P] [US4] 删除 package-info.java 文件
-- [ ] T032 [US1] 迁移 example 包（如存在）
-- [ ] T033 [US5] 将 nio-channel-buffer 合并到当前分支
-- [ ] T034 验证构建并提交变更
+- [X] T029 [US5] 切换到分支 nio-selector
+- [X] T030 [P] [US3] 删除 mini-spring 文件夹
+- [X] T031 [P] [US4] 删除 package-info.java 文件
+- [X] T032 [US1] 迁移 example 包（如存在）
+- [X] T033 [US5] 将 nio-channel-buffer 合并到当前分支
+- [X] T034 验证构建并提交变更
 
 ### IT06: nio-server-accept
 
-- [ ] T035 [US5] 切换到分支 nio-server-accept
-- [ ] T036 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T037 [P] [US4] 删除 package-info.java 文件
-- [ ] T038 [US1] 迁移 example 包（如存在）
-- [ ] T039 [US5] 将 nio-selector 合并到当前分支
-- [ ] T040 验证构建并提交变更
+- [X] T035 [US5] 切换到分支 nio-server-accept
+- [X] T036 [P] [US3] 删除 mini-spring 文件夹
+- [X] T037 [P] [US4] 删除 package-info.java 文件
+- [X] T038 [US1] 迁移 example 包（如存在）
+- [X] T039 [US5] 将 nio-selector 合并到当前分支
+- [X] T040 验证构建并提交变更
 
 ### IT07: nio-server-read-write
 
-- [ ] T041 [US5] 切换到分支 nio-server-read-write
-- [ ] T042 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T043 [P] [US4] 删除 package-info.java 文件
-- [ ] T044 [US1] 迁移 example 包（如存在）
-- [ ] T045 [US5] 将 nio-server-accept 合并到当前分支
-- [ ] T046 验证构建并提交变更
+- [X] T041 [US5] 切换到分支 nio-server-read-write
+- [X] T042 [P] [US3] 删除 mini-spring 文件夹
+- [X] T043 [P] [US4] 删除 package-info.java 文件
+- [X] T044 [US1] 迁移 example 包（如存在）
+- [X] T045 [US5] 将 nio-server-accept 合并到当前分支
+- [X] T046 验证构建并提交变更
 
 ### IT08: event-loop-interface
 
-- [ ] T047 [US5] 切换到分支 event-loop-interface
-- [ ] T048 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T049 [P] [US4] 删除 package-info.java 文件
-- [ ] T050 [US1] 迁移 example 包（如存在）
-- [ ] T051 [US5] 将 nio-server-read-write 合并到当前分支
-- [ ] T052 验证构建并提交变更
+- [X] T047 [US5] 切换到分支 event-loop-interface
+- [X] T048 [P] [US3] 删除 mini-spring 文件夹
+- [X] T049 [P] [US4] 删除 package-info.java 文件
+- [X] T050 [US1] 迁移 example 包（如存在）
+- [X] T051 [US5] 将 nio-server-read-write 合并到当前分支
+- [X] T052 验证构建并提交变更
 
 ### IT09: single-thread-event-loop
 
-- [ ] T053 [US5] 切换到分支 single-thread-event-loop
-- [ ] T054 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T055 [P] [US4] 删除 package-info.java 文件
-- [ ] T056 [US1] 迁移 example 包（如存在）
-- [ ] T057 [US5] 将 event-loop-interface 合并到当前分支
-- [ ] T058 验证构建并提交变更
+- [X] T053 [US5] 切换到分支 single-thread-event-loop
+- [X] T054 [P] [US3] 删除 mini-spring 文件夹
+- [X] T055 [P] [US4] 删除 package-info.java 文件
+- [X] T056 [US1] 迁移 example 包（如存在）
+- [X] T057 [US5] 将 event-loop-interface 合并到当前分支
+- [X] T058 验证构建并提交变更
 
 ### IT10: event-loop-task-queue
 
-- [ ] T059 [US5] 切换到分支 event-loop-task-queue
-- [ ] T060 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T061 [P] [US4] 删除 package-info.java 文件
-- [ ] T062 [US1] 迁移 example 包（如存在）
-- [ ] T063 [US5] 将 single-thread-event-loop 合并到当前分支
-- [ ] T064 验证构建并提交变更
+- [X] T059 [US5] 切换到分支 event-loop-task-queue
+- [X] T060 [P] [US3] 删除 mini-spring 文件夹
+- [X] T061 [P] [US4] 删除 package-info.java 文件
+- [X] T062 [US1] 迁移 example 包（如存在）
+- [X] T063 [US5] 将 single-thread-event-loop 合并到当前分支
+- [X] T064 验证构建并提交变更
 
 ### IT11: event-loop-scheduled-task
 
-- [ ] T065 [US5] 切换到分支 event-loop-scheduled-task
-- [ ] T066 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T067 [P] [US4] 删除 package-info.java 文件
-- [ ] T068 [US1] 迁移 example 包（如存在）
-- [ ] T069 [US5] 将 event-loop-task-queue 合并到当前分支
-- [ ] T070 验证构建并提交变更
+- [X] T065 [US5] 切换到分支 event-loop-scheduled-task
+- [X] T066 [P] [US3] 删除 mini-spring 文件夹
+- [X] T067 [P] [US4] 删除 package-info.java 文件
+- [X] T068 [US1] 迁移 example 包（如存在）
+- [X] T069 [US5] 将 event-loop-task-queue 合并到当前分支
+- [X] T070 验证构建并提交变更
 
 **检查点**: IT02-IT11 已处理并合并
 
@@ -151,84 +151,84 @@
 
 ### IT13: nio-channel-impl
 
-- [ ] T071 [US5] 切换到分支 nio-channel-impl
-- [ ] T072 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T073 [P] [US4] 删除 package-info.java 文件
-- [ ] T074 [US1] 迁移 example 包（如存在）
-- [ ] T075 [US5] 将 event-loop-scheduled-task 合并到当前分支
-- [ ] T076 验证构建并提交变更
+- [X] T071 [US5] 切换到分支 nio-channel-impl
+- [X] T072 [P] [US3] 删除 mini-spring 文件夹
+- [X] T073 [P] [US4] 删除 package-info.java 文件
+- [X] T074 [US1] 迁移 example 包（如存在）
+- [X] T075 [US5] 将 event-loop-scheduled-task 合并到当前分支
+- [X] T076 验证构建并提交变更
 
 ### IT14: channel-config
 
-- [ ] T077 [US5] 切换到分支 channel-config
-- [ ] T078 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T079 [P] [US4] 删除 package-info.java 文件
-- [ ] T080 [US1] 迁移 example 包（如存在）
-- [ ] T081 [US5] 将 nio-channel-impl 合并到当前分支
-- [ ] T082 验证构建并提交变更
+- [X] T077 [US5] 切换到分支 channel-config
+- [X] T078 [P] [US3] 删除 mini-spring 文件夹
+- [X] T079 [P] [US4] 删除 package-info.java 文件
+- [X] T080 [US1] 迁移 example 包（如存在）
+- [X] T081 [US5] 将 nio-channel-impl 合并到当前分支
+- [X] T082 验证构建并提交变更
 
 ### IT15: channel-unsafe
 
-- [ ] T083 [US5] 切换到分支 channel-unsafe
-- [ ] T084 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T085 [P] [US4] 删除 package-info.java 文件
-- [ ] T086 [US1] 迁移 example 包（如存在）
-- [ ] T087 [US5] 将 channel-config 合并到当前分支
-- [ ] T088 验证构建并提交变更
+- [X] T083 [US5] 切换到分支 channel-unsafe
+- [X] T084 [P] [US3] 删除 mini-spring 文件夹
+- [X] T085 [P] [US4] 删除 package-info.java 文件
+- [X] T086 [US1] 迁移 example 包（如存在）
+- [X] T087 [US5] 将 channel-config 合并到当前分支
+- [X] T088 验证构建并提交变更
 
 ### IT16: channel-handler-interface
 
-- [ ] T089 [US5] 切换到分支 channel-handler-interface
-- [ ] T090 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T091 [P] [US4] 删除 package-info.java 文件
-- [ ] T092 [US1] 迁移 example 包（如存在）
-- [ ] T093 [US5] 将 channel-unsafe 合并到当前分支
-- [ ] T094 验证构建并提交变更
+- [X] T089 [US5] 切换到分支 channel-handler-interface
+- [X] T090 [P] [US3] 删除 mini-spring 文件夹
+- [X] T091 [P] [US4] 删除 package-info.java 文件
+- [X] T092 [US1] 迁移 example 包（如存在）
+- [X] T093 [US5] 将 channel-unsafe 合并到当前分支
+- [X] T094 验证构建并提交变更
 
 ### IT17: channel-pipeline-basic
 
-- [ ] T095 [US5] 切换到分支 channel-pipeline-basic
-- [ ] T096 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T097 [P] [US4] 删除 package-info.java 文件
-- [ ] T098 [US1] 迁移 example 包（如存在）
-- [ ] T099 [US5] 将 channel-handler-interface 合并到当前分支
-- [ ] T100 验证构建并提交变更
+- [X] T095 [US5] 切换到分支 channel-pipeline-basic
+- [X] T096 [P] [US3] 删除 mini-spring 文件夹
+- [X] T097 [P] [US4] 删除 package-info.java 文件
+- [X] T098 [US1] 迁移 example 包（如存在）
+- [X] T099 [US5] 将 channel-handler-interface 合并到当前分支
+- [X] T100 验证构建并提交变更
 
 ### IT18: channel-handler-context
 
-- [ ] T101 [US5] 切换到分支 channel-handler-context
-- [ ] T102 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T103 [P] [US4] 删除 package-info.java 文件
-- [ ] T104 [US1] 迁移 example 包（如存在）
-- [ ] T105 [US5] 将 channel-pipeline-basic 合并到当前分支
-- [ ] T106 验证构建并提交变更
+- [X] T101 [US5] 切换到分支 channel-handler-context
+- [X] T102 [P] [US3] 删除 mini-spring 文件夹
+- [X] T103 [P] [US4] 删除 package-info.java 文件
+- [X] T104 [US1] 迁移 example 包（如存在）
+- [X] T105 [US5] 将 channel-pipeline-basic 合并到当前分支
+- [X] T106 验证构建并提交变更
 
 ### IT19: inbound-handler
 
-- [ ] T107 [US5] 切换到分支 inbound-handler
-- [ ] T108 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T109 [P] [US4] 删除 package-info.java 文件
-- [ ] T110 [US1] 迁移 example 包（如存在）
-- [ ] T111 [US5] 将 channel-handler-context 合并到当前分支
-- [ ] T112 验证构建并提交变更
+- [X] T107 [US5] 切换到分支 inbound-handler
+- [X] T108 [P] [US3] 删除 mini-spring 文件夹
+- [X] T109 [P] [US4] 删除 package-info.java 文件
+- [X] T110 [US1] 迁移 example 包（如存在）
+- [X] T111 [US5] 将 channel-handler-context 合并到当前分支
+- [X] T112 验证构建并提交变更
 
 ### IT20: outbound-handler
 
-- [ ] T113 [US5] 切换到分支 outbound-handler
-- [ ] T114 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T115 [P] [US4] 删除 package-info.java 文件
-- [ ] T116 [US1] 迁移 example 包（如存在）
-- [ ] T117 [US5] 将 inbound-handler 合并到当前分支
-- [ ] T118 验证构建并提交变更
+- [X] T113 [US5] 切换到分支 outbound-handler
+- [X] T114 [P] [US3] 删除 mini-spring 文件夹
+- [X] T115 [P] [US4] 删除 package-info.java 文件
+- [X] T116 [US1] 迁移 example 包（如存在）
+- [X] T117 [US5] 将 inbound-handler 合并到当前分支
+- [X] T118 验证构建并提交变更
 
 ### IT21: handler-adapter
 
-- [ ] T119 [US5] 切换到分支 handler-adapter
-- [ ] T120 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T121 [P] [US4] 删除 package-info.java 文件
-- [ ] T122 [US1] 迁移 example 包（如存在）
-- [ ] T123 [US5] 将 outbound-handler 合并到当前分支
-- [ ] T124 验证构建并提交变更
+- [X] T119 [US5] 切换到分支 handler-adapter
+- [X] T120 [P] [US3] 删除 mini-spring 文件夹
+- [X] T121 [P] [US4] 删除 package-info.java 文件
+- [X] T122 [US1] 迁移 example 包（如存在）
+- [X] T123 [US5] 将 outbound-handler 合并到当前分支
+- [X] T124 验证构建并提交变更
 
 **检查点**: IT13-IT21 已处理并合并
 
@@ -240,75 +240,75 @@
 
 ### IT22: bytebuf-interface
 
-- [ ] T125 [US5] 切换到分支 bytebuf-interface
-- [ ] T126 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T127 [P] [US4] 删除 package-info.java 文件
-- [ ] T128 [US1] 迁移 example 包（如存在）
-- [ ] T129 [US5] 将 handler-adapter 合并到当前分支
-- [ ] T130 验证构建并提交变更
+- [X] T125 [US5] 切换到分支 bytebuf-interface
+- [X] T126 [P] [US3] 删除 mini-spring 文件夹
+- [X] T127 [P] [US4] 删除 package-info.java 文件
+- [X] T128 [US1] 迁移 example 包（如存在）
+- [X] T129 [US5] 将 handler-adapter 合并到当前分支
+- [X] T130 验证构建并提交变更
 
 ### IT23: heap-byte-buf
 
-- [ ] T131 [US5] 切换到分支 heap-byte-buf
-- [ ] T132 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T133 [P] [US4] 删除 package-info.java 文件
-- [ ] T134 [US1] 迁移 example 包（如存在）
-- [ ] T135 [US5] 将 bytebuf-interface 合并到当前分支
-- [ ] T136 验证构建并提交变更
+- [X] T131 [US5] 切换到分支 heap-byte-buf
+- [X] T132 [P] [US3] 删除 mini-spring 文件夹
+- [X] T133 [P] [US4] 删除 package-info.java 文件
+- [X] T134 [US1] 迁移 example 包（如存在）
+- [X] T135 [US5] 将 bytebuf-interface 合并到当前分支
+- [X] T136 验证构建并提交变更
 
 ### IT24: byte-buf-reference-count
 
-- [ ] T137 [US5] 切换到分支 byte-buf-reference-count
-- [ ] T138 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T139 [P] [US4] 删除 package-info.java 文件
-- [ ] T140 [US1] 迁移 example 包（如存在）
-- [ ] T141 [US5] 将 heap-byte-buf 合并到当前分支
-- [ ] T142 验证构建并提交变更
+- [X] T137 [US5] 切换到分支 byte-buf-reference-count
+- [X] T138 [P] [US3] 删除 mini-spring 文件夹
+- [X] T139 [P] [US4] 删除 package-info.java 文件
+- [X] T140 [US1] 迁移 example 包（如存在）
+- [X] T141 [US5] 将 heap-byte-buf 合并到当前分支
+- [X] T142 验证构建并提交变更
 
 ### IT25: byte-buf-allocator
 
-- [ ] T143 [US5] 切换到分支 byte-buf-allocator
-- [ ] T144 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T145 [P] [US4] 删除 package-info.java 文件
-- [ ] T146 [US1] 迁移 example 包（如存在）
-- [ ] T147 [US5] 将 byte-buf-reference-count 合并到当前分支
-- [ ] T148 验证构建并提交变更
+- [X] T143 [US5] 切换到分支 byte-buf-allocator
+- [X] T144 [P] [US3] 删除 mini-spring 文件夹
+- [X] T145 [P] [US4] 删除 package-info.java 文件
+- [X] T146 [US1] 迁移 example 包（如存在）
+- [X] T147 [US5] 将 byte-buf-reference-count 合并到当前分支
+- [X] T148 验证构建并提交变更
 
 ### IT26: byte-to-message-decoder
 
-- [ ] T149 [US5] 切换到分支 byte-to-message-decoder
-- [ ] T150 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T151 [P] [US4] 删除 package-info.java 文件
-- [ ] T152 [US1] 迁移 example 包（如存在）
-- [ ] T153 [US5] 将 byte-buf-allocator 合并到当前分支
-- [ ] T154 验证构建并提交变更
+- [X] T149 [US5] 切换到分支 byte-to-message-decoder
+- [X] T150 [P] [US3] 删除 mini-spring 文件夹
+- [X] T151 [P] [US4] 删除 package-info.java 文件
+- [X] T152 [US1] 迁移 example 包（如存在）
+- [X] T153 [US5] 将 byte-buf-allocator 合并到当前分支
+- [X] T154 验证构建并提交变更
 
 ### IT27: fixed-length-decoder
 
-- [ ] T155 [US5] 切换到分支 fixed-length-decoder
-- [ ] T156 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T157 [P] [US4] 删除 package-info.java 文件
-- [ ] T158 [US1] 迁移 example 包（如存在）
-- [ ] T159 [US5] 将 byte-to-message-decoder 合并到当前分支
-- [ ] T160 验证构建并提交变更
+- [X] T155 [US5] 切换到分支 fixed-length-decoder
+- [X] T156 [P] [US3] 删除 mini-spring 文件夹
+- [X] T157 [P] [US4] 删除 package-info.java 文件
+- [X] T158 [US1] 迁移 example 包（如存在）
+- [X] T159 [US5] 将 byte-to-message-decoder 合并到当前分支
+- [X] T160 验证构建并提交变更
 
 ### IT28: length-field-decoder
 
-- [ ] T161 [US5] 切换到分支 length-field-decoder
-- [ ] T162 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T163 [P] [US4] 删除 package-info.java 文件
-- [ ] T164 [US1] 迁移 example 包（如存在）
-- [ ] T165 [US5] 将 fixed-length-decoder 合并到当前分支
-- [ ] T166 验证构建并提交变更
+- [X] T161 [US5] 切换到分支 length-field-decoder
+- [X] T162 [P] [US3] 删除 mini-spring 文件夹
+- [X] T163 [P] [US4] 删除 package-info.java 文件
+- [X] T164 [US1] 迁移 example 包（如存在）
+- [X] T165 [US5] 将 fixed-length-decoder 合并到当前分支
+- [X] T166 验证构建并提交变更
 
 ### IT29: string-codec
 
-- [ ] T167 [US5] 切换到分支 string-codec
-- [ ] T168 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T169 [P] [US4] 删除 package-info.java 文件
-- [ ] T170 [US1] 迁移 example 包（如存在）
-- [ ] T171 [US5] 将 length-field-decoder 合并到当前分支
-- [ ] T172 验证构建并提交变更
+- [X] T167 [US5] 切换到分支 string-codec
+- [X] T168 [P] [US3] 删除 mini-spring 文件夹
+- [X] T169 [P] [US4] 删除 package-info.java 文件
+- [X] T170 [US1] 迁移 example 包（如存在）
+- [X] T171 [US5] 将 length-field-decoder 合并到当前分支
+- [X] T172 验证构建并提交变更
 
 **检查点**: IT22-IT29 已处理并合并
 
@@ -320,75 +320,75 @@
 
 ### IT30: abstract-bootstrap
 
-- [ ] T173 [US5] 切换到分支 abstract-bootstrap
-- [ ] T174 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T175 [P] [US4] 删除 package-info.java 文件
-- [ ] T176 [US1] 迁移 example 包（如存在）
-- [ ] T177 [US5] 将 string-codec 合并到当前分支
-- [ ] T178 验证构建并提交变更
+- [X] T173 [US5] 切换到分支 abstract-bootstrap
+- [X] T174 [P] [US3] 删除 mini-spring 文件夹
+- [X] T175 [P] [US4] 删除 package-info.java 文件
+- [X] T176 [US1] 迁移 example 包（如存在）
+- [X] T177 [US5] 将 string-codec 合并到当前分支
+- [X] T178 验证构建并提交变更
 
 ### IT31: server-bootstrap
 
-- [ ] T179 [US5] 切换到分支 server-bootstrap
-- [ ] T180 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T181 [P] [US4] 删除 package-info.java 文件
-- [ ] T182 [US1] 迁移 example 包（如存在）
-- [ ] T183 [US5] 将 abstract-bootstrap 合并到当前分支
-- [ ] T184 验证构建并提交变更
+- [X] T179 [US5] 切换到分支 server-bootstrap
+- [X] T180 [P] [US3] 删除 mini-spring 文件夹
+- [X] T181 [P] [US4] 删除 package-info.java 文件
+- [X] T182 [US1] 迁移 example 包（如存在）
+- [X] T183 [US5] 将 abstract-bootstrap 合并到当前分支
+- [X] T184 验证构建并提交变更
 
 ### IT32: client-bootstrap
 
-- [ ] T185 [US5] 切换到分支 client-bootstrap
-- [ ] T186 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T187 [P] [US4] 删除 package-info.java 文件
-- [ ] T188 [US1] 迁移 example 包（如存在）
-- [ ] T189 [US5] 将 server-bootstrap 合并到当前分支
-- [ ] T190 验证构建并提交变更
+- [X] T185 [US5] 切换到分支 client-bootstrap
+- [X] T186 [P] [US3] 删除 mini-spring 文件夹
+- [X] T187 [P] [US4] 删除 package-info.java 文件
+- [X] T188 [US1] 迁移 example 包（如存在）
+- [X] T189 [US5] 将 server-bootstrap 合并到当前分支
+- [X] T190 验证构建并提交变更
 
 ### IT33: event-loop-group
 
-- [ ] T191 [US5] 切换到分支 event-loop-group
-- [ ] T192 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T193 [P] [US4] 删除 package-info.java 文件
-- [ ] T194 [US1] 迁移 example 包（如存在）
-- [ ] T195 [US5] 将 client-bootstrap 合并到当前分支
-- [ ] T196 验证构建并提交变更
+- [X] T191 [US5] 切换到分支 event-loop-group
+- [X] T192 [P] [US3] 删除 mini-spring 文件夹
+- [X] T193 [P] [US4] 删除 package-info.java 文件
+- [X] T194 [US1] 迁移 example 包（如存在）
+- [X] T195 [US5] 将 client-bootstrap 合并到当前分支
+- [X] T196 验证构建并提交变更
 
 ### IT34: boss-worker-model
 
-- [ ] T197 [US5] 切换到分支 boss-worker-model
-- [ ] T198 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T199 [P] [US4] 删除 package-info.java 文件
-- [ ] T200 [US1] 迁移 example 包（如存在）
-- [ ] T201 [US5] 将 event-loop-group 合并到当前分支
-- [ ] T202 验证构建并提交变更
+- [X] T197 [US5] 切换到分支 boss-worker-model
+- [X] T198 [P] [US3] 删除 mini-spring 文件夹
+- [X] T199 [P] [US4] 删除 package-info.java 文件
+- [X] T200 [US1] 迁移 example 包（如存在）
+- [X] T201 [US5] 将 event-loop-group 合并到当前分支
+- [X] T202 验证构建并提交变更
 
 ### IT35: channel-chooser
 
-- [ ] T203 [US5] 切换到分支 channel-chooser
-- [ ] T204 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T205 [P] [US4] 删除 package-info.java 文件
-- [ ] T206 [US1] 迁移 example 包（如存在）
-- [ ] T207 [US5] 将 boss-worker-model 合并到当前分支
-- [ ] T208 验证构建并提交变更
+- [X] T203 [US5] 切换到分支 channel-chooser
+- [X] T204 [P] [US3] 删除 mini-spring 文件夹
+- [X] T205 [P] [US4] 删除 package-info.java 文件
+- [X] T206 [US1] 迁移 example 包（如存在）
+- [X] T207 [US5] 将 boss-worker-model 合并到当前分支
+- [X] T208 验证构建并提交变更
 
 ### IT36: idle-state-handler
 
-- [ ] T209 [US5] 切换到分支 idle-state-handler
-- [ ] T210 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T211 [P] [US4] 删除 package-info.java 文件
-- [ ] T212 [US1] 迁移 example 包（如存在）
-- [ ] T213 [US5] 将 channel-chooser 合并到当前分支
-- [ ] T214 验证构建并提交变更
+- [X] T209 [US5] 切换到分支 idle-state-handler
+- [X] T210 [P] [US3] 删除 mini-spring 文件夹
+- [X] T211 [P] [US4] 删除 package-info.java 文件
+- [X] T212 [US1] 迁移 example 包（如存在）
+- [X] T213 [US5] 将 channel-chooser 合并到当前分支
+- [X] T214 验证构建并提交变更
 
 ### IT37: logging-handler
 
-- [ ] T215 [US5] 切换到分支 logging-handler
-- [ ] T216 [P] [US3] 删除 mini-spring 文件夹
-- [ ] T217 [P] [US4] 删除 package-info.java 文件
-- [ ] T218 [US1] 迁移 example 包（如存在）
-- [ ] T219 [US5] 将 idle-state-handler 合并到当前分支
-- [ ] T220 验证构建并提交变更
+- [X] T215 [US5] 切换到分支 logging-handler
+- [X] T216 [P] [US3] 删除 mini-spring 文件夹
+- [X] T217 [P] [US4] 删除 package-info.java 文件
+- [X] T218 [US1] 迁移 example 包（如存在）
+- [X] T219 [US5] 将 idle-state-handler 合并到当前分支
+- [X] T220 验证构建并提交变更
 
 **检查点**: IT30-IT37 已处理并合并
 
@@ -400,11 +400,11 @@
 
 **独立测试**: `changelog.md` 在 Unreleased 之后显示 IT01，最后显示 IT37
 
-- [ ] T221 [US2] 使用 `git checkout main` 切换到主分支
-- [ ] T222 [US2] 读取当前 changelog.md 并提取所有迭代章节
-- [ ] T223 [US2] 按迭代编号重排章节（IT01 → IT37）到 `changelog.md`
-- [ ] T224 [US2] 确保每个章节包含：主要改动、知识点、关键单元测试
-- [ ] T225 [US2] 验证 changelog 格式并提交变更
+- [X] T221 [US2] 使用 `git checkout main` 切换到主分支
+- [X] T222 [US2] 读取当前 changelog.md 并提取所有迭代章节
+- [X] T223 [US2] 按迭代编号重排章节（IT01 → IT37）到 `changelog.md`
+- [X] T224 [US2] 确保每个章节包含：主要改动、知识点、关键单元测试
+- [X] T225 [US2] 验证 changelog 格式并提交变更
 
 **检查点**: 主分支上 Changelog 已正确排序
 
@@ -414,11 +414,11 @@
 
 **目标**: 将 logging-handler 的所有变更合并到 main
 
-- [ ] T226 [US5] 使用 `git checkout main` 切换到主分支
-- [ ] T227 [US5] 使用 `git merge logging-handler --no-edit` 将 logging-handler 合并到 main
-- [ ] T228 [US5] 解决合并冲突（代码使用 --theirs，changelog 手动处理）
-- [ ] T229 使用 `mvn compile && mvn test` 验证最终构建（预期 434+ 测试）
-- [ ] T230 [US5] 提交最终合并变更
+- [X] T226 [US5] 使用 `git checkout main` 切换到主分支
+- [X] T227 [US5] 使用 `git merge logging-handler --no-edit` 将 logging-handler 合并到 main
+- [X] T228 [US5] 解决合并冲突（代码使用 --theirs，changelog 手动处理）
+- [X] T229 使用 `mvn compile && mvn test` 验证最终构建（预期 434+ 测试）
+- [X] T230 [US5] 提交最终合并变更
 
 **检查点**: 主分支包含所有迭代变更
 
@@ -428,15 +428,15 @@
 
 **目的**: 最终验证和清理
 
-- [ ] T231 验证主分支上 `src/main/java/io/netty/example` 不存在
-- [ ] T232 验证 `src/test/java/io/netty/example` 包含所有示例代码
-- [ ] T233 验证主分支上 `mini-spring` 文件夹不存在
-- [ ] T234 使用 `find . -name "package-info.java"` 验证没有 package-info.java 文件
-- [ ] T235 [P] 使用 `mvn test` 在主分支运行完整测试套件
-- [ ] T236 [P] 验证 changelog.md 顺序（IT01 在前，IT37 在后）
-- [ ] T237 抽查 3 个随机分支（如 IT10、IT20、IT30）结构是否正确
-- [ ] T238 验证通过后使用 `git branch -D main-backup` 删除备份分支
-- [ ] T239 运行 quickstart.md 验证清单
+- [X] T231 验证主分支上 `src/main/java/io/netty/example` 不存在
+- [X] T232 验证 `src/test/java/io/netty/example` 包含所有示例代码
+- [X] T233 验证主分支上 `mini-spring` 文件夹不存在
+- [X] T234 使用 `find . -name "package-info.java"` 验证没有 package-info.java 文件
+- [X] T235 [P] 使用 `mvn test` 在主分支运行完整测试套件
+- [X] T236 [P] 验证 changelog.md 顺序（IT01 在前，IT37 在后）
+- [X] T237 抽查 3 个随机分支（如 IT10、IT20、IT30）结构是否正确
+- [X] T238 验证通过后使用 `git branch -D main-backup` 删除备份分支
+- [X] T239 运行 quickstart.md 验证清单
 
 ---
 
