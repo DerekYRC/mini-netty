@@ -171,6 +171,32 @@
 
 ---
 
+## [IT32] client-bootstrap
+
+**分支**: `client-bootstrap`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `Bootstrap` 客户端启动器
+  - 继承自 AbstractBootstrap
+  - connect(host, port) 连接到远程服务器
+  - connect(remoteAddress) 使用 SocketAddress 连接
+  - doResolveAndConnect() 解析地址并发起连接
+- 完善客户端连接流程
+  - 创建 NioSocketChannel 实例
+  - 注册到 EventLoop
+  - 执行实际连接操作
+  - 触发 channelActive 事件
+- 新增集成测试验证客户端服务端通信
+
+**学习要点**:
+- Bootstrap 与 ServerBootstrap 的职责差异
+- 客户端连接的异步处理模式
+- 地址解析与连接的分离设计
+- 统一的启动器 API 设计思想
+
+---
+
 ## [IT31] server-bootstrap
 
 **分支**: `server-bootstrap`
@@ -727,6 +753,33 @@
 - Pipeline 是双向链表，入站从头到尾，出站从尾到头
 - SelectableChannel 必须设置为非阻塞模式
 - 每个 Channel 有唯一的 ChannelId 和专属的 Pipeline
+
+---
+
+## [IT12] channel-interface
+
+**分支**: `channel-interface`
+**日期**: 2025-12-17
+
+**说明**: 本迭代的内容已合并到 IT08 (event-loop-interface) 中一同实现。
+
+**改动内容** (在 IT08 中完成):
+- 定义 `Channel` 接口，包括：
+  - pipeline() 获取管道
+  - isOpen()、isActive() 状态查询
+  - eventLoop() 获取所属的事件循环
+  - close() 关闭通道
+- 定义 `ChannelId` 接口
+  - asShortText()、asLongText() 获取标识文本
+- 定义 `ChannelFuture` 接口
+  - 继承 Future 模式，支持异步操作
+  - addListener() 添加完成回调
+  - sync()、await() 等待结果
+
+**学习要点**:
+- Channel 是网络 I/O 操作的核心抽象
+- ChannelId 提供唯一标识，便于日志和调试
+- ChannelFuture 实现异步通知模式
 
 ---
 
