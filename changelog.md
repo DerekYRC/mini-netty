@@ -30,6 +30,40 @@
 
 ---
 
+## [IT18] channel-handler-context
+
+**分支**: `channel-handler-context`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 验证 `ChannelHandlerContext` 接口
+  - 提供 Handler 与 Pipeline 交互的桥梁
+  - 入站事件传播：fireChannelRegistered, fireChannelActive, fireChannelRead 等
+  - 出站操作：write, flush, close, read
+  - 创建 Promise：newPromise
+- 验证 `AbstractChannelHandlerContext` 实现
+  - 双向链表节点（prev, next）
+  - 查找下一个入站/出站 Handler
+  - 事件传递逻辑
+- 验证 `HeadContext` 和 `TailContext`
+  - HeadContext: 出站操作的最终执行点
+  - TailContext: 入站事件的终点，处理未消费的消息和异常
+- 新增 `ChannelHandlerContextTest` 共 11 个测试用例
+  - ContextBasicPropertiesTests: Context 基本属性测试
+  - EventPropagationTests: 事件传递测试
+  - ChainPropagationTests: 链式传递测试
+  - AcceptanceScenarioTests: 完整场景测试
+
+**说明**: ChannelHandlerContext 相关实现已在 IT08 中预先创建，本迭代添加测试并确认其完整性。
+
+**学习要点**:
+- Context 作为 Handler 和 Pipeline 的桥梁
+- 事件传播：从当前节点向下一个节点传递
+- 入站事件从 Head 到 Tail，出站事件从 Tail 到 Head
+- 可以选择停止传播或继续传递事件
+
+---
+
 ## [IT17] channel-pipeline-basic
 
 **分支**: `channel-pipeline-basic`

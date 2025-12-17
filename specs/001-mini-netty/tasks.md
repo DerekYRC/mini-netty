@@ -200,12 +200,12 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 18: channel-handler-context (IT18)
 
-- [ ] T090 [IT18] 基于 IT17 创建分支 `channel-handler-context`
-- [ ] T091 [P] [IT18] 定义 ChannelHandlerContext 接口在 src/main/java/io/netty/channel/ChannelHandlerContext.java
-- [ ] T092 [IT18] 实现 AbstractChannelHandlerContext 在 src/main/java/io/netty/channel/AbstractChannelHandlerContext.java
-- [ ] T093 [IT18] 实现 HeadContext 和 TailContext 在 DefaultChannelPipeline 中
-- [ ] T094 [P] [IT18] 编写测试 ChannelHandlerContextTest 在 src/test/java/io/netty/channel/ChannelHandlerContextTest.java
-- [ ] T095 [IT18] 更新 changelog.md
+- [X] T090 [IT18] 基于 IT17 创建分支 `channel-handler-context`
+- [X] T091 [P] [IT18] 定义 ChannelHandlerContext 接口在 src/main/java/io/netty/channel/ChannelHandlerContext.java
+- [X] T092 [IT18] 实现 AbstractChannelHandlerContext 在 src/main/java/io/netty/channel/AbstractChannelHandlerContext.java
+- [X] T093 [IT18] 实现 HeadContext 和 TailContext 在 DefaultChannelPipeline 中
+- [X] T094 [P] [IT18] 编写测试 ChannelHandlerContextTest 在 src/test/java/io/netty/channel/ChannelHandlerContextTest.java
+- [X] T095 [IT18] 更新 changelog.md
 
 ### 迭代 19: inbound-handler (IT19)
 
