@@ -30,6 +30,38 @@
 
 ---
 
+## [IT29] string-codec
+
+**分支**: `string-codec`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `MessageToByteEncoder<I>` 消息到字节编码器基类
+  - 泛型支持，自动类型匹配
+  - 输出缓冲区自动分配
+- 新增 `EncoderException` 编码异常类
+- 新增 `StringDecoder` 字符串解码器
+  - 将 ByteBuf 解码为 String
+  - 支持自定义字符编码
+  - 自动释放输入 ByteBuf
+- 新增 `StringEncoder` 字符串编码器
+  - 将 CharSequence 编码为 ByteBuf
+  - 支持自定义字符编码
+- 新增 `StringCodecTest` 共 14 个测试用例
+  - StringDecoderTests: UTF-8/中文/ByteBuf释放/非ByteBuf透传
+  - StringEncoderTests: UTF-8/中文/空字符串编码
+  - CombinedCodecTests: 与帧解码器配合使用
+  - AcceptanceScenarioTests: 聊天消息和RPC响应场景
+
+**检查点 (US5)**: 编解码器可正确解决粘包/拆包问题 ✓
+
+**学习要点**:
+- MessageToByteEncoder 是出站编码器的基类
+- StringDecoder/StringEncoder 通常与帧解码器配合使用
+- 完整的编解码流程：帧解码 → 字符串解码 → 业务处理
+
+---
+
 ## [IT28] length-field-decoder
 
 **分支**: `length-field-decoder`

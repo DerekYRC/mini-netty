@@ -305,12 +305,12 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 29: string-codec (IT29)
 
-- [ ] T142 [IT29] 基于 IT28 创建分支 `string-codec`
-- [ ] T143 [P] [IT29] 实现 StringDecoder 在 src/main/java/io/netty/handler/codec/string/StringDecoder.java
-- [ ] T144 [P] [IT29] 实现 StringEncoder 在 src/main/java/io/netty/handler/codec/string/StringEncoder.java
-- [ ] T145 [P] [IT29] 实现 MessageToByteEncoder 在 src/main/java/io/netty/handler/codec/MessageToByteEncoder.java
-- [ ] T146 [P] [IT29] 编写测试 StringCodecTest 在 src/test/java/io/netty/handler/codec/string/StringCodecTest.java
-- [ ] T147 [IT29] 更新 changelog.md 并验证
+- [X] T142 [IT29] 基于 IT28 创建分支 `string-codec`
+- [X] T143 [P] [IT29] 实现 StringDecoder 在 src/main/java/io/netty/handler/codec/string/StringDecoder.java
+- [X] T144 [P] [IT29] 实现 StringEncoder 在 src/main/java/io/netty/handler/codec/string/StringEncoder.java
+- [X] T145 [P] [IT29] 实现 MessageToByteEncoder 在 src/main/java/io/netty/handler/codec/MessageToByteEncoder.java
+- [X] T146 [P] [IT29] 编写测试 StringCodecTest 在 src/test/java/io/netty/handler/codec/string/StringCodecTest.java
+- [X] T147 [IT29] 更新 changelog.md 并验证
 
 **检查点 (US5)**: 编解码器可正确解决粘包/拆包问题
 
