@@ -184,11 +184,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 16: channel-handler-interface (IT16)
 
-- [ ] T080 [IT16] 基于 IT15 创建分支 `channel-handler-interface`
-- [ ] T081 [P] [IT16] 定义 ChannelHandler 接口在 src/main/java/io/netty/channel/ChannelHandler.java
-- [ ] T082 [P] [IT16] 定义 ChannelInboundHandler 在 src/main/java/io/netty/channel/ChannelInboundHandler.java
-- [ ] T083 [P] [IT16] 定义 ChannelOutboundHandler 在 src/main/java/io/netty/channel/ChannelOutboundHandler.java
-- [ ] T084 [IT16] 更新 changelog.md
+- [X] T080 [IT16] 基于 IT15 创建分支 `channel-handler-interface`
+- [X] T081 [P] [IT16] 定义 ChannelHandler 接口在 src/main/java/io/netty/channel/ChannelHandler.java
+- [X] T082 [P] [IT16] 定义 ChannelInboundHandler 在 src/main/java/io/netty/channel/ChannelInboundHandler.java
+- [X] T083 [P] [IT16] 定义 ChannelOutboundHandler 在 src/main/java/io/netty/channel/ChannelOutboundHandler.java
+- [X] T084 [IT16] 更新 changelog.md
 
 ### 迭代 17: channel-pipeline-basic (IT17)
 

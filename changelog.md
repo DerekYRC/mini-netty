@@ -30,6 +30,32 @@
 
 ---
 
+## [IT16] channel-handler-interface
+
+**分支**: `channel-handler-interface`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 验证 `ChannelHandler` 基接口
+  - 定义 Handler 生命周期方法：handlerAdded, handlerRemoved
+  - 作为所有事件处理器的基类
+- 验证 `ChannelInboundHandler` 入站事件处理器接口
+  - 入站事件：channelRegistered, channelUnregistered, channelActive, channelInactive
+  - 数据事件：channelRead, channelReadComplete
+  - 异常处理：exceptionCaught
+- 验证 `ChannelOutboundHandler` 出站事件处理器接口
+  - 连接管理：bind, connect, disconnect, close
+  - 数据操作：write, flush, read
+
+**说明**: 这些接口已在 IT08 (event-loop-interface) 中预先创建，本迭代确认其完整性。
+
+**学习要点**:
+- 入站/出站事件分离：职责清晰，便于理解
+- 事件驱动模型：每个方法对应一种事件类型
+- Handler 生命周期：添加和移除时的初始化/清理
+
+---
+
 ## [IT15] channel-unsafe
 
 **分支**: `channel-unsafe`
