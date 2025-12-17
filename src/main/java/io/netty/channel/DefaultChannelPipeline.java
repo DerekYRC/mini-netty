@@ -91,6 +91,11 @@ public class DefaultChannelPipeline implements ChannelPipeline {
     }
 
     @Override
+    public ChannelPipeline addLast(ChannelHandler handler) {
+        return addLast(generateName(handler), handler);
+    }
+
+    @Override
     public ChannelPipeline addLast(String name, ChannelHandler handler) {
         final AbstractChannelHandlerContext newCtx = newContext(name, handler);
         
@@ -213,12 +218,33 @@ public class DefaultChannelPipeline implements ChannelPipeline {
     }
 
     @Override
+    public ChannelPipeline fireUserEventTriggered(Object event) {
+        head.invokeUserEventTriggered(event);
+        return this;
+    }
+
+    @Override
     public ChannelPipeline read() {
         tail.read();
         return this;
     }
 
     // ========== 辅助方法 ==========
+
+    private String generateName(ChannelHandler handler) {
+        String baseName = handler.getClass().getSimpleName();
+        if (baseName.isEmpty()) {
+            baseName = handler.getClass().getName();
+        }
+        // 生成唯一名称
+        String name = baseName;
+        int suffix = 0;
+        while (name2ctx.containsKey(name)) {
+            suffix++;
+            name = baseName + "#" + suffix;
+        }
+        return name;
+    }
 
     private AbstractChannelHandlerContext newContext(String name, ChannelHandler handler) {
         return new DefaultChannelHandlerContext(this, name, handler);

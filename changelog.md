@@ -30,6 +30,35 @@
 
 ---
 
+## [IT37] logging-handler
+
+**分支**: `logging-handler`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `LogLevel` 枚举定义日志级别
+  - TRACE, DEBUG, INFO, WARN, ERROR
+- 新增 `LoggingHandler` 日志处理器
+  - 继承 ChannelDuplexHandler，同时记录入站和出站事件
+  - 支持配置日志名称和级别
+  - formatByteBuf() 智能格式化字节缓冲区（十六进制+可打印字符）
+  - 支持自定义 doLog() 方法便于集成日志框架
+- 扩展 `ChannelPipeline` 接口
+  - 新增 addLast(handler) 重载方法（自动生成名称）
+  - 新增 fireUserEventTriggered(event) 方法
+- 更新 `DefaultChannelPipeline`
+  - 实现 addLast(handler) 和 fireUserEventTriggered()
+  - 新增 generateName() 自动生成唯一 Handler 名称
+- 新增 `LoggingHandlerTest` 共 28 个测试用例
+
+**学习要点**:
+- ChannelDuplexHandler 同时处理入站和出站
+- 日志格式化和 ByteBuf 内容的安全输出
+- 调试网络应用的常用技巧
+- 日志级别在问题排查中的应用
+
+---
+
 ## [IT36] idle-state-handler
 
 **分支**: `idle-state-handler`

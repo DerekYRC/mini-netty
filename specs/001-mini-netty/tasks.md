@@ -388,10 +388,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 37: logging-handler (IT37)
 
-- [ ] T177 [IT37] 基于 IT36 创建分支 `logging-handler`
-- [ ] T178 [IT37] 实现 LoggingHandler 在 src/main/java/io/netty/handler/logging/LoggingHandler.java
-- [ ] T179 [P] [IT37] 编写测试 LoggingHandlerTest 在 src/test/java/io/netty/handler/logging/LoggingHandlerTest.java
-- [ ] T180 [IT37] 更新 changelog.md 并验证
+- [X] T177 [IT37] 基于 IT36 创建分支 `logging-handler`
+- [X] T178 [IT37] 实现 LoggingHandler 在 src/main/java/io/netty/handler/logging/LoggingHandler.java
+- [X] T179 [P] [IT37] 编写测试 LoggingHandlerTest 在 src/test/java/io/netty/handler/logging/LoggingHandlerTest.java
+- [X] T180 [IT37] 更新 changelog.md 并验证
 
 ---
 
