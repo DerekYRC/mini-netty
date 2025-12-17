@@ -7,7 +7,7 @@
 
 ## 项目介绍
 
-mini-netty是一个从零开始实现的简化版的**Netty**网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。
+**mini-netty** 是一个从零开始实现的简化版 **Netty** 网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。 该项目使用AI(Claude + Spec-Kit)进行辅助开发。
 
 **姊妹版：** 
  - [**mini-spring**](https://github.com/DerekYRC/mini-spring) **(简化版的spring框架)**
@@ -16,7 +16,7 @@ mini-netty是一个从零开始实现的简化版的**Netty**网络编程框架�
 ### ✨ 特性
 
 - 📚 **渐进式学习**: 37 个迭代，每个都可独立运行
-- 🔬 **完整测试**: 434+ 单元测试和集成测试
+- 🔬 **完整测试**: 400+ 单元测试和集成测试
 - 📖 **详细文档**: 每个迭代都有 changelog 记录
 - 🎯 **零依赖**: 纯 JDK 实现，无第三方依赖
 - 🏗️ **真实架构**: 与 Netty 保持相同的包结构和命名
@@ -181,7 +181,7 @@ src/main/java/io/netty/
 
 ```bash
 # 克隆仓库
-git clone <repository-url>
+git clone git@github.com:DerekYRC/mini-netty.git
 cd mini-netty
 
 # 编译项目
@@ -273,7 +273,7 @@ ChannelFuture f = b.bind(8080).sync();
 - **构建工具**: Maven 3.6+
 - **测试框架**: JUnit 5 + AssertJ
 - **依赖**: 无外部依赖（纯 JDK 实现）
-- **测试覆盖**: 434+ 测试用例
+- **测试覆盖**: 400+ 测试用例
 
 ## 📚 延伸阅读
 
