@@ -30,6 +30,33 @@
 
 ---
 
+## [IT25] byte-buf-allocator
+
+**分支**: `byte-buf-allocator`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ByteBufAllocator` 接口
+  - 定义 buffer/heapBuffer/directBuffer 分配方法
+  - 支持指定初始容量和最大容量
+- 新增 `UnpooledByteBufAllocator` 非池化实现
+  - DEFAULT 静态实例，开箱即用
+  - preferDirect 选项控制默认分配类型
+  - 简化实现：directBuffer 暂时使用堆内存
+- 新增 `ByteBufAllocatorTest` 共 11 个测试用例
+  - UnpooledAllocatorTests: 基本分配功能
+  - AllocatorConfigTests: 配置选项测试
+  - AcceptanceScenarioTests: 消息处理、独立生命周期、扩容场景
+
+**学习要点**:
+- 分配器模式解耦 ByteBuf 创建和使用
+- 池化 vs 非池化的权衡
+- 工厂方法提供默认配置的便利性
+
+**检查点 (US4)**: ByteBuf 支持读写索引分离和引用计数 ✅
+
+---
+
 ## [IT24] byte-buf-reference-count
 
 **分支**: `byte-buf-reference-count`

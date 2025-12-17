@@ -266,11 +266,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 25: byte-buf-allocator (IT25)
 
-- [ ] T125 [IT25] 基于 IT24 创建分支 `byte-buf-allocator`
-- [ ] T126 [P] [IT25] 定义 ByteBufAllocator 接口在 src/main/java/io/netty/buffer/ByteBufAllocator.java
-- [ ] T127 [IT25] 实现 UnpooledByteBufAllocator 在 src/main/java/io/netty/buffer/UnpooledByteBufAllocator.java
-- [ ] T128 [P] [IT25] 编写测试 ByteBufAllocatorTest 在 src/test/java/io/netty/buffer/ByteBufAllocatorTest.java
-- [ ] T129 [IT25] 更新 changelog.md 并验证
+- [X] T125 [IT25] 基于 IT24 创建分支 `byte-buf-allocator`
+- [X] T126 [P] [IT25] 定义 ByteBufAllocator 接口在 src/main/java/io/netty/buffer/ByteBufAllocator.java
+- [X] T127 [IT25] 实现 UnpooledByteBufAllocator 在 src/main/java/io/netty/buffer/UnpooledByteBufAllocator.java
+- [X] T128 [P] [IT25] 编写测试 ByteBufAllocatorTest 在 src/test/java/io/netty/buffer/ByteBufAllocatorTest.java
+- [X] T129 [IT25] 更新 changelog.md 并验证
 
 **检查点 (US4)**: ByteBuf 支持读写索引分离和引用计数
 

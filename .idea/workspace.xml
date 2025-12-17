@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a592e721-503c-42be-8194-ace1f55fa4b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/netty/example/nio/NioServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/netty/example/nio/NioServer.java" afterDir="false" />
-    </list>
+    <list default="true" id="a592e721-503c-42be-8194-ace1f55fa4b5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="nio-channel-impl" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
@@ -33,12 +36,13 @@
     "JUnit.ClientServerIntegrationTest.executor": "Run",
     "JUnit.MiniNettyTest.executor": "Run",
     "JUnit.NioChannelBufferTest.executor": "Run",
+    "JUnit.NioClientServerTest.executor": "Run",
     "JUnit.SimpleBioServerTest.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "nio-server-read-write",
+    "git-widget-placeholder": "byte-buf-allocator",
     "last_opened_file_path": "/Users/deyi/idea/mini-netty",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -48,20 +52,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.NioServer">
-    <configuration name="NioChannelBufferDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.netty.example.nio.NioChannelBufferDemo" />
-      <module name="mini-netty" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.netty.example.nio.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.NioClientServerTest">
     <configuration name="NioSelectorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.netty.example.nio.NioSelectorDemo" />
       <module name="mini-netty" />
@@ -118,13 +109,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NioClientServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mini-netty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.netty.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.netty.integration" />
+      <option name="MAIN_CLASS_NAME" value="io.netty.integration.NioClientServerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NioClientServerTest" />
+        <item itemvalue="JUnit.NioChannelBufferTest" />
+        <item itemvalue="JUnit.ClientServerIntegrationTest" />
         <item itemvalue="Application.NioServer" />
         <item itemvalue="Application.NioSelectorDemo" />
-        <item itemvalue="JUnit.NioChannelBufferTest" />
-        <item itemvalue="Application.NioChannelBufferDemo" />
-        <item itemvalue="JUnit.ClientServerIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -143,7 +149,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765875505527</updated>
-      <workItem from="1765875507651" duration="1863000" />
+      <workItem from="1765875507651" duration="7290000" />
     </task>
     <servers />
   </component>
