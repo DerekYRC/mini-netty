@@ -2,9 +2,75 @@
 
 简化版 Netty 网络编程框架，用于学习 Netty 核心原理。
 
+[![Java](https://img.shields.io/badge/Java-17%2B-blue)](https://openjdk.org/)
+[![Maven](https://img.shields.io/badge/Maven-3.6%2B-orange)](https://maven.apache.org/)
+[![Tests](https://img.shields.io/badge/Tests-434%20passing-brightgreen)]()
+[![License](https://img.shields.io/badge/License-Educational-yellow)]()
+
 ## 项目介绍
 
 Mini-Netty 参照 [mini-spring](./mini-spring) 的渐进式学习方法，从零开始实现一个简化版的 Netty 网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。
+
+### ✨ 特性
+
+- 📚 **渐进式学习**: 37 个迭代，每个都可独立运行
+- 🔬 **完整测试**: 434+ 单元测试和集成测试
+- 📖 **详细文档**: 每个迭代都有 changelog 记录
+- 🎯 **零依赖**: 纯 JDK 实现，无第三方依赖
+- 🏗️ **真实架构**: 与 Netty 保持相同的包结构和命名
+
+### 🏛️ 架构概览
+
+```
+                           ┌─────────────────────────────────────┐
+                           │           ServerBootstrap           │
+                           └──────────────────┬──────────────────┘
+                                              │
+                    ┌─────────────────────────┼─────────────────────────┐
+                    │                         │                         │
+           ┌────────┴────────┐      ┌────────┴────────┐      ┌────────┴────────┐
+           │  BossGroup (1)  │      │ WorkerGroup (N) │      │  ChannelOption  │
+           └────────┬────────┘      └────────┬────────┘      └─────────────────┘
+                    │                        │
+           ┌────────┴────────┐      ┌────────┴────────┐
+           │  NioEventLoop   │      │  NioEventLoop   │ × N
+           │  (Selector)     │      │  (Selector)     │
+           └────────┬────────┘      └────────┬────────┘
+                    │                        │
+           ┌────────┴────────┐      ┌────────┴────────┐
+           │ ServerChannel   │─────▶│  SocketChannel  │ × Connections
+           └────────┬────────┘      └────────┬────────┘
+                    │                        │
+           ┌────────┴────────────────────────┴────────┐
+           │              ChannelPipeline              │
+           │  ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐  │
+           │  │HEAD │◀─▶│ H1  │◀─▶│ H2  │◀─▶│TAIL │  │
+           │  └─────┘   └─────┘   └─────┘   └─────┘  │
+           │    ▼ Inbound                 Outbound ▲  │
+           └──────────────────────────────────────────┘
+```
+
+### 📁 项目结构
+
+```
+src/main/java/io/netty/
+├── bootstrap/          # 启动器 (ServerBootstrap, Bootstrap)
+├── buffer/             # 缓冲区 (ByteBuf, HeapByteBuf)
+├── channel/            # 核心通道
+│   ├── nio/            # NIO 实现 (NioEventLoop, NioChannel)
+│   ├── Channel.java    # 通道接口
+│   ├── ChannelPipeline.java
+│   ├── ChannelHandler.java
+│   └── EventLoop.java
+├── handler/            # 内置处理器
+│   ├── codec/          # 编解码器
+│   ├── logging/        # 日志处理器
+│   └── timeout/        # 超时处理器
+└── example/            # 示例代码
+    ├── bio/            # BIO 示例
+    ├── nio/            # NIO 示例
+    └── echo/           # Echo 示例
+```
 
 ## 学习路径
 
@@ -131,17 +197,93 @@ mvn test
 4. **运行测试**: 每个迭代都有对应的单元测试和集成测试
 5. **动手实践**: 尝试修改代码，加深理解
 
+## 🔧 核心组件
+
+### EventLoop - 事件循环
+
+```java
+EventLoopGroup group = new NioEventLoopGroup(4);
+EventLoop eventLoop = group.next();
+
+// 提交任务
+eventLoop.execute(() -> System.out.println("Hello from EventLoop"));
+
+// 定时任务
+eventLoop.schedule(() -> System.out.println("Delayed"), 1, TimeUnit.SECONDS);
+```
+
+### Channel & Pipeline - 通道和管道
+
+```java
+Channel channel = ...;
+ChannelPipeline pipeline = channel.pipeline();
+
+// 添加处理器
+pipeline.addLast("decoder", new StringDecoder());
+pipeline.addLast("encoder", new StringEncoder());
+pipeline.addLast("handler", new MyHandler());
+```
+
+### ByteBuf - 缓冲区
+
+```java
+ByteBufAllocator allocator = UnpooledByteBufAllocator.DEFAULT;
+ByteBuf buf = allocator.buffer(256);
+
+// 写入数据
+buf.writeBytes("Hello".getBytes());
+buf.writeInt(42);
+
+// 读取数据
+byte[] bytes = new byte[5];
+buf.readBytes(bytes);
+int value = buf.readInt();
+
+// 释放资源
+buf.release();
+```
+
+### ServerBootstrap - 服务端启动器
+
+```java
+EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+EventLoopGroup workerGroup = new NioEventLoopGroup(4);
+
+ServerBootstrap b = new ServerBootstrap();
+b.group(bossGroup, workerGroup)
+ .channel(NioServerSocketChannel.class)
+ .option(ChannelOption.SO_BACKLOG, 128)
+ .childOption(ChannelOption.SO_KEEPALIVE, true)
+ .childHandler(new ChannelInitializer<Channel>() {
+     @Override
+     protected void initChannel(Channel ch) {
+         ch.pipeline().addLast(new LoggingHandler());
+         ch.pipeline().addLast(new EchoServerHandler());
+     }
+ });
+
+ChannelFuture f = b.bind(8080).sync();
+```
+
 ## 技术栈
 
 - **语言**: Java 17
 - **构建工具**: Maven 3.6+
 - **测试框架**: JUnit 5 + AssertJ
 - **依赖**: 无外部依赖（纯 JDK 实现）
+- **测试覆盖**: 434+ 测试用例
 
-## 参考资料
+## 📚 延伸阅读
 
+### 官方资源
 - [Netty 官方文档](https://netty.io/wiki/)
+- [Netty GitHub](https://github.com/netty/netty)
+
+### 推荐书籍
 - [Netty in Action](https://www.manning.com/books/netty-in-action)
+- [Netty 权威指南](https://book.douban.com/subject/25897245/)
+
+### 相关项目
 - [mini-spring](./mini-spring) - 本项目的参考模板
 
 ## 许可证
