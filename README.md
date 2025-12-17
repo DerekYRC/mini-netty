@@ -2,12 +2,12 @@
 
 [![Java](https://img.shields.io/badge/Java-17%2B-blue)](https://openjdk.org/)
 [![Maven](https://img.shields.io/badge/Maven-3.6%2B-orange)](https://maven.apache.org/)
-[![Tests](https://img.shields.io/badge/Tests-434%20passing-brightgreen)]()
+[![Tests](https://img.shields.io/badge/Tests-400+%20passing-brightgreen)]()
 [![License](https://img.shields.io/badge/License-Educational-yellow)]()
 
 ## 项目介绍
 
-**mini-netty** 是一个从零开始实现的简化版 **Netty** 网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。 该项目使用AI(Claude + Spec-Kit)进行辅助开发。
+**mini-netty** 是一个从零开始实现的简化版 **Netty** 网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。 该项目使用**AI**(**Claude** + **Spec-Kit**)进行辅助开发。
 
 **姊妹版：** 
  - [**mini-spring**](https://github.com/DerekYRC/mini-spring) **(简化版的spring框架)**
@@ -17,7 +17,7 @@
 
 - 📚 **渐进式学习**: 37 个迭代，每个都可独立运行
 - 🔬 **完整测试**: 400+ 单元测试和集成测试
-- 📖 **详细文档**: 每个迭代都有 changelog 记录
+- 📖 **详细文档**: 每个迭代都有 [changelog](https://github.com/DerekYRC/mini-netty/blob/main/changelog.md) 记录
 - 🎯 **零依赖**: 纯 JDK 实现，无第三方依赖
 - 🏗️ **真实架构**: 与 Netty 保持相同的包结构和命名
 
