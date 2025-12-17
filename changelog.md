@@ -30,33 +30,31 @@
 
 ---
 
-## [IT33] event-loop-group
+## [IT32] client-bootstrap
 
-**分支**: `event-loop-group`
+**分支**: `client-bootstrap`
 **日期**: 2025-12-17
 
 **改动内容**:
-- 新增 `NioEventLoopGroup` 事件循环组实现
-  - 管理多个 NioEventLoop 实例
-  - 默认线程数为 CPU 核心数 × 2
-  - 支持轮询(Round-Robin)策略分配 EventLoop
-  - `next()` 返回下一个 EventLoop
-  - `eventLoop(index)` 按索引获取 EventLoop
-  - `register(Channel)` 注册 Channel 到组
-  - `shutdownGracefully()` 优雅关闭所有 EventLoop
-  - `start()` 启动所有 EventLoop
-- 新增 `NioEventLoopGroupTest` 共 10 个测试用例
-  - 创建测试: 默认线程数、指定线程数、边界条件
-  - 轮询测试: 循环分配、均匀分布
-  - 索引访问测试: 按索引获取、越界异常
-  - 生命周期测试: isShutdown 状态
-  - 验收场景测试: 主从 Reactor 线程组
+- 新增 `Bootstrap` 客户端启动器
+  - 继承自 AbstractBootstrap，专用于客户端配置
+  - connect(host, port) 连接到远程服务器
+  - connect(SocketAddress) 连接到指定地址
+  - remoteAddress() 预设远程地址
+- 支持本地地址绑定后连接
+- 新增 `BootstrapIntegrationTest` 共 19 个测试用例
+  - BootstrapConfigurationTests: 链式配置、克隆测试
+  - BootstrapValidationTests: 参数验证
+  - NullValidationTests: 空值检查
+  - ConnectTests: 连接测试
+  - AcceptanceScenarioTests: 客户端服务端交互场景
+
+**检查点 (US6)**: Bootstrap 可配置和启动服务端/客户端 ✓
 
 **学习要点**:
-- EventLoopGroup 是 EventLoop 的容器和管理者
-- 轮询策略(Round-Robin)保证负载均衡
-- Channel 一旦分配到 EventLoop，整个生命周期内不会改变
-- 主从 Reactor 模型：Boss 处理连接，Worker 处理 I/O
+- Bootstrap 用于客户端连接，只需一个 EventLoopGroup
+- connect() 是非阻塞操作，返回 ChannelFuture
+- 可与 ServerBootstrap 配合实现完整的 C/S 通信
 
 ---
 
