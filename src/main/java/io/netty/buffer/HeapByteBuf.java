@@ -16,10 +16,9 @@ import java.nio.ByteBuffer;
  *   <li>网络 I/O 时需要额外拷贝到直接内存</li>
  * </ul>
  */
-public class HeapByteBuf extends AbstractByteBuf {
+public class HeapByteBuf extends AbstractReferenceCountedByteBuf {
 
     private byte[] array;
-    private int refCnt = 1;
 
     /**
      * 创建指定初始容量的堆 ByteBuf
@@ -218,49 +217,10 @@ public class HeapByteBuf extends AbstractByteBuf {
     }
 
     // =====================
-    // 引用计数
+    // 资源释放
     // =====================
 
     @Override
-    public int refCnt() {
-        return refCnt;
-    }
-
-    @Override
-    public ByteBuf retain() {
-        return retain(1);
-    }
-
-    @Override
-    public ByteBuf retain(int increment) {
-        if (increment <= 0) {
-            throw new IllegalArgumentException("increment: " + increment + " (expected: > 0)");
-        }
-        refCnt += increment;
-        return this;
-    }
-
-    @Override
-    public boolean release() {
-        return release(1);
-    }
-
-    @Override
-    public boolean release(int decrement) {
-        if (decrement <= 0) {
-            throw new IllegalArgumentException("decrement: " + decrement + " (expected: > 0)");
-        }
-        refCnt -= decrement;
-        if (refCnt <= 0) {
-            deallocate();
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * 释放资源
-     */
     protected void deallocate() {
         // 堆内存由 GC 管理，这里只是标记
         array = null;

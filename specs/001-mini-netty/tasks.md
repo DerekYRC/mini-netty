@@ -258,11 +258,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 24: byte-buf-reference-count (IT24)
 
-- [ ] T120 [IT24] 基于 IT23 创建分支 `byte-buf-reference-count`
-- [ ] T121 [IT24] 实现 retain() 和 release() 方法
-- [ ] T122 [IT24] 实现 AbstractReferenceCountedByteBuf 在 src/main/java/io/netty/buffer/AbstractReferenceCountedByteBuf.java
-- [ ] T123 [P] [IT24] 编写测试 ReferenceCountTest 在 src/test/java/io/netty/buffer/ReferenceCountTest.java
-- [ ] T124 [IT24] 更新 changelog.md
+- [X] T120 [IT24] 基于 IT23 创建分支 `byte-buf-reference-count`
+- [X] T121 [IT24] 实现 retain() 和 release() 方法
+- [X] T122 [IT24] 实现 AbstractReferenceCountedByteBuf 在 src/main/java/io/netty/buffer/AbstractReferenceCountedByteBuf.java
+- [X] T123 [P] [IT24] 编写测试 ReferenceCountTest 在 src/test/java/io/netty/buffer/ReferenceCountTest.java
+- [X] T124 [IT24] 更新 changelog.md
 
 ### 迭代 25: byte-buf-allocator (IT25)
 

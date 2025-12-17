@@ -30,6 +30,32 @@
 
 ---
 
+## [IT24] byte-buf-reference-count
+
+**分支**: `byte-buf-reference-count`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `AbstractReferenceCountedByteBuf` 抽象类
+  - 使用 AtomicIntegerFieldUpdater 实现线程安全的引用计数
+  - CAS 操作保证并发正确性
+  - IllegalReferenceCountException 异常处理
+- 重构 `HeapByteBuf` 继承新的基类
+  - 移除手动引用计数实现
+  - 继承原子引用计数能力
+- 新增 `ReferenceCountTest` 共 14 个测试用例
+  - BasicReferenceCountTests: 基本 retain/release 操作
+  - ValidationTests: 参数验证测试
+  - ConcurrencySafetyTests: 多线程安全测试
+  - AcceptanceScenarioTests: 资源传递、try-finally、池化场景
+
+**学习要点**:
+- AtomicIntegerFieldUpdater 比 AtomicInteger 更节省内存
+- CAS 循环确保并发操作的原子性
+- 引用计数的典型使用模式：retain 传递，release 完成
+
+---
+
 ## [IT23] heap-byte-buf
 
 **分支**: `heap-byte-buf`
