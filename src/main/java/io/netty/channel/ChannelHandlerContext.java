@@ -119,6 +119,16 @@ public interface ChannelHandlerContext {
      */
     ChannelHandlerContext fireExceptionCaught(Throwable cause);
 
+    /**
+     * 触发下一个 Handler 的用户自定义事件处理
+     *
+     * <p>用户事件是一种扩展机制，允许 Handler 触发自定义事件（如空闲检测事件）。
+     *
+     * @param evt 用户事件对象
+     * @return this，便于链式调用
+     */
+    ChannelHandlerContext fireUserEventTriggered(Object evt);
+
     // ========== 出站操作方法 ==========
 
     /**

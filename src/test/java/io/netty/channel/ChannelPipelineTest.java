@@ -176,6 +176,12 @@ class ChannelPipelineTest {
             events.add(name + ":exceptionCaught:" + cause.getMessage());
             ctx.fireExceptionCaught(cause);
         }
+
+        @Override
+        public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {
+            events.add(name + ":userEventTriggered:" + evt);
+            ctx.fireUserEventTriggered(evt);
+        }
     }
 
     private MockChannel channel;

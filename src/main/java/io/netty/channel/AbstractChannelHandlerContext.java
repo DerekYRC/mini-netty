@@ -239,6 +239,28 @@ public abstract class AbstractChannelHandlerContext implements ChannelHandlerCon
         }
     }
 
+    @Override
+    public ChannelHandlerContext fireUserEventTriggered(Object evt) {
+        invokeUserEventTriggered(findContextInbound(), evt);
+        return this;
+    }
+
+    void invokeUserEventTriggered(Object evt) {
+        invokeUserEventTriggered(this, evt);
+    }
+
+    private void invokeUserEventTriggered(AbstractChannelHandlerContext ctx, Object evt) {
+        if (ctx.handler() instanceof ChannelInboundHandler) {
+            try {
+                ((ChannelInboundHandler) ctx.handler()).userEventTriggered(ctx, evt);
+            } catch (Exception e) {
+                ctx.invokeExceptionCaught(e);
+            }
+        } else {
+            ctx.fireUserEventTriggered(evt);
+        }
+    }
+
     // ========== 出站操作方法 ==========
 
     @Override

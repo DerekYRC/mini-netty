@@ -104,4 +104,12 @@ public class ChannelInboundHandlerAdapter implements ChannelInboundHandler {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         ctx.fireExceptionCaught(cause);
     }
+
+    /**
+     * 默认实现：传递给下一个 Handler
+     */
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        ctx.fireUserEventTriggered(evt);
+    }
 }

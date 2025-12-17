@@ -82,4 +82,15 @@ public interface ChannelInboundHandler extends ChannelHandler {
      * @throws Exception 如果处理过程中发生异常
      */
     void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception;
+
+    /**
+     * 用户自定义事件触发时调用
+     *
+     * <p>用户事件是一种扩展机制，允许 Handler 处理自定义事件（如空闲检测事件 IdleStateEvent）。
+     *
+     * @param ctx 上下文
+     * @param evt 用户事件对象
+     * @throws Exception 如果处理过程中发生异常
+     */
+    void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception;
 }

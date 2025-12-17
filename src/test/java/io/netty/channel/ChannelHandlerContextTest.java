@@ -190,6 +190,14 @@ class ChannelHandlerContextTest {
                 ctx.fireExceptionCaught(cause);
             }
         }
+
+        @Override
+        public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {
+            events.add(name + ":userEventTriggered:" + evt);
+            if (!stopPropagation) {
+                ctx.fireUserEventTriggered(evt);
+            }
+        }
     }
 
     private MockChannel channel;

@@ -119,6 +119,14 @@ public class ChannelDuplexHandler implements ChannelInboundHandler, ChannelOutbo
         ctx.fireExceptionCaught(cause);
     }
 
+    /**
+     * 默认实现：传递给下一个 Handler
+     */
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        ctx.fireUserEventTriggered(evt);
+    }
+
     // =====================
     // 出站事件处理
     // =====================

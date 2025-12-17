@@ -380,11 +380,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 36: idle-state-handler (IT36)
 
-- [ ] T172 [IT36] 基于 IT35 创建分支 `idle-state-handler`
-- [ ] T173 [P] [IT36] 定义 IdleStateEvent 在 src/main/java/io/netty/handler/timeout/IdleStateEvent.java
-- [ ] T174 [IT36] 实现 IdleStateHandler 在 src/main/java/io/netty/handler/timeout/IdleStateHandler.java
-- [ ] T175 [P] [IT36] 编写测试 IdleStateHandlerTest 在 src/test/java/io/netty/handler/timeout/IdleStateHandlerTest.java
-- [ ] T176 [IT36] 更新 changelog.md
+- [X] T172 [IT36] 基于 IT35 创建分支 `idle-state-handler`
+- [X] T173 [P] [IT36] 定义 IdleStateEvent 在 src/main/java/io/netty/handler/timeout/IdleStateEvent.java
+- [X] T174 [IT36] 实现 IdleStateHandler 在 src/main/java/io/netty/handler/timeout/IdleStateHandler.java
+- [X] T175 [P] [IT36] 编写测试 IdleStateHandlerTest 在 src/test/java/io/netty/handler/timeout/IdleStateHandlerTest.java
+- [X] T176 [IT36] 更新 changelog.md
 
 ### 迭代 37: logging-handler (IT37)
 

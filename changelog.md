@@ -30,6 +30,40 @@
 
 ---
 
+## [IT36] idle-state-handler
+
+**分支**: `idle-state-handler`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `IdleState` 枚举定义空闲状态类型
+  - READER_IDLE: 读空闲
+  - WRITER_IDLE: 写空闲
+  - ALL_IDLE: 读写都空闲
+- 新增 `IdleStateEvent` 空闲状态事件类
+  - 预定义静态实例 (FIRST_READER_IDLE_STATE_EVENT, READER_IDLE_STATE_EVENT 等)
+  - state() 获取空闲类型, isFirst() 判断是否首次空闲
+- 新增 `IdleStateHandler` 空闲状态处理器
+  - 配置读空闲超时、写空闲超时、全部空闲超时
+  - 使用 EventLoop.schedule() 实现定时检测
+  - 内部类 ReaderIdleTimeoutTask, WriterIdleTimeoutTask, AllIdleTimeoutTask
+  - 在 channelActive 时初始化定时器
+  - 在 channelInactive/handlerRemoved 时销毁定时器
+- 扩展 `ChannelInboundHandler` 接口
+  - 新增 userEventTriggered(ctx, evt) 方法
+- 扩展 `ChannelHandlerContext` 接口
+  - 新增 fireUserEventTriggered(evt) 方法
+- 更新所有 ChannelInboundHandler 实现添加 userEventTriggered
+- 新增 `IdleStateHandlerTest` 共 24 个测试用例
+
+**学习要点**:
+- 定时任务与超时检测机制
+- 用户事件 (User Event) 扩展机制
+- 心跳检测在网络编程中的应用
+- 策略模式在超时处理中的应用
+
+---
+
 ## [IT35] channel-chooser
 
 **分支**: `channel-chooser`

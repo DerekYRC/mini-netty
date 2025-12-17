@@ -307,5 +307,8 @@ class NioChannelTest {
 
         @Override
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {}
+
+        @Override
+        public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {}
     }
 }
