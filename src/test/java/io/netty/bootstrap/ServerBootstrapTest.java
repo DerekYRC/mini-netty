@@ -399,7 +399,18 @@ class ServerBootstrapTest {
         @Override
         public java.util.concurrent.Future<?> shutdownGracefully() {
             shutdown = true;
-            return eventLoop.shutdownGracefully();
+            eventLoop.shutdownGracefully();
+            // 唤醒可能阻塞的 selector
+            try {
+                eventLoop.selector().wakeup();
+                // 等待一段时间让 EventLoop 退出
+                for (int i = 0; i < 50 && !eventLoop.isTerminated(); i++) {
+                    Thread.sleep(10);
+                }
+            } catch (Exception e) {
+                // ignore
+            }
+            return null;
         }
 
         @Override

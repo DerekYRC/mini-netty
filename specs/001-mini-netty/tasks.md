@@ -367,10 +367,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 35: channel-chooser (IT35)
 
-- [ ] T168 [IT35] 基于 IT34 创建分支 `channel-chooser`
-- [ ] T169 [IT35] 实现 EventLoopChooser 负载均衡策略
-- [ ] T170 [P] [IT35] 编写测试 ChannelChooserTest 在 src/test/java/io/netty/channel/ChannelChooserTest.java
-- [ ] T171 [IT35] 更新 changelog.md 并验证
+- [X] T168 [IT35] 基于 IT34 创建分支 `channel-chooser`
+- [X] T169 [IT35] 实现 EventLoopChooser 负载均衡策略
+- [X] T170 [P] [IT35] 编写测试 ChannelChooserTest 在 src/test/java/io/netty/channel/ChannelChooserTest.java
+- [X] T171 [IT35] 更新 changelog.md 并验证
 
 ---
 

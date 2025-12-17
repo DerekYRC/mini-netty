@@ -30,6 +30,34 @@
 
 ---
 
+## [IT35] channel-chooser
+
+**分支**: `channel-chooser`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `EventLoopChooser` 接口定义 EventLoop 选择策略
+- 新增 `EventLoopChooserFactory` 工厂接口
+- 新增 `RoundRobinEventLoopChooser` 轮询选择器
+  - 使用 AtomicInteger 保证线程安全
+  - 使用取模运算实现循环
+- 新增 `PowerOfTwoEventLoopChooser` 优化的 2 的幂选择器
+  - 当 EventLoop 数量是 2 的幂时使用位运算代替取模
+  - `isPowerOfTwo()` 静态方法判断是否是 2 的幂
+- 新增 `DefaultEventLoopChooserFactory` 默认工厂
+  - 根据 EventLoop 数量自动选择最优策略
+  - 使用单例模式 (INSTANCE)
+- 新增 `ChannelChooserTest` 共 14 个测试用例
+- 修复 `ServerBootstrapTest` 中 TestEventLoopGroup 的 shutdownGracefully 实现
+
+**学习要点**:
+- 策略模式：将选择算法封装为独立的类
+- 工厂模式：封装对象创建逻辑
+- 位运算优化：`n & (n-1) == 0` 判断 2 的幂
+- 位运算代替取模：`index & (length-1)` 等价于 `index % length`（当 length 是 2 的幂时）
+
+---
+
 ## [IT34] boss-worker-model
 
 **分支**: `boss-worker-model`
