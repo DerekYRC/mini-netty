@@ -250,11 +250,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 23: heap-byte-buf (IT23)
 
-- [ ] T115 [IT23] 基于 IT22 创建分支 `heap-byte-buf`
-- [ ] T116 [IT23] 实现 AbstractByteBuf 在 src/main/java/io/netty/buffer/AbstractByteBuf.java
-- [ ] T117 [IT23] 实现 HeapByteBuf 在 src/main/java/io/netty/buffer/HeapByteBuf.java
-- [ ] T118 [P] [IT23] 编写测试 HeapByteBufTest 在 src/test/java/io/netty/buffer/HeapByteBufTest.java
-- [ ] T119 [IT23] 更新 changelog.md
+- [X] T115 [IT23] 基于 IT22 创建分支 `heap-byte-buf`
+- [X] T116 [IT23] 实现 AbstractByteBuf 在 src/main/java/io/netty/buffer/AbstractByteBuf.java
+- [X] T117 [IT23] 实现 HeapByteBuf 在 src/main/java/io/netty/buffer/HeapByteBuf.java
+- [X] T118 [P] [IT23] 编写测试 HeapByteBufTest 在 src/test/java/io/netty/buffer/HeapByteBufTest.java
+- [X] T119 [IT23] 更新 changelog.md
 
 ### 迭代 24: byte-buf-reference-count (IT24)
 

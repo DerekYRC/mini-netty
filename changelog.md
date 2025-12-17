@@ -30,6 +30,40 @@
 
 ---
 
+## [IT23] heap-byte-buf
+
+**分支**: `heap-byte-buf`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `AbstractByteBuf` 抽象基类
+  - 实现读写索引管理
+  - 边界检查和自动扩容
+  - 顺序读写方法的通用实现
+  - 标记/重置和 discardReadBytes
+- 新增 `HeapByteBuf` 堆内存实现
+  - 基于 byte[] 的存储
+  - 大端字节序编码
+  - 基础引用计数实现
+- 新增 `HeapByteBufTest` 共 28 个测试用例
+  - BasicPropertyTests: 基础属性测试
+  - IndexTests: 读写索引测试
+  - SequentialReadWriteTests: 顺序读写测试
+  - RandomAccessTests: 随机访问测试
+  - CapacityTests: 容量和扩容测试
+  - NioConversionTests: NIO ByteBuffer 转换测试
+  - StringConversionTests: 字符串转换测试
+  - ReferenceCountTests: 引用计数测试
+  - DiscardReadBytesTests: 缓冲区压缩测试
+  - AcceptanceScenarioTests: 网络消息和字节序验证
+
+**学习要点**:
+- 堆内存 vs 直接内存的权衡
+- 大端字节序（网络字节序）编码
+- 自动扩容策略（翻倍增长到 4MB，然后线性增长）
+
+---
+
 ## [IT22] bytebuf-interface
 
 **分支**: `bytebuf-interface`
