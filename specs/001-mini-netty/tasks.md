@@ -106,11 +106,11 @@
 
 ### 迭代 8: event-loop-interface (IT08)
 
-- [ ] T038 [IT08] 基于 IT07 创建分支 `event-loop-interface`
-- [ ] T039 [P] [IT08] 定义 EventLoop 接口在 src/main/java/io/netty/channel/EventLoop.java
-- [ ] T040 [P] [IT08] 定义 EventLoopGroup 接口在 src/main/java/io/netty/channel/EventLoopGroup.java
-- [ ] T041 [P] [IT08] 编写测试 EventLoopInterfaceTest 在 src/test/java/io/netty/channel/EventLoopInterfaceTest.java
-- [ ] T042 [IT08] 更新 changelog.md
+- [X] T038 [IT08] 基于 IT07 创建分支 `event-loop-interface`
+- [X] T039 [P] [IT08] 定义 EventLoop 接口在 src/main/java/io/netty/channel/EventLoop.java
+- [X] T040 [P] [IT08] 定义 EventLoopGroup 接口在 src/main/java/io/netty/channel/EventLoopGroup.java
+- [X] T041 [P] [IT08] 编写测试 EventLoopInterfaceTest 在 src/test/java/io/netty/channel/EventLoopInterfaceTest.java
+- [X] T042 [IT08] 更新 changelog.md
 
 ### 迭代 9: single-thread-event-loop (IT09)
 

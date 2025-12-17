@@ -30,6 +30,35 @@
 
 ---
 
+## [IT09] single-thread-event-loop
+
+**分支**: `single-thread-event-loop`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `SingleThreadEventLoop` 抽象类 (`io.netty.channel.SingleThreadEventLoop`)
+  - 实现 EventLoop 接口的基础功能
+  - 使用 ConcurrentLinkedQueue 作为任务队列
+  - 实现 `execute()`, `inEventLoop()` 方法
+  - 提供 `start()`, `shutdownGracefully()` 生命周期方法
+- 新增 `NioEventLoop` 类 (`io.netty.channel.nio.NioEventLoop`)
+  - 基于 NIO Selector 的事件循环实现
+  - 实现事件选择和处理逻辑
+  - 集成任务执行和 I/O 事件处理
+- 新增 `NioEventLoopTest` 测试 19 个测试用例
+  - 测试启动/停止生命周期
+  - 测试 inEventLoop() 线程判断
+  - 测试任务执行顺序和线程安全
+
+**学习要点**:
+- SingleThreadEventLoop 保证所有操作在单线程执行
+- ConcurrentLinkedQueue 用于线程安全的任务提交
+- wakeup() 用于唤醒阻塞的 Selector
+- 事件循环三步骤：select() → processSelectedKeys() → runAllTasks()
+- inEventLoop() 通过 Thread 引用比较实现
+
+---
+
 ## [IT08] event-loop-interface
 
 **分支**: `event-loop-interface`
