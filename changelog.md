@@ -30,6 +30,29 @@
 
 ---
 
+## [IT22] bytebuf-interface
+
+**分支**: `bytebuf-interface`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ReferenceCounted` 接口
+  - 定义引用计数管理方法 refCnt(), retain(), release()
+  - 支持增量 retain/release 操作
+- 新增 `ByteBuf` 抽象类
+  - 读写索引分离设计（readerIndex/writerIndex）
+  - 支持随机访问（get/set 方法）
+  - 支持顺序读写（read/write 方法）
+  - 标记和重置功能
+  - NIO ByteBuffer 转换
+
+**学习要点**:
+- 引用计数内存管理，避免 GC 开销
+- 读写索引分离比 JDK ByteBuffer 的 flip() 更直观
+- ByteBuf 索引布局：discardable | readable | writable
+
+---
+
 ## [IT21] handler-adapter
 
 **分支**: `handler-adapter`

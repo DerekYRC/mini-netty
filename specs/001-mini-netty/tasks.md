@@ -243,10 +243,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 22: byte-buf-interface (IT22)
 
-- [ ] T111 [IT22] 基于 IT21 创建分支 `byte-buf-interface`
-- [ ] T112 [P] [IT22] 定义 ReferenceCounted 接口在 src/main/java/io/netty/buffer/ReferenceCounted.java
-- [ ] T113 [P] [IT22] 定义 ByteBuf 抽象类在 src/main/java/io/netty/buffer/ByteBuf.java
-- [ ] T114 [IT22] 更新 changelog.md
+- [X] T111 [IT22] 基于 IT21 创建分支 `byte-buf-interface`
+- [X] T112 [P] [IT22] 定义 ReferenceCounted 接口在 src/main/java/io/netty/buffer/ReferenceCounted.java
+- [X] T113 [P] [IT22] 定义 ByteBuf 抽象类在 src/main/java/io/netty/buffer/ByteBuf.java
+- [X] T114 [IT22] 更新 changelog.md
 
 ### 迭代 23: heap-byte-buf (IT23)
 
