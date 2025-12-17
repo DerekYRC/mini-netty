@@ -64,14 +64,10 @@ src/main/java/io/netty/
 │   ├── ChannelPipeline.java
 │   ├── ChannelHandler.java
 │   └── EventLoop.java
-├── handler/            # 内置处理器
-│   ├── codec/          # 编解码器
-│   ├── logging/        # 日志处理器
-│   └── timeout/        # 超时处理器
-└── example/            # 示例代码
-    ├── bio/            # BIO 示例
-    ├── nio/            # NIO 示例
-    └── echo/           # Echo 示例
+└── handler/            # 内置处理器
+    ├── codec/          # 编解码器
+    ├── logging/        # 日志处理器
+    └── timeout/        # 超时处理器
 ```
 
 ## 学习路径
@@ -195,7 +191,7 @@ mvn test
 
 1. **按顺序学习**: 每个迭代都基于前一个迭代，建议按 IT01 → IT37 顺序学习
 2. **切换分支**: 使用 `git checkout <分支名>` 切换到对应迭代
-3. **阅读 changelog**: 每个分支的改动都记录在 changelog.md 中
+3. **阅读 [changelog](https://github.com/DerekYRC/mini-netty/blob/main/changelog.md)**: 每个分支的改动都记录在 [**changelog.md**](https://github.com/DerekYRC/mini-netty/blob/main/changelog.md) 中
 4. **运行测试**: 每个迭代都有对应的单元测试和集成测试
 5. **动手实践**: 尝试修改代码，加深理解
 
