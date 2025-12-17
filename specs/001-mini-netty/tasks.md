@@ -168,11 +168,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 14: channel-config (IT14)
 
-- [ ] T070 [IT14] 基于 IT13 创建分支 `channel-config`
-- [ ] T071 [P] [IT14] 定义 ChannelConfig 接口在 src/main/java/io/netty/channel/ChannelConfig.java
-- [ ] T072 [P] [IT14] 定义 ChannelOption 在 src/main/java/io/netty/channel/ChannelOption.java
-- [ ] T073 [P] [IT14] 实现 DefaultChannelConfig 在 src/main/java/io/netty/channel/DefaultChannelConfig.java
-- [ ] T074 [IT14] 更新 changelog.md
+- [X] T070 [IT14] 基于 IT13 创建分支 `channel-config`
+- [X] T071 [P] [IT14] 定义 ChannelConfig 接口在 src/main/java/io/netty/channel/ChannelConfig.java
+- [X] T072 [P] [IT14] 定义 ChannelOption 在 src/main/java/io/netty/channel/ChannelOption.java
+- [X] T073 [P] [IT14] 实现 DefaultChannelConfig 在 src/main/java/io/netty/channel/DefaultChannelConfig.java
+- [X] T074 [IT14] 更新 changelog.md
 
 ### 迭代 15: channel-unsafe (IT15)
 

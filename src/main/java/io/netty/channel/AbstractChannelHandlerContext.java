@@ -303,6 +303,19 @@ public abstract class AbstractChannelHandlerContext implements ChannelHandlerCon
     }
 
     @Override
+    public ChannelHandlerContext read() {
+        AbstractChannelHandlerContext ctx = findContextOutbound();
+        if (ctx.handler() instanceof ChannelOutboundHandler) {
+            try {
+                ((ChannelOutboundHandler) ctx.handler()).read(ctx);
+            } catch (Exception e) {
+                invokeExceptionCaught(e);
+            }
+        }
+        return this;
+    }
+
+    @Override
     public ChannelPromise newPromise() {
         return new DefaultChannelPromise(channel());
     }

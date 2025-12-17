@@ -212,6 +212,12 @@ public class DefaultChannelPipeline implements ChannelPipeline {
         return this;
     }
 
+    @Override
+    public ChannelPipeline read() {
+        tail.read();
+        return this;
+    }
+
     // ========== 辅助方法 ==========
 
     private AbstractChannelHandlerContext newContext(String name, ChannelHandler handler) {

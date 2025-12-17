@@ -178,6 +178,15 @@ public interface ChannelHandlerContext {
     ChannelFuture close(ChannelPromise promise);
 
     /**
+     * 请求从 Channel 读取数据
+     *
+     * <p>此方法触发一次读取操作，会向前一个出站处理器传递。
+     *
+     * @return this，便于链式调用
+     */
+    ChannelHandlerContext read();
+
+    /**
      * 创建新的 Promise
      *
      * @return 新的 ChannelPromise

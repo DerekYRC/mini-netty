@@ -155,4 +155,15 @@ public interface ChannelPipeline {
      * @return this，便于链式调用
      */
     ChannelPipeline fireExceptionCaught(Throwable cause);
+
+    // ========== 出站操作 ==========
+
+    /**
+     * 请求从 Channel 读取数据
+     *
+     * <p>此方法会从 Pipeline 的尾部开始，向头部传递读取请求。
+     *
+     * @return this，便于链式调用
+     */
+    ChannelPipeline read();
 }

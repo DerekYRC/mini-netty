@@ -53,6 +53,13 @@ public interface Channel {
     Channel parent();
 
     /**
+     * 返回 Channel 的配置
+     *
+     * @return Channel 配置
+     */
+    ChannelConfig config();
+
+    /**
      * 返回 ChannelPipeline
      *
      * <p>Pipeline 包含了处理入站和出站事件的 Handler 链。
@@ -90,4 +97,14 @@ public interface Channel {
      * @return 关闭操作的 Future
      */
     ChannelFuture close();
+
+    /**
+     * 请求从 Channel 读取数据
+     *
+     * <p>此方法触发一次读取操作，读取到的数据会通过 Pipeline 中的
+     * ChannelInboundHandler.channelRead() 方法传递。
+     *
+     * @return this
+     */
+    Channel read();
 }

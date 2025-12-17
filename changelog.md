@@ -30,6 +30,45 @@
 
 ---
 
+## [IT14] channel-config
+
+**分支**: `channel-config`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ChannelOption<T>` 类型安全的配置选项键
+  - 预定义常用选项：SO_RCVBUF, SO_SNDBUF, TCP_NODELAY, SO_KEEPALIVE 等
+  - 支持自定义选项扩展
+- 新增 `ChannelConfig` 接口
+  - 提供类型安全的选项获取/设置方法
+  - 定义常用配置：连接超时、写缓冲区水位线、自动读取等
+- 新增 `DefaultChannelConfig` 实现
+  - 使用 ConcurrentHashMap 存储配置
+  - 对常用选项使用直接字段存储（性能优化）
+- 更新 `Channel` 接口
+  - 添加 `config()` 方法返回 ChannelConfig
+  - 添加 `read()` 方法请求读取数据
+- 更新 `AbstractChannel`
+  - 添加 config 字段和 newChannelConfig() 工厂方法
+  - 实现 config() 和 read() 方法
+- 更新 `ChannelPipeline` 接口
+  - 添加 read() 出站操作方法
+- 更新 `ChannelHandlerContext` 接口
+  - 添加 read() 方法用于出站事件传播
+- 更新 `AbstractChannelHandlerContext`
+  - 实现 read() 方法，向前查找出站处理器并调用
+- 更新 `DefaultChannelPipeline`
+  - 实现 read() 方法，从 tail 开始传播
+
+**学习要点**:
+- **类型安全的配置设计**: ChannelOption<T> 使用泛型确保配置值类型正确
+- **配置模式**: 区分 Socket 选项和应用级别选项
+- **性能优化**: 常用选项使用直接字段避免 Map 查找开销
+- **流量控制**: 写缓冲区水位线用于背压控制
+- **自动读取**: autoRead 选项控制是否自动触发读操作
+
+---
+
 ## [IT13] nio-channel-impl
 
 **分支**: `nio-channel-impl`

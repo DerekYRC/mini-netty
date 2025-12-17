@@ -43,6 +43,11 @@ public abstract class AbstractChannel implements Channel {
     private final ChannelPipeline pipeline;
 
     /**
+     * Channel 配置
+     */
+    private final ChannelConfig config;
+
+    /**
      * 关联的 EventLoop
      */
     private volatile EventLoop eventLoop;
@@ -76,6 +81,7 @@ public abstract class AbstractChannel implements Channel {
         this.parent = parent;
         this.id = newId();
         this.pipeline = newChannelPipeline();
+        this.config = newChannelConfig();
     }
 
     /**
@@ -96,6 +102,17 @@ public abstract class AbstractChannel implements Channel {
         return new DefaultChannelPipeline(this);
     }
 
+    /**
+     * 创建新的 ChannelConfig
+     *
+     * <p>子类可以覆盖此方法提供自定义的 ChannelConfig 实现。
+     *
+     * @return 新的 ChannelConfig
+     */
+    protected ChannelConfig newChannelConfig() {
+        return new DefaultChannelConfig(this);
+    }
+
     @Override
     public ChannelId id() {
         return id;
@@ -109,6 +126,11 @@ public abstract class AbstractChannel implements Channel {
     @Override
     public ChannelPipeline pipeline() {
         return pipeline;
+    }
+
+    @Override
+    public ChannelConfig config() {
+        return config;
     }
 
     @Override
@@ -208,6 +230,12 @@ public abstract class AbstractChannel implements Channel {
         } catch (Exception e) {
             System.err.println("[AbstractChannel] 注册失败: " + e.getMessage());
         }
+    }
+
+    @Override
+    public Channel read() {
+        pipeline.read();
+        return this;
     }
 
     @Override
