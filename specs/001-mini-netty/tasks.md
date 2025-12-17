@@ -338,10 +338,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 32: client-bootstrap (IT32)
 
-- [ ] T156 [IT32] 基于 IT31 创建分支 `client-bootstrap`
-- [ ] T157 [IT32] 实现 Bootstrap (客户端) 在 src/main/java/io/netty/bootstrap/Bootstrap.java
-- [ ] T158 [P] [IT32] 编写集成测试 BootstrapIntegrationTest 在 src/test/java/io/netty/integration/BootstrapIntegrationTest.java
-- [ ] T159 [IT32] 更新 changelog.md 并验证
+- [X] T156 [IT32] 基于 IT31 创建分支 `client-bootstrap`
+- [X] T157 [IT32] 实现 Bootstrap (客户端) 在 src/main/java/io/netty/bootstrap/Bootstrap.java
+- [X] T158 [P] [IT32] 编写集成测试 BootstrapIntegrationTest 在 src/test/java/io/netty/integration/BootstrapIntegrationTest.java
+- [X] T159 [IT32] 更新 changelog.md 并验证
 
 **检查点 (US6)**: Bootstrap 可配置和启动服务端/客户端
 
@@ -353,10 +353,10 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 33: event-loop-group (IT33)
 
-- [ ] T160 [IT33] 基于 IT32 创建分支 `event-loop-group`
-- [ ] T161 [IT33] 实现 NioEventLoopGroup 在 src/main/java/io/netty/channel/nio/NioEventLoopGroup.java
-- [ ] T162 [P] [IT33] 编写测试 NioEventLoopGroupTest 在 src/test/java/io/netty/channel/nio/NioEventLoopGroupTest.java
-- [ ] T163 [IT33] 更新 changelog.md
+- [X] T160 [IT33] 基于 IT32 创建分支 `event-loop-group`
+- [X] T161 [IT33] 实现 NioEventLoopGroup 在 src/main/java/io/netty/channel/nio/NioEventLoopGroup.java
+- [X] T162 [P] [IT33] 编写测试 NioEventLoopGroupTest 在 src/test/java/io/netty/channel/nio/NioEventLoopGroupTest.java
+- [X] T163 [IT33] 更新 changelog.md
 
 ### 迭代 34: boss-worker-model (IT34)
 

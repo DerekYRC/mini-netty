@@ -30,6 +30,36 @@
 
 ---
 
+## [IT33] event-loop-group
+
+**分支**: `event-loop-group`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `NioEventLoopGroup` 事件循环组实现
+  - 管理多个 NioEventLoop 实例
+  - 默认线程数为 CPU 核心数 × 2
+  - 支持轮询(Round-Robin)策略分配 EventLoop
+  - `next()` 返回下一个 EventLoop
+  - `eventLoop(index)` 按索引获取 EventLoop
+  - `register(Channel)` 注册 Channel 到组
+  - `shutdownGracefully()` 优雅关闭所有 EventLoop
+  - `start()` 启动所有 EventLoop
+- 新增 `NioEventLoopGroupTest` 共 10 个测试用例
+  - 创建测试: 默认线程数、指定线程数、边界条件
+  - 轮询测试: 循环分配、均匀分布
+  - 索引访问测试: 按索引获取、越界异常
+  - 生命周期测试: isShutdown 状态
+  - 验收场景测试: 主从 Reactor 线程组
+
+**学习要点**:
+- EventLoopGroup 是 EventLoop 的容器和管理者
+- 轮询策略(Round-Robin)保证负载均衡
+- Channel 一旦分配到 EventLoop，整个生命周期内不会改变
+- 主从 Reactor 模型：Boss 处理连接，Worker 处理 I/O
+
+---
+
 ## [IT31] server-bootstrap
 
 **分支**: `server-bootstrap`
