@@ -225,11 +225,11 @@ Note: IT12 已在 IT08 中完成（Channel 相关接口作为 EventLoop 依赖�
 
 ### 迭代 21: handler-adapter (IT21)
 
-- [ ] T106 [IT21] 基于 IT20 创建分支 `handler-adapter`
-- [ ] T107 [IT21] 实现 ChannelDuplexHandler 在 src/main/java/io/netty/channel/ChannelDuplexHandler.java
-- [ ] T108 [IT21] 实现异常传播 exceptionCaught
-- [ ] T109 [P] [IT21] 编写集成测试 PipelineIntegrationTest 在 src/test/java/io/netty/integration/PipelineIntegrationTest.java
-- [ ] T110 [IT21] 更新 changelog.md 并验证
+- [X] T106 [IT21] 基于 IT20 创建分支 `handler-adapter`
+- [X] T107 [IT21] 实现 ChannelDuplexHandler 在 src/main/java/io/netty/channel/ChannelDuplexHandler.java
+- [X] T108 [IT21] 实现异常传播 exceptionCaught
+- [X] T109 [P] [IT21] 编写集成测试 PipelineIntegrationTest 在 src/test/java/io/netty/integration/PipelineIntegrationTest.java
+- [X] T110 [IT21] 更新 changelog.md 并验证
 
 **检查点 (US3)**: Pipeline 可正确处理入站和出站事件
 

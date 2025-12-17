@@ -30,6 +30,32 @@
 
 ---
 
+## [IT21] handler-adapter
+
+**分支**: `handler-adapter`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `ChannelDuplexHandler` 双向 Handler 适配器
+  - 同时实现 ChannelInboundHandler 和 ChannelOutboundHandler
+  - 可以同时处理入站和出站事件
+  - 典型用途：日志记录、监控统计、超时处理
+- 验证异常传播机制
+  - exceptionCaught 沿入站方向传递
+  - 可以在任意 Handler 中拦截和处理异常
+- 新增 `PipelineIntegrationTest` 共 10 个测试用例
+  - DuplexHandlerTests: 双向 Handler 功能测试
+  - ExceptionPropagationTests: 异常传播和拦截测试
+  - FullEventFlowTests: 完整事件流测试
+  - AcceptanceScenarioTests: Echo 服务器和异常处理链场景
+
+**学习要点**:
+- ChannelDuplexHandler 简化双向流量处理
+- 异常沿入站方向传播（HeadContext → TailContext）
+- 异常可以在任意 Handler 被拦截和处理
+
+---
+
 ## [IT20] outbound-handler
 
 **分支**: `outbound-handler`
