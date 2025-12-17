@@ -114,11 +114,11 @@
 
 ### 迭代 9: single-thread-event-loop (IT09)
 
-- [ ] T043 [IT09] 基于 IT08 创建分支 `single-thread-event-loop`
-- [ ] T044 [P] [IT09] 实现 SingleThreadEventLoop 在 src/main/java/io/netty/channel/SingleThreadEventLoop.java
-- [ ] T045 [P] [IT09] 实现 NioEventLoop 在 src/main/java/io/netty/channel/nio/NioEventLoop.java
-- [ ] T046 [P] [IT09] 编写测试 NioEventLoopTest 在 src/test/java/io/netty/channel/nio/NioEventLoopTest.java
-- [ ] T047 [IT09] 更新 changelog.md 并验证事件循环
+- [X] T043 [IT09] 基于 IT08 创建分支 `single-thread-event-loop`
+- [X] T044 [P] [IT09] 实现 SingleThreadEventLoop 在 src/main/java/io/netty/channel/SingleThreadEventLoop.java
+- [X] T045 [P] [IT09] 实现 NioEventLoop 在 src/main/java/io/netty/channel/nio/NioEventLoop.java
+- [X] T046 [P] [IT09] 编写测试 NioEventLoopTest 在 src/test/java/io/netty/channel/nio/NioEventLoopTest.java
+- [X] T047 [IT09] 更新 changelog.md 并验证事件循环
 
 ### 迭代 10: event-loop-task-queue (IT10)
 

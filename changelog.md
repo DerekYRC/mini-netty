@@ -30,6 +30,28 @@
 
 ---
 
+## [IT10] event-loop-task-queue
+
+**分支**: `event-loop-task-queue`
+**日期**: 2025-12-17
+
+**改动内容**:
+- 新增 `TaskQueueTest` 测试 12 个测试用例
+  - 测试 execute() 方法基本功能
+  - 测试 FIFO 执行顺序
+  - 测试多线程并发提交任务
+  - 测试异常处理（不影响后续任务）
+  - 测试性能（1000 任务 ~4ms）
+
+**学习要点**:
+- execute() 方法将任务添加到 ConcurrentLinkedQueue
+- 任务按 FIFO 顺序执行
+- 任务异常不会中断事件循环，后续任务继续执行
+- wakeup() 确保从其他线程提交的任务能立即被处理
+- hasTasks() 用于检查是否有待处理任务
+
+---
+
 ## [IT09] single-thread-event-loop
 
 **分支**: `single-thread-event-loop`
