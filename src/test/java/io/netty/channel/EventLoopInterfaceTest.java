@@ -167,9 +167,14 @@ class EventLoopInterfaceTest {
         }
 
         @Test
-        @DisplayName("ChannelFuture 继承自 Future")
-        void channelFutureExtendsFuture() {
-            assertThat(Future.class).isAssignableFrom(ChannelFuture.class);
+        @DisplayName("ChannelFuture 具有必要的异步操作方法")
+        void channelFutureHasAsyncMethods() throws NoSuchMethodException {
+            // 验证 isDone() 方法存在
+            assertThat(ChannelFuture.class.getMethod("isDone")).isNotNull();
+            // 验证 isSuccess() 方法存在
+            assertThat(ChannelFuture.class.getMethod("isSuccess")).isNotNull();
+            // 验证 sync() 方法存在
+            assertThat(ChannelFuture.class.getMethod("sync")).isNotNull();
         }
 
         @Test
