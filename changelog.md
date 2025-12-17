@@ -11,23 +11,6 @@
 
 ---
 
-## [Unreleased]
-
-### 项目初始化
-
-
-**改动内容**:
-- 创建项目基础结构
-- 配置 Maven 构建（Java 17, JUnit 5, AssertJ）
-- 创建 README.md 说明项目目的和学习路径
-- 创建 changelog.md 记录改动
-
-**学习要点**:
-- Maven 项目结构
-- JUnit 5 测试框架配置
-
----
-
 ## [IT01] simple-bio-server
 
 **分支**: `simple-bio-server`
