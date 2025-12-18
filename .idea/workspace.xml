@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a592e721-503c-42be-8194-ace1f55fa4b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/netty/bootstrap/AbstractBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/netty/bootstrap/AbstractBootstrap.java" afterDir="false" />
-    </list>
+    <list default="true" id="a592e721-503c-42be-8194-ace1f55fa4b5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,9 +19,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="36v85ycWKO4g735PfYz8w05PAuW" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -37,6 +35,7 @@
     "Application.NioServer.executor": "Run",
     "JUnit.ByteToMessageDecoderTest.executor": "Run",
     "JUnit.ClientServerIntegrationTest.executor": "Run",
+    "JUnit.EchoExampleTest.executor": "Run",
     "JUnit.MiniNettyTest.executor": "Run",
     "JUnit.NioChannelBufferTest.executor": "Run",
     "JUnit.NioClientServerTest.executor": "Run",
@@ -46,7 +45,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "server-bootstrap",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/deyi/idea/mini-netty",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,22 +55,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ServerBootstrapTest">
-    <configuration name="ByteToMessageDecoderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mini-netty" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.netty.handler.codec.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="io.netty.handler.codec" />
-      <option name="MAIN_CLASS_NAME" value="io.netty.handler.codec.ByteToMessageDecoderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.EchoExampleTest">
     <configuration name="ClientServerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mini-netty" />
       <extension name="coverage">
@@ -82,6 +66,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="io.netty.integration" />
       <option name="MAIN_CLASS_NAME" value="io.netty.integration.ClientServerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EchoExampleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mini-netty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.netty.example.echo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.netty.example.echo" />
+      <option name="MAIN_CLASS_NAME" value="io.netty.example.echo.EchoExampleTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EchoExampleTest" />
         <item itemvalue="JUnit.ServerBootstrapTest" />
         <item itemvalue="JUnit.NioClientServerTest" />
         <item itemvalue="JUnit.NioChannelBufferTest" />
         <item itemvalue="JUnit.ClientServerIntegrationTest" />
-        <item itemvalue="JUnit.ByteToMessageDecoderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -163,5 +162,41 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="828e81b4-eb0f-4e98-b6a7-ff986b15b072" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="828e81b4-eb0f-4e98-b6a7-ff986b15b072">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
