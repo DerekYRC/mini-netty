@@ -5,13 +5,15 @@
 [![Tests](https://img.shields.io/badge/Tests-400+%20passing-brightgreen)]()
 [![License](https://img.shields.io/badge/License-Educational-yellow)]()
 
+**[English](./README_en.md) | 简体中文**
+
+**姊妹版：**
+- [**mini-spring**](https://github.com/DerekYRC/mini-spring) **(简化版的spring框架)**
+- [**mini-spring-cloud**](https://github.com/DerekYRC/mini-spring-cloud) **(简化版的spring cloud框架)**
+
 ## 项目介绍
 
 **mini-netty** 是一个从零开始实现的简化版 **Netty** 网络编程框架。通过 37 个细粒度的迭代分支，逐步引入网络编程的核心概念。 该项目使用**AI**(**Claude** + **Spec-Kit**)进行辅助开发。
-
-**姊妹版：** 
- - [**mini-spring**](https://github.com/DerekYRC/mini-spring) **(简化版的spring框架)**
- - [**mini-spring-cloud**](https://github.com/DerekYRC/mini-spring-cloud) **(简化版的spring cloud框架)**
 
 ### ✨ 特性
 
