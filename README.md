@@ -10,6 +10,7 @@
 **姊妹版：**
 - [**mini-spring**](https://github.com/DerekYRC/mini-spring) **(简化版的spring框架)**
 - [**mini-spring-cloud**](https://github.com/DerekYRC/mini-spring-cloud) **(简化版的spring cloud框架)**
+- [**mini-claude-code**](https://github.com/DerekYRC/mini-claude-code) **(简化版的Claude Code)**
 
 ## 项目介绍
 
